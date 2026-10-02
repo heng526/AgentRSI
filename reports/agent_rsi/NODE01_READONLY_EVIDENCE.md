@@ -18,7 +18,7 @@
 
 For each run, locate `runs/<run-id>/report.md` and `runs/<run-id>/answers.jsonl` under the M3 root. Both exited 0; no duplicate IDs, unknown IDs, or error lines were found. Unanswered items were in round 5. Explicit evaluation did not run; these counts are not accuracy.
 
-Related provenance notes: 920 videos / 3,214 QA web annotations exist without a Web run. The artifacts include 100 original images and 100 GLM images; there is no separate hash manifest for GLM images. The artifact manifest pins the data snapshot and original image source. Reported source commit `0e3e419…` had a dirty working tree, so the exact executed source tree is not frozen.
+Related provenance notes: 920 videos / 3,214 QA web annotations exist without a Web run. The artifacts include 100 official Robot graph files and 100 GLM graph copies; there is no separate hash manifest for GLM graph copies. The artifact manifest pins the data snapshot and original graph source. Reported source commit `0e3e419…` had a dirty working tree, so the exact executed source tree is not frozen.
 
 ## Recuris and SkillFlow evidence
 
@@ -28,7 +28,7 @@ Related provenance notes: 920 videos / 3,214 QA web annotations exist without a 
 
 ## Runtime and remaining scientific evidence gap
 
-- No matching M3/Recuris working directory or tmux session was found; the old PID was stopped. Other Python processes occupied eight GPUs at 98–100%; they were outside this project's scope and were not investigated. Do not infer that the server was idle.
+- No matching M3/Recuris working directory or tmux session was found; the previously recorded PID was no longer running at inspection. Other Python processes occupied eight GPUs at 98–100%; they were outside this project's scope and were not investigated. Do not infer that the server was idle.
 - Graphs are written during preprocessing. QA control retrieves and writes answer traces; no per-question persistent repair/writeback or repair record affecting later questions was found.
 - Evidence supports existing retrieval and generation, but no scoring. The core persistent-repair-to-later-question effect remains unverified. No scientific gate or metric result is asserted here.
 
