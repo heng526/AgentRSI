@@ -39,6 +39,26 @@
       "seq": 4,
       "summary": "Control record added after execution start: node01 read-only audit is reported running; SSH confirmation and server evidence have not returned",
       "task_id": "CVPR-RSI-NODE01-READ-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T09:42:59.701225Z",
+      "path": "researchops/outbox/codex/EVENT-CVPR-RSI-NODE01-READ-20261002-COMPLETE.json",
+      "record_id": "rec_4f944884-df70-41bc-97ef-0c9c356b4045",
+      "record_type": "event",
+      "seq": 5,
+      "summary": "The authorized read-only node01 audit has returned; its result is recorded and the L0 task is complete. Scientific evidence remains unscored and the core persistence effect is unverified.",
+      "task_id": "CVPR-RSI-NODE01-READ-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T09:42:59.701225Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-NODE01-READ-20261002.json",
+      "record_id": "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572",
+      "record_type": "result",
+      "seq": 6,
+      "summary": "Read-only node01 audit completed; SSH succeeded and existing AgentRSI/M3/Recuris evidence was indexed. No scoring or scientific gate was run.",
+      "task_id": "CVPR-RSI-NODE01-READ-20261002"
     }
   ],
   "project_id": "CVPR-RSI",

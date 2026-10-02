@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "project_id": "CVPR-RSI",
+  "input_state_version": 2,
+  "task_id": "CVPR-RSI-NODE01-READ-20261002",
+  "record_id": "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572",
+  "record_type": "result",
+  "actor": "codex",
+  "created_at": "2026-10-02T09:42:59.701225Z",
+  "correlation_id": "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d",
+  "causation_id": "rec_b7f4d317-fc17-4db5-a965-f1b8d363c6c4",
+  "summary": "Read-only node01 audit completed; SSH succeeded and existing AgentRSI/M3/Recuris evidence was indexed. No scoring or scientific gate was run.",
+  "payload": {
+    "status": "PASS",
+    "status_scope": "L0 read-only audit completion only; not a scientific gate or performance result",
+    "executed_source_sha": null,
+    "idempotency_key": "CVPR-RSI-NODE01-READ-20261002-READONLY",
+    "tests": {
+      "ssh_connection": "PASS; confirmed by completed audit task",
+      "read_only_scope": "PASS; no remote writes or scientific actions",
+      "explicit_evaluation": "NOT_RUN",
+      "answer_scoring": "0 on both Robot runs"
+    },
+    "runs": [
+      {
+        "run_id": "qwen33b-glmembed-robot-full-20260929a",
+        "kind": "robot_full_retrieval_generation",
+        "source_root": "/home/hust/projects/WXM/rsi/m3-agent-repro",
+        "videos": 100,
+        "qa": 1276,
+        "answered": 1270,
+        "unanswered": 6,
+        "scored": 0,
+        "exit_code": 0,
+        "duplicate_ids": 0,
+        "unknown_ids": 0,
+        "error_lines": 0,
+        "unanswered_round": 5,
+        "artifacts": [
+          "runs/qwen33b-glmembed-robot-full-20260929a/report.md",
+          "runs/qwen33b-glmembed-robot-full-20260929a/answers.jsonl"
+        ]
+      },
+      {
+        "run_id": "bigmodel-glm53flash-robot-full-20260929a",
+        "kind": "robot_full_retrieval_generation",
+        "source_root": "/home/hust/projects/WXM/rsi/m3-agent-repro",
+        "videos": 100,
+        "qa": 1276,
+        "answered": 1115,
+        "unanswered": 161,
+        "scored": 0,
+        "exit_code": 0,
+        "duplicate_ids": 0,
+        "unknown_ids": 0,
+        "error_lines": 0,
+        "unanswered_round": 5,
+        "artifacts": [
+          "runs/bigmodel-glm53flash-robot-full-20260929a/report.md",
+          "runs/bigmodel-glm53flash-robot-full-20260929a/answers.jsonl"
+        ]
+      },
+      {
+        "run_family": "Recuris tau-squared comparison",
+        "source_root": "/home/hust/research_recuris/Recuris",
+        "train_split": "train41",
+        "dev_split": "dev6",
+        "test_split": [],
+        "m0_train": "0/4",
+        "candidate_train": "3/4",
+        "m0_dev": "4/4",
+        "candidate_dev": "3/4",
+        "candidate_minus_m0_dev_pp": -25,
+        "candidate_decision": "REJECT",
+        "retained": "M0"
+      },
+      {
+        "run_family": "SkillFlow existing comparison",
+        "source_root": "/home/hust/research_recuris/Recuris",
+        "raw_trial_files_per_arm": 34,
+        "exceptions": 0,
+        "arm_counts": "32/34 vs 33/34",
+        "reported_ci_pp": [
+          -5.88,
+          11.76
+        ],
+        "adaptation": "GLM-5.3-Flash to QwenCode 0.24.6 / Harbor 0.20.0",
+        "published_memory_is_local_evolved_policy": false
+      }
+    ],
+    "metrics": {},
+    "artifacts": [
+      "reports/agent_rsi/NODE01_READONLY_EVIDENCE.md",
+      "/home/hust/projects/WXM/rsi/m3-agent-repro/runs/qwen33b-glmembed-robot-full-20260929a/report.md",
+      "/home/hust/projects/WXM/rsi/m3-agent-repro/runs/qwen33b-glmembed-robot-full-20260929a/answers.jsonl",
+      "/home/hust/projects/WXM/rsi/m3-agent-repro/runs/bigmodel-glm53flash-robot-full-20260929a/report.md",
+      "/home/hust/projects/WXM/rsi/m3-agent-repro/runs/bigmodel-glm53flash-robot-full-20260929a/answers.jsonl",
+      "/home/hust/research_recuris/Recuris",
+      "/home/hust/research_recuris/frozen"
+    ],
+    "unauthorized_actions_started": false,
+    "to_verify": [
+      "The Robot runs have retrieval/generation records but no explicit scoring; do not report accuracy.",
+      "The exact executed source tree is not frozen: reported commit 0e3e419\u2026 had a dirty working tree.",
+      "The persistent-repair-to-later-question effect remains unverified.",
+      "Other Python processes used eight GPUs at 98\u2013100% outside project scope; server idle state is not established."
+    ]
+  }
+}

@@ -1,15 +1,17 @@
 {
-  "last_seq": 4,
+  "last_seq": 6,
   "latest_approval_id": null,
   "latest_decision_id": null,
   "latest_record_by_actor": {
-    "codex": "rec_b7f4d317-fc17-4db5-a965-f1b8d363c6c4",
+    "codex": "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572",
     "gpt": "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d"
   },
-  "latest_result_id": "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2",
+  "latest_result_id": "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572",
   "processed_records": {
     "rec_442ce990-b68f-43e1-8041-2ae806901227": 1,
+    "rec_4f944884-df70-41bc-97ef-0c9c356b4045": 5,
     "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d": 3,
+    "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572": 6,
     "rec_b7f4d317-fc17-4db5-a965-f1b8d363c6c4": 4,
     "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2": 2
   },
@@ -24,14 +26,14 @@
     "immutable_run_shas": {},
     "scientific_head_sha": null
   },
-  "state_version": 2,
+  "state_version": 3,
   "tasks": {
     "CVPR-RSI-NODE01-READ-20261002": {
       "authorization_level": "L0_READ",
       "idempotency_key": "CVPR-RSI-NODE01-READ-20261002-READONLY",
       "input_state_version": 1,
-      "latest_result_id": null,
-      "status": "RUNNING",
+      "latest_result_id": "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572",
+      "status": "PASS",
       "task_record_id": "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d"
     },
     "CVPR-RSI-OPS-SYNC-SIDECAR-20261002": {
@@ -43,5 +45,5 @@
       "task_record_id": "rec_442ce990-b68f-43e1-8041-2ae806901227"
     }
   },
-  "updated_at": "2026-10-02T09:30:27.604564+00:00"
+  "updated_at": "2026-10-02T09:42:59.751632+00:00"
 }

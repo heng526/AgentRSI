@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "project_id": "CVPR-RSI",
+  "input_state_version": 2,
+  "task_id": "CVPR-RSI-NODE01-READ-20261002",
+  "record_id": "rec_4f944884-df70-41bc-97ef-0c9c356b4045",
+  "record_type": "event",
+  "actor": "codex",
+  "created_at": "2026-10-02T09:42:59.701225Z",
+  "correlation_id": "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d",
+  "causation_id": "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572",
+  "summary": "The authorized read-only node01 audit has returned; its result is recorded and the L0 task is complete. Scientific evidence remains unscored and the core persistence effect is unverified.",
+  "payload": {
+    "status": "PASS",
+    "event_code": "READONLY_AUDIT_COMPLETED",
+    "execution_status": "completed",
+    "related_execution_task_id": "01a0fbde-9ada-70bd-9da5-29b3cdedd037",
+    "related_execution_turn_id": "01a0fbde-a833-7529-aedd-4d7fdabcd2e0",
+    "ssh_connection_status": "success",
+    "remote_writes": "none",
+    "scientific_actions": "none",
+    "result_record_id": "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572",
+    "evidence_checklist": "reports/agent_rsi/NODE01_READONLY_EVIDENCE.md",
+    "recorded_after_start": true
+  }
+}
