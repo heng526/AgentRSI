@@ -35,7 +35,8 @@ provider/model/endpoint; all scoring limits and stop conditions above remain.
   `max_tokens=512`, matching the existing judge's output ceiling.
   [OpenAI API 兼容文档](https://docs.bigmodel.cn/cn/guide/develop/openai/introduction).
 - The archive contains 1,276 unique `(video_id, id)` rows: 1,270 nonempty
-  responses and six empty responses. All questions and labels pair with the
+  responses and six null responses, normalized to empty and wrong without a
+  request. All questions and labels pair with the
   saved annotations. Rendered prompts total 1,619,299 UTF-8 bytes, with a
   maximum of 1,815 bytes per nonempty prompt; these byte lengths are not treated
   as a verified token upper bound.
@@ -46,24 +47,37 @@ provider/model/endpoint; all scoring limits and stop conditions above remain.
 append-only score-only tool for the named run. It uses the existing judge prompt
 and parser, checks the official provider/model/endpoint, disables SDK retries,
 fsyncs each result, resumes by `(video_id, id)`, and stops at the first API,
-usage, truncation, or parse issue. Its full-batch preflight still requires a
-local exact-model tokenizer and evidence for any provider-side input-overhead
-upper bound before making a request.
+usage, truncation, or parse issue. Before each request it reserves the official
+full input context (1,048,576 tokens) and maximum output (131,072 tokens), using
+the official input/output list prices and rounding up to cents. This is CNY
+1.21 per attempt; the next request is sent only if cumulative actual or
+conservatively reserved spend plus CNY 1.21 remains within the CNY 100 ceiling.
+Unknown usage or a request error consumes that request's full reserve and stops
+the run. Unprocessed rows remain unjudged.
 
 After the provider correction, the API routing and documented request parameter
-were updated without changing the prompt, temperature, or parser. The scorer's
-offline mock tests pass **11/11**. These mocks generated no GLM API traffic.
+were updated without changing the prompt, temperature, or parser. A null
+response value is normalized to empty, matching the six empty rows already
+verified in the archive. The scorer's offline mock tests pass **11/11**,
+including a per-request budget-boundary case. These mocks generated no GLM API
+traffic.
 
-## Execution status: HOLD before first request
+## Execution status: HOLD on first length-truncated judge response
 
-No exact GLM-5.3-Flash tokenizer is cached in the original node01 environment;
-offline loading with Transformers 4.51.0 failed. No documented provider-side
-input-overhead ceiling has been established. Without those bounds, the 1,270-row
-full-batch input reserve cannot be shown to fit the approved budget. The
-documented absolute context ceiling alone reserves CNY 0.85 per row when rounded
-up to cents, or CNY 1,079.50 for 1,270 requests, before any prior spend; this is
-above the CNY 100 cap. Therefore no live request has been made.
+The first formal request scored `living_room_06/living_room_06_Q01`: the judge
+returned `No`, recorded as `correct=false`, with 278 input tokens and 433
+completion tokens (430 reasoning tokens); cost rounded up to CNY 0.01.
 
-Current live scoring attempts: **0 sent, 0 successful, 0 failed**. No score,
-accuracy, or scientific gate result exists. ResearchOps scientific stage remains
-`BOOTSTRAP`, and `scientific_head_sha` remains `null`.
+The serial run stopped on attempt 16, `living_room_06/living_room_06_Q16`, when
+the official API returned `finish_reason=length`. That row is `HOLD` with
+`correct=null`, 319 input tokens, 512 completion tokens (511 reasoning tokens),
+and CNY 0.01 actual cost against its CNY 1.21 reserve. It was not retried.
+
+Final persisted status at stop: **16** API attempts, **15** judged rows, **1**
+truncated `HOLD`, **6** empty rows marked wrong without calls, and **1,254**
+nonempty rows not attempted and therefore unjudged. Aggregate usage for the 16
+attempts was 4,569 input tokens and 2,514 completion tokens (2,466 reasoning
+tokens). Cumulative rounded actual cost was **CNY 0.16**. No API transport error
+occurred. The partial judgments are not reported as accuracy or a scientific
+gate result. ResearchOps scientific stage remains `BOOTSTRAP`, and
+`scientific_head_sha` remains `null`.

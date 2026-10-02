@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_4096f411-4e1c-4e88-9885-adf184e244df",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T14:40:43Z",
+  "input_state_version": 8,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002",
+  "correlation_id": "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488",
+  "causation_id": "rec_dd567120-1788-42b6-b09c-a85799344433",
+  "summary": "One-shot scoring stopped on the first length-truncated GLM response after 16 requests; all remaining nonempty rows are unjudged",
+  "payload": {
+    "status": "HOLD",
+    "status_scope": "Partial judge execution only; no aggregate accuracy or scientific-gate result",
+    "executed_source_sha": null,
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002-EXISTING-RUN-ONCE",
+    "tests": {
+      "official_configuration": "PASS; official Zhipu GLM endpoint/model confirmed; key value never printed or copied",
+      "official_price_and_per_call_reserve": "PASS; CNY 1.21 reserved before each request using full 1M-context and 128K-output ceilings, prices CNY 0.8/M input and CNY 2.8/M output",
+      "offline_mock_tests": "PASS 11/11; includes per-request budget boundary and null-response handling",
+      "first_formal_judgment": "SCORED; living_room_06/living_room_06_Q01; judge output No; correct=false; 278 input tokens; 433 completion tokens including 430 reasoning; CNY 0.01",
+      "stop_condition": "HOLD; attempt 16, living_room_06/living_room_06_Q16; finish_reason=length; correct=null; 319 input tokens; 512 completion tokens including 511 reasoning; CNY 0.01; no retry",
+      "api_transport_errors": 0,
+      "attempts_by_answer_key": "At most one; no retries"
+    },
+    "runs": [
+      {
+        "run_id": "qwen33b-glmembed-robot-full-20260929a",
+        "kind": "existing_saved_answer_glm_judging",
+        "total_rows": 1276,
+        "eligible_nonempty": 1270,
+        "api_attempts": 16,
+        "judged_rows": 15,
+        "truncated_hold_rows": 1,
+        "empty_wrong_no_call": 6,
+        "nonempty_not_attempted_unjudged": 1254,
+        "aggregate_usage": {
+          "prompt_tokens": 4569,
+          "completion_tokens": 2514,
+          "reasoning_tokens": 2466
+        },
+        "actual_cost_rmb_rounded_per_request": "0.16",
+        "next_request_reserve_rmb": "1.21",
+        "artifacts": ["runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores.jsonl"]
+      }
+    ],
+    "metrics": {},
+    "artifacts": ["reports/agent_rsi/ROBOT_SCORING_EXECUTION_20261002.md"],
+    "authorization_consumed": true,
+    "unauthorized_actions_started": false,
+    "scientific_state_change": "none; stage remains BOOTSTRAP and scientific_head_sha remains null",
+    "to_verify": ["No continuation or retry unless separately authorized after review of the length-truncated response."]
+  }
+}

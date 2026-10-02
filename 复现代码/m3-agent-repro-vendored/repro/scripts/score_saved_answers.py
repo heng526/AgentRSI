@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Safely score saved Robot answers with the existing GLM answer judge.
 
-This entrypoint never generates or embeds answers. It requires a local copy of
-the exact GLM tokenizer and a documented provider-side input-overhead bound
-before it will make any request. Missing those inputs is a hard HOLD.
+This entrypoint never generates or embeds answers. Before each request it
+reserves the official model's full input-context and maximum-output cost. It
+stops when cumulative spend plus the next request reserve would exceed budget.
 """
 from __future__ import annotations
 
@@ -35,10 +35,11 @@ OUTPUT_PRICE_PER_M = Decimal("2.8")
 DEFAULT_BUDGET_RMB = Decimal("100.00")
 DEFAULT_MAX_API_ATTEMPTS = 1270
 MODEL_INPUT_CONTEXT_TOKENS = 1_048_576
+MODEL_MAX_OUTPUT_TOKENS = 131_072
 # The official GLM OpenAI-compatible API documents max_tokens. Keep this at
 # the existing judge's 512-token ceiling, including any reasoning tokens.
 REQUEST_MAX_TOKENS = 512
-MAX_BILLED_OUTPUT_TOKENS = 512
+MAX_BILLED_OUTPUT_TOKENS = MODEL_MAX_OUTPUT_TOKENS
 
 
 class SafetyHold(RuntimeError):
@@ -139,8 +140,12 @@ def build_items(rows: list[dict[str, Any]], annotations: dict[str, Any]) -> list
         question = row.get("question")
         ground_truth_answer = qa.get("answer")
         raw_answer = row.get("response")
-        if not all(isinstance(value, str) for value in (question, ground_truth_answer, raw_answer)):
+        if not isinstance(question, str) or not isinstance(ground_truth_answer, str):
             raise ValueError(f"invalid text fields for answer key {key!r}")
+        if raw_answer is None:
+            raw_answer = ""
+        elif not isinstance(raw_answer, str):
+            raise ValueError(f"invalid response field for answer key {key!r}")
         if question != qa.get("question"):
             raise ValueError(f"question mismatch for answer key {key!r}")
         items.append(ScoreItem(key[0], key[1], question, ground_truth_answer, raw_answer))
@@ -175,47 +180,9 @@ def append_jsonl(output_path: Path, record: dict[str, Any]) -> None:
         os.fsync(handle.fileno())
 
 
-def local_input_token_count(tokenizer: Any, prompt: str) -> int:
-    """Count a full one-user-message chat input with a local chat template."""
-    encoded = tokenizer.apply_chat_template(
-        [{"role": "user", "content": prompt}],
-        tokenize=True,
-        add_generation_prompt=True,
-    )
-    if hasattr(encoded, "input_ids"):
-        encoded = encoded.input_ids
-    if encoded and isinstance(encoded[0], list):
-        if len(encoded) != 1:
-            raise SafetyHold("tokenizer returned an unexpected batch size")
-        encoded = encoded[0]
-    return len(encoded)
-
-
-def load_tokenizer(tokenizer_dir: Path) -> Any:
-    if not (tokenizer_dir / "tokenizer.json").is_file():
-        raise SafetyHold("local exact-model tokenizer.json is missing; no API call is allowed")
-    try:
-        from transformers import AutoTokenizer
-        return AutoTokenizer.from_pretrained(
-            str(tokenizer_dir), local_files_only=True, trust_remote_code=False
-        )
-    except Exception as exc:
-        raise SafetyHold(f"local GLM tokenizer could not be loaded offline ({type(exc).__name__})") from None
-
-
-def input_bound_for_item(
-    tokenizer: Any,
-    item: ScoreItem,
-    provider_overhead_tokens: int | None,
-    provider_overhead_evidence: str | None,
-) -> int:
-    if provider_overhead_tokens is None or not provider_overhead_evidence:
-        raise SafetyHold(
-            "provider-side prompt overhead has no verified token upper bound; no API call is allowed"
-        )
-    if provider_overhead_tokens < 0:
-        raise SafetyHold("provider-overhead token bound must be nonnegative")
-    return local_input_token_count(tokenizer, item.prompt) + provider_overhead_tokens
+def max_single_request_reserve() -> Decimal:
+    """Conservatively reserve official maximum context and output for one call."""
+    return estimate_cost_rmb(MODEL_INPUT_CONTEXT_TOKENS, MAX_BILLED_OUTPUT_TOKENS)
 
 
 def validate_scope(items: Iterable[ScoreItem], expected_count: int) -> tuple[int, int]:
@@ -229,27 +196,6 @@ def validate_scope(items: Iterable[ScoreItem], expected_count: int) -> tuple[int
             f"expected 1,276 total rows with six empty answers; found {len(materialized)} rows/{empty_count} empty"
         )
     return answered_count, empty_count
-
-
-def validate_all_bounds(
-    pending_items: list[ScoreItem],
-    tokenizer: Any,
-    provider_overhead_tokens: int | None,
-    provider_overhead_evidence: str | None,
-) -> tuple[dict[tuple[str, str], int], Decimal]:
-    bounds: dict[tuple[str, str], int] = {}
-    total_reserve = Decimal("0.00")
-    for item in pending_items:
-        if item.is_empty:
-            continue
-        bound = input_bound_for_item(
-            tokenizer, item, provider_overhead_tokens, provider_overhead_evidence
-        )
-        if bound > MODEL_INPUT_CONTEXT_TOKENS:
-            raise SafetyHold(f"input upper bound exceeds model context for key={item.key!r}")
-        bounds[item.key] = bound
-        total_reserve += estimate_cost_rmb(bound, MAX_BILLED_OUTPUT_TOKENS)
-    return bounds, total_reserve
 
 
 def build_empty_record(item: ScoreItem) -> dict[str, Any]:
@@ -381,36 +327,30 @@ def run(args: argparse.Namespace) -> int:
     prior_attempts = sum(bool(record.get("api_call_attempted")) for record in existing.values())
     if prior_attempts + len(answered_pending) > DEFAULT_MAX_API_ATTEMPTS:
         raise SafetyHold("resumed run would exceed the authorized API-attempt limit")
-    if not args.tokenizer_dir:
-        raise SafetyHold("--tokenizer-dir is required; no network tokenizer download is allowed")
-    tokenizer = load_tokenizer(Path(args.tokenizer_dir).resolve())
-
-    bounds, pending_reserve = validate_all_bounds(
-        answered_pending,
-        tokenizer,
-        args.provider_overhead_tokens,
-        args.provider_overhead_evidence,
-    )
+    if args.max_new_api_attempts is not None and args.max_new_api_attempts <= 0:
+        raise SafetyHold("--max-new-api-attempts must be positive")
     prior_cost = Decimal("0.00")
     for record in existing.values():
         cost = record.get("api_cost_rmb")
         if cost is None:
             cost = record.get("reserved_cost_rmb", "0.00")
         prior_cost += Decimal(str(cost))
-    if prior_cost + pending_reserve > args.budget_rmb:
+    row_reserve = max_single_request_reserve()
+    if answered_pending and prior_cost + row_reserve > args.budget_rmb:
         raise SafetyHold(
-            f"preflight spend+reserve {prior_cost + pending_reserve:.2f} RMB exceeds budget {args.budget_rmb:.2f} RMB"
+            f"current spend plus next-request worst-case reserve {prior_cost + row_reserve:.2f} RMB "
+            f"exceeds budget {args.budget_rmb:.2f} RMB"
         )
 
     if not args.execute:
         print(
             f"OFFLINE PREFLIGHT PASS; answered={answered_count}, empty={empty_count}, "
             f"pending_API_attempts={len(answered_pending)}, "
-            f"input_and_output_reserve={pending_reserve:.2f} RMB; no API call made"
+            f"next_request_worst_case_reserve={row_reserve:.2f} RMB; no API call made"
         )
         return 0
 
-    # No API call occurs before all rows, token bounds, and the full batch reserve pass.
+    # Empty answers are wrong under the existing evaluation rule and require no request.
     for item in blank_pending:
         append_jsonl(output_path, build_empty_record(item))
         existing[item.key] = {"status": "EMPTY_WRONG", "api_call_attempted": False, "api_cost_rmb": "0.00"}
@@ -424,12 +364,15 @@ def run(args: argparse.Namespace) -> int:
     client = configured["client"]
     actual_spend = prior_cost
     api_attempts = prior_attempts
-    pending_reserve_remaining = pending_reserve
-    for item in answered_pending:
-        input_bound = bounds[item.key]
-        row_reserve = estimate_cost_rmb(input_bound, MAX_BILLED_OUTPUT_TOKENS)
-        if actual_spend + pending_reserve_remaining > args.budget_rmb:
-            raise SafetyHold("spend+reserve would exceed the approved cap before the next API call")
+    items_to_process = answered_pending
+    if args.max_new_api_attempts is not None:
+        items_to_process = answered_pending[:args.max_new_api_attempts]
+    for index, item in enumerate(items_to_process):
+        if actual_spend + row_reserve > args.budget_rmb:
+            raise SafetyHold(
+                f"current spend plus next-request worst-case reserve {actual_spend + row_reserve:.2f} RMB "
+                f"would exceed budget {args.budget_rmb:.2f} RMB; remaining answers are UNJUDGED"
+            )
         api_attempts += 1
         try:
             response = client.chat.completions.create(
@@ -490,12 +433,11 @@ def run(args: argparse.Namespace) -> int:
             raise
 
         api_cost = estimate_cost_rmb(input_tokens, output_tokens)
-        pending_reserve_remaining -= row_reserve
         actual_spend += api_cost
         parser_result = parse_judge_output(raw_output)
         hold_reason = None
-        if input_tokens > input_bound:
-            hold_reason = "reported prompt tokens exceeded the pre-call input bound"
+        if input_tokens > MODEL_INPUT_CONTEXT_TOKENS:
+            hold_reason = "reported prompt tokens exceeded the official model context ceiling"
         elif output_tokens > MAX_BILLED_OUTPUT_TOKENS:
             hold_reason = "reported completion tokens exceeded the output reserve"
         elif finish_reason == "length":
@@ -522,12 +464,18 @@ def run(args: argparse.Namespace) -> int:
         append_jsonl(output_path, record)
         if status == "HOLD":
             raise SafetyHold(f"row held after API response: {hold_reason}; execution stopped")
-        if actual_spend + pending_reserve_remaining > args.budget_rmb:
-            raise SafetyHold("post-response actual spend plus remaining reserve exceeds the approved cap")
+        if index + 1 < len(items_to_process) and actual_spend + row_reserve > args.budget_rmb:
+            raise SafetyHold(
+                f"cumulative actual spend plus next-request worst-case reserve "
+                f"{actual_spend + row_reserve:.2f} RMB exceeds the approved cap; remaining answers are UNJUDGED"
+            )
 
+    remaining = len(answered_pending) - len(items_to_process)
+    state = "Scoring complete" if remaining == 0 else "Scoring checkpoint"
     print(
-        f"Scoring complete; answered={answered_count}, empty={empty_count}, "
-        f"API attempts={api_attempts}, spend={actual_spend:.2f} RMB"
+        f"{state}; answered={answered_count}, empty={empty_count}, "
+        f"new_attempts={len(items_to_process)}, total_attempts={api_attempts}, "
+        f"spend={actual_spend:.2f} RMB, remaining_unjudged={remaining}"
     )
     return 0
 
@@ -537,10 +485,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--answers", required=True, help="existing run answers.jsonl")
     parser.add_argument("--annotations", required=True, help="robot.json annotation source")
     parser.add_argument("--output", required=True, help="append-only judge result JSONL")
-    parser.add_argument("--tokenizer-dir", help="local exact-model tokenizer directory; never downloaded")
-    parser.add_argument("--provider-overhead-tokens", type=int, help="verified max provider-added input tokens")
-    parser.add_argument("--provider-overhead-evidence", help="source proving the provider overhead bound")
     parser.add_argument("--budget-rmb", type=Decimal, default=DEFAULT_BUDGET_RMB)
+    parser.add_argument(
+        "--max-new-api-attempts",
+        type=int,
+        help="optional checkpoint limit for this invocation; existing results are skipped",
+    )
     parser.add_argument(
         "--execute",
         action="store_true",

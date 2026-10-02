@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_dd567120-1788-42b6-b09c-a85799344433",
+  "record_type": "event",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T14:32:12Z",
+  "input_state_version": 7,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002",
+  "correlation_id": "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488",
+  "causation_id": "rec_90f7cf9d-cc08-4844-875d-6fe9c7dccb8f",
+  "summary": "User clarified the existing CNY 100 cap is enforced per request; exact tokenizer and full-batch worst-case reservation are not required",
+  "payload": {
+    "status": "RUNNING",
+    "event_code": "PER_CALL_BUDGET_GUARD_CONFIRMED",
+    "authorization_source": "User's latest clarification in the existing authorized scoring thread; it does not add attempts, spend, provider, model, or data scope.",
+    "budget_invariant": "Before each request, cumulative settled/conservatively reserved spend plus the next request's official worst-case reservation must be <= CNY 100.",
+    "per_request_reservation": {
+      "input_tokens": 1048576,
+      "output_tokens": 131072,
+      "input_price_cny_per_million": "0.8",
+      "output_price_cny_per_million": "2.8",
+      "rounded_up_cny": "1.21",
+      "official_source": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+      "context_output_source": "https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash"
+    },
+    "full_batch_reservation_required": false,
+    "run_scope_unchanged": {
+      "run_id": "qwen33b-glmembed-robot-full-20260929a",
+      "max_attempts": 1270,
+      "per_answer_attempts": 1,
+      "model": "glm-5.3-flash",
+      "provider": "official Zhipu GLM general API",
+      "max_retries": 0,
+      "six_empty_answers": "wrong without API calls",
+      "failure_or_ambiguous_usage": "record worst-case reservation, mark UNJUDGED/HOLD, stop without retry"
+    },
+    "offline_boundary_tests": "PASS 11/11; includes a case proving a first request is permitted although the full-batch max-context reserve exceeds CNY 100",
+    "scoring_api_attempts_before_event": 0,
+    "scientific_state_change": "none; BOOTSTRAP and scientific_head_sha null"
+  }
+}

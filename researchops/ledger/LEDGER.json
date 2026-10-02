@@ -169,6 +169,26 @@
       "seq": 17,
       "summary": "Official GLM config and domestic list price confirmed; score execution remains blocked by the unchanged full-batch input-bound preflight",
       "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T14:32:12Z",
+      "path": "researchops/outbox/codex/EVENT-CVPR-RSI-ROBOT-GLM-PER-CALL-BUDGET-20261002.json",
+      "record_id": "rec_dd567120-1788-42b6-b09c-a85799344433",
+      "record_type": "event",
+      "seq": 18,
+      "summary": "User clarified the existing CNY 100 cap is enforced per request; exact tokenizer and full-batch worst-case reservation are not required",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T14:40:43Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-GLM-SCORE-1270-ACTUAL-20261002.json",
+      "record_id": "rec_4096f411-4e1c-4e88-9885-adf184e244df",
+      "record_type": "result",
+      "seq": 19,
+      "summary": "One-shot scoring stopped on the first length-truncated GLM response after 16 requests; all remaining nonempty rows are unjudged",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
     }
   ],
   "project_id": "CVPR-RSI",

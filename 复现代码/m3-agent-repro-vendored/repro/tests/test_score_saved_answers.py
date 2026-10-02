@@ -14,14 +14,6 @@ sys.path.insert(0, str(SCRIPT_DIR))
 import score_saved_answers as scorer  # noqa: E402
 
 
-class FakeTokenizer:
-    def apply_chat_template(self, messages, tokenize, add_generation_prompt):
-        assert tokenize is True
-        assert add_generation_prompt is True
-        assert len(messages) == 1 and messages[0]["role"] == "user"
-        return list(range(len(messages[0]["content"].encode("utf-8")) + 3))
-
-
 class ScoreSavedAnswersTests(unittest.TestCase):
     def test_parser_matches_first_whole_word_semantics(self):
         self.assertIs(scorer.parse_judge_output("YES, correct"), True)
@@ -41,7 +33,7 @@ class ScoreSavedAnswersTests(unittest.TestCase):
     def test_source_pairing_and_empty_response_retention(self):
         rows = [
             {"video_id": "v1", "id": "q1", "question": "Q1", "response": "A1"},
-            {"video_id": "v1", "id": "q2", "question": "Q2", "response": "  "},
+            {"video_id": "v1", "id": "q2", "question": "Q2", "response": None},
         ]
         annotations = {
             "v1": {
@@ -54,8 +46,9 @@ class ScoreSavedAnswersTests(unittest.TestCase):
         items = scorer.build_items(rows, annotations)
         self.assertEqual(len(items), 2)
         self.assertEqual(items[0].ground_truth_answer, "T1")
-        self.assertEqual(items[1].raw_answer, "  ")
+        self.assertEqual(items[1].raw_answer, "")
         self.assertTrue(items[1].is_empty)
+        self.assertTrue(scorer.ScoreItem("v1", "q3", "Q3", "T3", "  ").is_empty)
 
     def test_source_duplicate_pair_is_rejected(self):
         row = {"video_id": "v1", "id": "q1", "question": "Q1", "response": "A1"}
@@ -71,22 +64,14 @@ class ScoreSavedAnswersTests(unittest.TestCase):
         self.assertEqual(scorer.validate_scope(items, 1270), (1270, 6))
         self.assertEqual(sum(not item.is_empty for item in items), 1270)
 
-    def test_token_bound_requires_verified_provider_overhead_before_tokenizing(self):
-        item = scorer.ScoreItem("v", "q", "q", "gt", "answer")
-
-        class NoTokenize:
-            def apply_chat_template(self, *args, **kwargs):
-                raise AssertionError("must fail before tokenization without the overhead proof")
-
-        with self.assertRaisesRegex(scorer.SafetyHold, "provider-side prompt overhead"):
-            scorer.input_bound_for_item(NoTokenize(), item, None, None)
-
-    def test_exact_bound_adds_documented_provider_overhead_and_reserves_worst_output(self):
-        item = scorer.ScoreItem("v", "q", "q", "gt", "answer")
-        bound = scorer.input_bound_for_item(FakeTokenizer(), item, 17, "official provider source")
-        self.assertEqual(bound, len(item.prompt.encode("utf-8")) + 3 + 17)
+    def test_each_call_reserves_full_official_context_and_128k_output(self):
         self.assertEqual(scorer.REQUEST_MAX_TOKENS, 512)
-        self.assertEqual(scorer.MAX_BILLED_OUTPUT_TOKENS, 512)
+        self.assertEqual(scorer.MAX_BILLED_OUTPUT_TOKENS, 131072)
+        self.assertEqual(scorer.max_single_request_reserve(), Decimal("1.21"))
+        self.assertGreater(
+            scorer.max_single_request_reserve() * 1270,
+            Decimal("100.00"),
+        )
 
     def test_costs_round_up_per_request_to_a_cent(self):
         self.assertEqual(scorer.estimate_cost_rmb(1000, 1000), Decimal("0.01"))
@@ -127,18 +112,15 @@ class ScoreSavedAnswersTests(unittest.TestCase):
             answers=str(Path("runs") / scorer.RUN_ID / "answers.jsonl"),
             annotations="unused-robot.json",
             output="unused-results.jsonl",
-            tokenizer_dir="mock-tokenizer",
-            provider_overhead_tokens=0,
-            provider_overhead_evidence="mocked verified source",
             expected_nonempty=1270,
             max_api_attempts=1270,
             budget_rmb=Decimal("100.00"),
+            max_new_api_attempts=None,
             execute=True,
         )
 
         with patch.object(scorer, "load_items", return_value=items), \
              patch.object(scorer, "load_existing", return_value={}), \
-             patch.object(scorer, "load_tokenizer", return_value=FakeTokenizer()), \
              patch.object(scorer, "resolve_settings", return_value={"settings": settings, "client": client}), \
              patch.object(scorer, "append_jsonl", side_effect=lambda _path, record: appended.append(record)):
             self.assertEqual(scorer.run(args), 0)
@@ -170,18 +152,15 @@ class ScoreSavedAnswersTests(unittest.TestCase):
             answers=str(Path("runs") / scorer.RUN_ID / "answers.jsonl"),
             annotations="unused-robot.json",
             output="unused-results.jsonl",
-            tokenizer_dir="mock-tokenizer",
-            provider_overhead_tokens=0,
-            provider_overhead_evidence="mocked verified source",
             expected_nonempty=1270,
             max_api_attempts=1270,
             budget_rmb=Decimal("100.00"),
+            max_new_api_attempts=None,
             execute=True,
         )
 
         with patch.object(scorer, "load_items", return_value=items), \
              patch.object(scorer, "load_existing", return_value={}), \
-             patch.object(scorer, "load_tokenizer", return_value=FakeTokenizer()), \
              patch.object(scorer, "resolve_settings", return_value={"settings": settings, "client": client}), \
              patch.object(scorer, "append_jsonl", side_effect=lambda _path, record: appended.append(record)):
             with self.assertRaisesRegex(scorer.SafetyHold, "failed; row held"):
@@ -189,6 +168,50 @@ class ScoreSavedAnswersTests(unittest.TestCase):
 
         self.assertEqual(len(calls), 1)
         self.assertEqual(sum(record["status"] == "HOLD" for record in appended), 1)
+        hold = next(record for record in appended if record["status"] == "HOLD")
+        self.assertEqual(hold["reserved_cost_rmb"], "1.21")
+
+    def test_full_batch_reserve_exceeding_budget_does_not_block_one_safe_call(self):
+        items = [
+            scorer.ScoreItem(f"v{i}", f"q{i}", "question", "truth", "" if i < 6 else "answer")
+            for i in range(1276)
+        ]
+        calls = []
+        appended = []
+
+        class MockCompletions:
+            def create(self, **kwargs):
+                calls.append(kwargs)
+                return SimpleNamespace(
+                    model=scorer.EXPECTED_MODEL,
+                    choices=[SimpleNamespace(message=SimpleNamespace(content="Yes", reasoning_content=None), finish_reason="stop")],
+                    usage=SimpleNamespace(prompt_tokens=100, completion_tokens=20),
+                )
+
+        client = SimpleNamespace(chat=SimpleNamespace(completions=MockCompletions()))
+        settings = {"chat_model": scorer.EXPECTED_MODEL, "provider": scorer.EXPECTED_PROVIDER}
+        args = Namespace(
+            answers=str(Path("runs") / scorer.RUN_ID / "answers.jsonl"),
+            annotations="unused-robot.json",
+            output="unused-results.jsonl",
+            expected_nonempty=1270,
+            max_api_attempts=1270,
+            budget_rmb=Decimal("100.00"),
+            max_new_api_attempts=1,
+            execute=True,
+        )
+
+        with patch.object(scorer, "load_items", return_value=items), \
+             patch.object(scorer, "load_existing", return_value={}), \
+             patch.object(scorer, "resolve_settings", return_value={"settings": settings, "client": client}), \
+             patch.object(scorer, "append_jsonl", side_effect=lambda _path, record: appended.append(record)):
+            self.assertEqual(scorer.run(args), 0)
+
+        self.assertGreater(scorer.max_single_request_reserve() * 1270, Decimal("100.00"))
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0]["max_tokens"], 512)
+        self.assertEqual(sum(record["status"] == "SCORED" for record in appended), 1)
+        self.assertEqual(sum(record["status"] == "EMPTY_WRONG" for record in appended), 6)
 
 
 if __name__ == "__main__":
