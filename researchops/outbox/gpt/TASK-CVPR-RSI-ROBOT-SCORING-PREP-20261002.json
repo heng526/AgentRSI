@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_c7b886d5-fcac-48b4-868d-4c15a4d76e38",
+  "record_type": "task",
+  "actor": "gpt",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T10:21:40.498446Z",
+  "input_state_version": 3,
+  "task_id": "CVPR-RSI-ROBOT-SCORING-PREP-20261002",
+  "correlation_id": null,
+  "causation_id": null,
+  "summary": "Prepare a bounded Chinese decision checklist for scoring existing Robot answers; read-only, no scoring execution.",
+  "payload": {
+    "authorization_level": "L0_READ",
+    "mission": "Prepare decision material for evaluating already-generated Robot answers by reading the local vendored controller, existing scoring code and parameter definitions, saved run artifacts, and only the two existing node01 run configs/answer fields/annotation format/logging flags if needed. Do not generate answers or score them.",
+    "scientific_question": "",
+    "idempotency_key": "CVPR-RSI-ROBOT-SCORING-PREP-20261002-READONLY",
+    "authorization_source": "Current user message requesting a bounded L0 scoring-preparation task.",
+    "frozen_provenance": {
+      "repository": "heng526/AgentRSI",
+      "local_branch": "main",
+      "local_head": "633246ce36b26110d87033a4a22b646fca99943c",
+      "project_id": "CVPR-RSI",
+      "scientific_stage": "BOOTSTRAP",
+      "scientific_head_sha": null
+    },
+    "authorized_now": [
+      "Read existing local vendored controller/scoring scripts and parameter definitions.",
+      "Read saved answer/annotation artifacts needed to identify fields and counts.",
+      "If required, use existing SSH to read only config, answer-field schema, annotation format, and logging flags for the two named Robot runs.",
+      "Write a short Chinese decision-preparation checklist and this L0 result, reduce sidecar state, validate, and push through the already-authorized repository sync."
+    ],
+    "authorized_only_if": [
+      "Use node01 only if the local material cannot answer the five requested questions.",
+      "Keep all server reads to the two existing run directories and their referenced saved files."
+    ],
+    "hard_prohibitions": [
+      "Do not run scoring scripts, judges, models, API requests, re-embedding, inference, GPU tests, or any preflight entrypoint.",
+      "Do not create new answers or labels.",
+      "Do not read, print, configure, or upload credential values.",
+      "Do not edit remote files or processes.",
+      "Do not change split, metric, judge, protocol, or scientific state.",
+      "Do not create or execute L3/L4 tasks or approvals.",
+      "Do not mark any unconfirmed samples as an independent holdout."
+    ],
+    "required_tests": [
+      "Run the existing ResearchOps validator after reducer processing."
+    ],
+    "required_preflight": [
+      "Check the named task ID for duplication before registering it.",
+      "Inspect only the scoped local code/saved artifacts and, if needed, the two named runs on node01."
+    ],
+    "required_outputs": [
+      "Answer the five requested scoring-readiness questions with field names/counts and clear unknowns.",
+      "Save one concise Chinese preparation checklist and L0 RESULT.",
+      "Preserve scientific state as unknown/BOOTSTRAP."
+    ],
+    "stop_conditions": [
+      "Stop when the requested code and record fields have been checked; do not expand to a full repository or server audit.",
+      "If an answer cannot be supported from existing saved material, state the exact evidence gap and stop.",
+      "Never execute a scoring/evaluation or any listed prohibited action."
+    ]
+  }
+}

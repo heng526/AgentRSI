@@ -59,6 +59,16 @@
       "seq": 6,
       "summary": "Read-only node01 audit completed; SSH succeeded and existing AgentRSI/M3/Recuris evidence was indexed. No scoring or scientific gate was run.",
       "task_id": "CVPR-RSI-NODE01-READ-20261002"
+    },
+    {
+      "actor": "gpt",
+      "created_at": "2026-10-02T10:21:40.498446Z",
+      "path": "researchops/outbox/gpt/TASK-CVPR-RSI-ROBOT-SCORING-PREP-20261002.json",
+      "record_id": "rec_c7b886d5-fcac-48b4-868d-4c15a4d76e38",
+      "record_type": "task",
+      "seq": 7,
+      "summary": "Prepare a bounded Chinese decision checklist for scoring existing Robot answers; read-only, no scoring execution.",
+      "task_id": "CVPR-RSI-ROBOT-SCORING-PREP-20261002"
     }
   ],
   "project_id": "CVPR-RSI",
