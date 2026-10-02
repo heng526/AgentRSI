@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_id": "CVPR-RSI",
+  "input_state_version": 1,
+  "task_id": "CVPR-RSI-NODE01-READ-20261002",
+  "record_id": "rec_b7f4d317-fc17-4db5-a965-f1b8d363c6c4",
+  "record_type": "event",
+  "actor": "codex",
+  "created_at": "2026-10-02T09:30:27.554534Z",
+  "correlation_id": "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d",
+  "causation_id": "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d",
+  "summary": "Control record added after execution start: node01 read-only audit is reported running; SSH confirmation and server evidence have not returned",
+  "payload": {
+    "status": "RUNNING",
+    "event_code": "READONLY_AUDIT_ALREADY_IN_PROGRESS",
+    "recorded_after_start": true,
+    "related_execution_task_id": "01a0fbde-9ada-70bd-9da5-29b3cdedd037",
+    "execution_status": "reported_running_result_pending",
+    "ssh_connection_status": "unknown_not_confirmed",
+    "audit_result_status": "pending",
+    "authorization_message_id": "Sentinel_06d4908e9d348191a2746a5837332a91",
+    "note": "The audit execution task was already running when this ResearchOps control record was created. No execution start time is asserted or backdated."
+  }
+}

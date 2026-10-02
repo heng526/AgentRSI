@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "project_id": "CVPR-RSI",
+  "input_state_version": 1,
+  "task_id": "CVPR-RSI-NODE01-READ-20261002",
+  "record_id": "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d",
+  "record_type": "task",
+  "actor": "gpt",
+  "created_at": "2026-10-02T09:30:27.554534Z",
+  "correlation_id": null,
+  "causation_id": null,
+  "summary": "Late registration of the already-started, read-only node01 evidence audit; SSH/result confirmation pending",
+  "payload": {
+    "authorization_level": "L0_READ",
+    "mission": "Read-only audit of existing AgentRSI/M3/Recuris-related files, logs, raw results, and current processes on node01, using only the user-authorized inspection scope.",
+    "scientific_question": "",
+    "idempotency_key": "CVPR-RSI-NODE01-READ-20261002-READONLY",
+    "recorded_after_start": true,
+    "related_execution_task_id": "01a0fbde-9ada-70bd-9da5-29b3cdedd037",
+    "execution_status_at_recording": "reported_running_result_pending",
+    "ssh_connection_status": "unknown_not_confirmed",
+    "authorization_source": {
+      "message_id": "Sentinel_06d4908e9d348191a2746a5837332a91",
+      "channel": "chatgpt",
+      "author": "user",
+      "sent_at": "2026-10-02T09:04:32.256183+00:00",
+      "exact_text": "现在指导我推进这个cvpr论文  你先读取整个项目所有信息    对了服务器node01里面还有大量信息 特别是实验相关的   ssh  node01就能直接连接服务器"
+    },
+    "frozen_provenance": {
+      "repository": "heng526/AgentRSI",
+      "local_branch": "main",
+      "local_head": "03c08e7492e9db11243d4afc030a24b49467be1f",
+      "project_id": "CVPR-RSI",
+      "scientific_stage": "BOOTSTRAP",
+      "scientific_head_sha": null
+    },
+    "authorized_now": [
+      "Read existing AgentRSI/M3/Recuris project files, logs, raw results, and current process listings on node01.",
+      "Report only facts supported by observed read-only evidence when the running execution task returns."
+    ],
+    "authorized_only_if": [
+      "Keep the inspection limited to the existing AgentRSI/M3/Recuris-related material on node01.",
+      "Record any scientific evidence only after its original files and provenance are inspected."
+    ],
+    "hard_prohibitions": [
+      "No new inference runs, evaluations, rescoring, re-embedding, training, or other scientific actions.",
+      "No credential configuration or disclosure.",
+      "No process starts, stops, signals, or other process operations.",
+      "Do not modify files, logs, raw results, datasets, labels, splits, metrics, judges, or scientific protocols.",
+      "Do not claim SSH connection success or server findings before the execution task returns evidence."
+    ],
+    "required_tests": [],
+    "required_preflight": [
+      "Wait for execution task 01a0fbde-9ada-70bd-9da5-29b3cdedd037 to return before stating SSH or server findings."
+    ],
+    "required_outputs": [
+      "After evidence returns, append a RESULT grounded in inspected node01 evidence; until then keep this task RUNNING.",
+      "Identify any archived experiment artifacts as unverified until their original result files and provenance are reconciled."
+    ],
+    "stop_conditions": [
+      "Stop at read-only inspection boundaries; do not launch or alter processes.",
+      "If the execution result has not returned, leave server connection and result status unknown/pending.",
+      "Keep scientific state unknown and do not populate scientific_head_sha from this audit registration."
+    ]
+  }
+}

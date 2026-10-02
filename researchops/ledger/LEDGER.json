@@ -19,6 +19,26 @@
       "seq": 2,
       "summary": "Local and live GitHub main matched; existing BOOTSTRAP ResearchOps sidecar audited, L1 records reduced and structurally validated. No scientific status inferred.",
       "task_id": "CVPR-RSI-OPS-SYNC-SIDECAR-20261002"
+    },
+    {
+      "actor": "gpt",
+      "created_at": "2026-10-02T09:30:27.554534Z",
+      "path": "researchops/outbox/gpt/TASK-CVPR-RSI-NODE01-READ-20261002.json",
+      "record_id": "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d",
+      "record_type": "task",
+      "seq": 3,
+      "summary": "Late registration of the already-started, read-only node01 evidence audit; SSH/result confirmation pending",
+      "task_id": "CVPR-RSI-NODE01-READ-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T09:30:27.554534Z",
+      "path": "researchops/outbox/codex/EVENT-CVPR-RSI-NODE01-READ-20261002.json",
+      "record_id": "rec_b7f4d317-fc17-4db5-a965-f1b8d363c6c4",
+      "record_type": "event",
+      "seq": 4,
+      "summary": "Control record added after execution start: node01 read-only audit is reported running; SSH confirmation and server evidence have not returned",
+      "task_id": "CVPR-RSI-NODE01-READ-20261002"
     }
   ],
   "project_id": "CVPR-RSI",
