@@ -129,6 +129,46 @@
       "seq": 13,
       "summary": "Approved GLM scoring remains blocked before the first live request because the input-token/provider-overhead upper bound cannot be proven",
       "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
+    },
+    {
+      "actor": "human",
+      "created_at": "2026-10-02T14:14:20Z",
+      "path": "researchops/outbox/human/APPROVAL-CVPR-RSI-ROBOT-GLM-PROVIDER-CORRECTION-20261002.json",
+      "record_id": "rec_90f7cf9d-cc08-4844-875d-6fe9c7dccb8f",
+      "record_type": "approval",
+      "seq": 14,
+      "summary": "Provider correction for the existing one-shot score task: official GLM API confirmed; all other limits and stop conditions remain",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
+    },
+    {
+      "actor": "gpt",
+      "created_at": "2026-10-02T14:14:21Z",
+      "path": "researchops/outbox/gpt/TASK-CVPR-RSI-ROBOT-GLM-ROUTE-UPDATE-20261002.json",
+      "record_id": "rec_95cb3f1a-1149-4232-bde1-80bed6ce61d8",
+      "record_type": "task",
+      "seq": 15,
+      "summary": "Align score-only routing and documentation with the user-confirmed official GLM configuration",
+      "task_id": "CVPR-RSI-ROBOT-GLM-ROUTE-UPDATE-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T14:14:22Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-GLM-ROUTE-UPDATE-20261002.json",
+      "record_id": "rec_bb8e1f6e-f294-49f2-81d1-b0447764786d",
+      "record_type": "result",
+      "seq": 16,
+      "summary": "Score-only route corrected to official GLM; offline tests pass and no live request was made",
+      "task_id": "CVPR-RSI-ROBOT-GLM-ROUTE-UPDATE-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T14:14:23Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-GLM-SCORE-1270-CORRECTION-20261002.json",
+      "record_id": "rec_11d226a2-707c-4a57-b3cf-c679bf7273e9",
+      "record_type": "result",
+      "seq": 17,
+      "summary": "Official GLM config and domestic list price confirmed; score execution remains blocked by the unchanged full-batch input-bound preflight",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
     }
   ],
   "project_id": "CVPR-RSI",

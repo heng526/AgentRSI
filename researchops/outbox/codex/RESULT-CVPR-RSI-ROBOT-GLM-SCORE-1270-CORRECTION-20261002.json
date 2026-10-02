@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_11d226a2-707c-4a57-b3cf-c679bf7273e9",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T14:14:23Z",
+  "input_state_version": 6,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002",
+  "correlation_id": "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488",
+  "causation_id": "rec_90f7cf9d-cc08-4844-875d-6fe9c7dccb8f",
+  "summary": "Official GLM config and domestic list price confirmed; score execution remains blocked by the unchanged full-batch input-bound preflight",
+  "payload": {
+    "status": "BLOCKED",
+    "status_scope": "L3 one-shot authorization is recorded with corrected official provider; no scoring request or scientific metric exists",
+    "executed_source_sha": null,
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002-EXISTING-RUN-ONCE",
+    "tests": {
+      "user_confirmed_original_configuration": "PASS; official GLM general API at https://open.bigmodel.cn/api/paas/v4, model glm-5.3-flash",
+      "protected_node_config": "PASS; ~/.config/m3-agent/bigmodel.env exists, mode 600, host/path/model match, GLM_API_KEY field present; value not displayed or copied",
+      "official_domestic_list_price": "PASS; input CNY 0.8/M, output CNY 2.8/M, source https://docs.bigmodel.cn/cn/guide/start/pricing",
+      "official_context_and_output_ceiling": "PASS; 1M context and 128K max output, source https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash",
+      "saved_run_pairing": "PASS; 1,276 unique keys, 1,270 nonempty, six empty, questions and labels matched",
+      "local_exact_model_tokenizer": "BLOCKED; not cached; offline loading failed in Transformers 4.51.0",
+      "provider_added_input_overhead_bound": "BLOCKED; no verified bound",
+      "whole_run_cost_bound": "BLOCKED; documented absolute context ceiling requires CNY 0.85 per row rounded up, CNY 1,079.50 for 1,270 rows, above the CNY 100 limit",
+      "scoring_api_attempts": "0 sent, 0 successful, 0 failed",
+      "scientific_state_change": "NOT RUN; stage remains BOOTSTRAP and scientific_head_sha remains null"
+    },
+    "runs": [
+      {
+        "run_id": "qwen33b-glmembed-robot-full-20260929a",
+        "kind": "existing_saved_answer_glm_judging",
+        "qa_rows": 1276,
+        "eligible_nonempty": 1270,
+        "empty_wrong_without_call": 6,
+        "judge_result_rows": 0,
+        "evaluation": "NOT_RUN",
+        "artifacts": ["runs/qwen33b-glmembed-robot-full-20260929a/answers.jsonl"]
+      }
+    ],
+    "metrics": {},
+    "artifacts": ["reports/agent_rsi/ROBOT_SCORING_EXECUTION_20261002.md"],
+    "unauthorized_actions_started": false,
+    "to_verify": ["Resume only if the exact per-message token upper bounds plus provider overhead become verifiable and the complete 1,270-row reserve fits within CNY 100."]
+  }
+}

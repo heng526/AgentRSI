@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_90f7cf9d-cc08-4844-875d-6fe9c7dccb8f",
+  "record_type": "approval",
+  "actor": "human",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T14:14:20Z",
+  "input_state_version": 6,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002",
+  "summary": "Provider correction for the existing one-shot score task: official GLM API confirmed; all other limits and stop conditions remain",
+  "payload": {
+    "authorization_level": "L3_SCIENTIFIC_RUN",
+    "approved": true,
+    "one_shot": true,
+    "approved_at": "2026-10-02T14:06:00Z",
+    "source_message_ids": ["Sentinel_d3899488d22481918ac1dbf77467b874"],
+    "supersedes_scope_field_only": "judge_provider and endpoint in rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35",
+    "scope": {
+      "run_id": "qwen33b-glmembed-robot-full-20260929a",
+      "judge_provider": "official Zhipu GLM general API",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "judge_model": "glm-5.3-flash",
+      "credential_source": "node01 ~/.config/m3-agent/bigmodel.env; use configured value only; never print, copy, or reconfigure",
+      "unchanged_limits": {
+        "api_attempts_max": 1270,
+        "per_row_attempts_max": 1,
+        "budget_rmb_max": "100.00",
+        "six_empty_responses": "wrong without API calls",
+        "failure_policy": "API, usage, truncation, or parse error is UNJUDGED/HOLD; stop immediately; no retry; not wrong"
+      },
+      "scientific_method": "Keep existing prompt, temperature, parser, split, labels, metrics, and judge semantics unchanged",
+      "authorization_consumed": false,
+      "execution_status": "Blocked pending exact input-token/provider-overhead bounds and full-run budget preflight"
+    }
+  }
+}

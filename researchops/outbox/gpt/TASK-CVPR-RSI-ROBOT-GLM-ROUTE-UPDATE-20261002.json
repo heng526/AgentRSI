@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_95cb3f1a-1149-4232-bde1-80bed6ce61d8",
+  "record_type": "task",
+  "actor": "gpt",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T14:14:21Z",
+  "input_state_version": 6,
+  "task_id": "CVPR-RSI-ROBOT-GLM-ROUTE-UPDATE-20261002",
+  "correlation_id": "rec_90f7cf9d-cc08-4844-875d-6fe9c7dccb8f",
+  "causation_id": "rec_90f7cf9d-cc08-4844-875d-6fe9c7dccb8f",
+  "summary": "Align score-only routing and documentation with the user-confirmed official GLM configuration",
+  "payload": {
+    "authorization_level": "L1_ENGINEERING",
+    "mission": "Update only the score-only tool route/model/request parameter and its status report to match the confirmed official GLM configuration; retain all scientific method and scoring safety gates.",
+    "scientific_question": "None; engineering correction only.",
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-ROUTE-UPDATE-20261002-OFFICIAL-GLM",
+    "authorization_source": "User's confirmed original official GLM setup, Sentinel_d3899488d22481918ac1dbf77467b874, plus existing L1 scorer implementation authorization.",
+    "frozen_provenance": {
+      "repository": "heng526/AgentRSI",
+      "run_id": "qwen33b-glmembed-robot-full-20260929a",
+      "project_id": "CVPR-RSI",
+      "scientific_stage": "BOOTSTRAP",
+      "scientific_head_sha": null
+    },
+    "authorized_now": [
+      "Configure the scorer to require provider glm, host open.bigmodel.cn, path /api/paas/v4, and model glm-5.3-flash.",
+      "Use the official OpenAI-compatible max_tokens parameter with the existing 512-token judge output ceiling.",
+      "Update the report and append ResearchOps records with the corrected provider and verified official rate.",
+      "Run only the authorized offline scorer mock tests."
+    ],
+    "hard_prohibitions": [
+      "No API call, credential output/copy/reconfiguration, or smoke test.",
+      "Do not change prompt, temperature, parser, split, labels, metrics, scientific methods, or run state.",
+      "Do not weaken the exact-tokenizer/provider-overhead/full-batch-budget preflight or original stop conditions."
+    ],
+    "required_tests": ["Score-only offline mock tests pass; no API traffic."],
+    "required_preflight": ["Use only official Zhipu domestic API list pricing in the report."],
+    "required_outputs": ["Corrected scorer, report, and append-only ResearchOps result."],
+    "stop_conditions": ["Keep the scoring task blocked if exact input and provider-overhead bounds or the full-batch budget invariant are not proven."]
+  }
+}

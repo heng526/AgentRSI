@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_bb8e1f6e-f294-49f2-81d1-b0447764786d",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T14:14:22Z",
+  "input_state_version": 6,
+  "task_id": "CVPR-RSI-ROBOT-GLM-ROUTE-UPDATE-20261002",
+  "correlation_id": "rec_95cb3f1a-1149-4232-bde1-80bed6ce61d8",
+  "causation_id": "rec_95cb3f1a-1149-4232-bde1-80bed6ce61d8",
+  "summary": "Score-only route corrected to official GLM; offline tests pass and no live request was made",
+  "payload": {
+    "status": "PASS",
+    "executed_source_sha": null,
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-ROUTE-UPDATE-20261002-OFFICIAL-GLM",
+    "tests": {
+      "official_route_constants": "PASS; glm / glm-5.3-flash / open.bigmodel.cn/api/paas/v4",
+      "request_parameter": "PASS; official max_tokens=512",
+      "judge_semantics": "UNCHANGED; existing prompt, temperature=0, and first whole-word yes/no parser",
+      "offline_score_tests": "PASS 11/11; mocks only, no live GLM traffic",
+      "credential_safety": "PASS; secret value was not read into output, printed, copied, or reconfigured"
+    },
+    "runs": [],
+    "metrics": {},
+    "artifacts": [
+      "复现代码/m3-agent-repro-vendored/repro/scripts/score_saved_answers.py",
+      "复现代码/m3-agent-repro-vendored/repro/tests/test_score_saved_answers.py",
+      "reports/agent_rsi/ROBOT_SCORING_EXECUTION_20261002.md"
+    ],
+    "unauthorized_actions_started": false,
+    "to_verify": []
+  }
+}

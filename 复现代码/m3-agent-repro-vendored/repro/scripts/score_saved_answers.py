@@ -27,17 +27,17 @@ from mmagent.prompts import prompt_agent_verify_answer_referencing  # noqa: E402
 
 
 RUN_ID = "qwen33b-glmembed-robot-full-20260929a"
-EXPECTED_PROVIDER = "bailian"
-EXPECTED_MODEL = "ZHIPU/GLM-5.3-Flash"
-EXPECTED_HOST = "dashscope.aliyuncs.com"
+EXPECTED_PROVIDER = "glm"
+EXPECTED_MODEL = "glm-5.3-flash"
+EXPECTED_HOST = "open.bigmodel.cn"
 INPUT_PRICE_PER_M = Decimal("0.8")
 OUTPUT_PRICE_PER_M = Decimal("2.8")
 DEFAULT_BUDGET_RMB = Decimal("100.00")
 DEFAULT_MAX_API_ATTEMPTS = 1270
 MODEL_INPUT_CONTEXT_TOKENS = 1_048_576
-# Model Studio documents up to a 10-token difference for max_completion_tokens.
-# Request 502 so the reserved billed-output ceiling remains 512 tokens.
-REQUEST_MAX_COMPLETION_TOKENS = 502
+# The official GLM OpenAI-compatible API documents max_tokens. Keep this at
+# the existing judge's 512-token ceiling, including any reasoning tokens.
+REQUEST_MAX_TOKENS = 512
 MAX_BILLED_OUTPUT_TOKENS = 512
 
 
@@ -277,12 +277,12 @@ def resolve_settings() -> dict[str, Any]:
     from mmagent.utils.chat_api import glm_client, glm_settings
     settings = glm_settings()
     if settings.get("provider") != EXPECTED_PROVIDER:
-        raise SafetyHold("configured provider does not match the approved Bailian GLM provider")
+        raise SafetyHold("configured provider does not match the approved official GLM provider")
     if settings.get("chat_model") != EXPECTED_MODEL:
         raise SafetyHold("configured model does not match the approved GLM-5.3-Flash model")
     parsed = urlparse(str(settings.get("base_url", "")))
-    if parsed.hostname != EXPECTED_HOST or parsed.path.rstrip("/") != "/compatible-mode/v1":
-        raise SafetyHold("configured API host does not match the verified Beijing endpoint")
+    if parsed.hostname != EXPECTED_HOST or parsed.path.rstrip("/") != "/api/paas/v4":
+        raise SafetyHold("configured API host does not match the verified official GLM endpoint")
     # The OpenAI SDK retries selected transient errors by default; this task
     # explicitly permits one attempt per row, so disable its transport retries.
     return {"settings": settings, "client": glm_client().with_options(max_retries=0)}
@@ -436,9 +436,8 @@ def run(args: argparse.Namespace) -> int:
                 model=settings["chat_model"],
                 messages=[{"role": "user", "content": item.prompt}],
                 temperature=0,
-                max_completion_tokens=REQUEST_MAX_COMPLETION_TOKENS,
+                max_tokens=REQUEST_MAX_TOKENS,
                 timeout=60,
-                extra_body={"reasoning_effort": "low"} if settings.get("provider") == "bailian" else None,
             )
         except Exception as exc:
             # A failed request may still be billable: consume its complete reservation.

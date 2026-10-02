@@ -1,77 +1,69 @@
 # Robot saved-answer scoring execution record
 
-## Scope and approval
+## Scope and authorization
 
 This record covers only the existing run `qwen33b-glmembed-robot-full-20260929a`.
-The user selected GLM in message `Sentinel_2f7e76d42284819180a876165ac8f673` and
-approved the one-shot RMB 100 ceiling at `2026-10-02T12:32:38Z` in
-`Sentinel_90c142b529488191b2782a9ffce647d5`. The preceding proposal
-`Sentinel_9b7b7848617081919a4cdcf0d25d1484` documented the 1,270 nonempty answers,
-six empty answers, and stop-on-error scope.
+The one-shot authorization covers the 1,270 saved nonempty responses, six empty
+responses marked wrong without a request, at most one API attempt per answer key,
+and a hard RMB 100 ceiling. Reuse the existing answer-referencing prompt,
+temperature, and first-whole-word `yes|no` parser. Any API, usage, truncation, or
+parse error is `UNJUDGED`/`HOLD`; stop immediately and never retry or count it as
+wrong. Do not regenerate answers, embed, train, change the split, labels, metric,
+prompt, or judge semantics.
 
-Only the 1,270 saved nonempty `response` values may be sent to the judge. The
-six empty responses are wrong without a request. The maximum is one real API
-attempt per nonempty pair `(video_id, id)`, at most 1,270 attempts. API or parse
-errors are `UNJUDGED` and `HOLD`, stop the run, and are never retried or counted
-as wrong. The run does not regenerate answers, embed anything, change the split,
-metric, prompt, or judge semantics, or perform memory-repair experiments.
+The user later corrected the provider information and confirmed the original
+successful setup was the official GLM API (message `Sentinel_d3899488d22481918ac1dbf77467b874`):
+`https://open.bigmodel.cn/api/paas/v4`, model `glm-5.3-flash`, with the key held
+in node01's `~/.config/m3-agent/bigmodel.env`. This correction changes only the
+provider/model/endpoint; all scoring limits and stop conditions above remain.
 
-## Verified facts
+## Verified configuration and price
 
-- The original node01 `m3-agent-repro` environment is reachable and was used for
-  read-only checks. No model or API call was made.
-- The protected config resolves to provider `bailian`, model
-  `ZHIPU/GLM-5.3-Flash`, and the Beijing DashScope OpenAI-compatible endpoint.
-  No credential value was printed or copied.
-- Alibaba's public Beijing price for this model is input CNY 0.8 per million
-  tokens and output CNY 2.8 per million tokens, excluding promotions. The model
-  page reports a 1,048,576-token input/context limit and 131,072-token maximum
-  output: [official GLM-5.3-Flash model page](https://help.aliyun.com/zh/model-studio/glm-5-3-flash-by-zhipu).
-- Alibaba documents `max_completion_tokens` for completion limits and notes
-  actual output usage can differ by up to 10 tokens. The scorer therefore
-  requests 502 and reserves 512 output tokens per attempt:
-  [official DashScope API reference](https://help.aliyun.com/en/model-studio/qwen-api-via-dashscope).
-- The existing saved run has 1,276 unique `(video_id, id)` rows, 1,270 nonempty
-  `response` values, six empty values, and no duplicate keys. All 1,270 scoring
-  pairs match the archived annotation labels and questions.
-- The exact existing prompt rendered for the 1,270 nonempty rows totals
-  1,619,299 UTF-8 bytes; maximum row size is 1,815 bytes. This is a size
-  measurement only, not a verified GLM token-count upper bound.
+- A single read-only audit of node01 confirmed the config file exists with mode
+  `600`, host `open.bigmodel.cn`, API path `/api/paas/v4`, chat model
+  `glm-5.3-flash`, embedding model `embedding-3`, and a nonempty `GLM_API_KEY`
+  field. No credential value was read into output, printed, copied, or changed.
+- The archived successful run report records GLM `embedding-3` for embeddings,
+  but does not itself record the historical chat endpoint. The exact official
+  endpoint/model above are confirmed by the user's direct original-run evidence
+  and the matching protected config.
+- The current official Zhipu pricing table lists GLM-5.3-Flash at input CNY 0.8 and
+  output CNY 2.8 per million tokens. The official model page lists a 1M context
+  and 128K maximum output. Sources: [智谱 API 定价](https://docs.bigmodel.cn/cn/guide/start/pricing),
+  [GLM-5.3-Flash 模型说明](https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash).
+- 智谱的 OpenAI 兼容文档 supports `max_tokens`; the scorer now sends
+  `max_tokens=512`, matching the existing judge's output ceiling.
+  [OpenAI API 兼容文档](https://docs.bigmodel.cn/cn/guide/develop/openai/introduction).
+- The archive contains 1,276 unique `(video_id, id)` rows: 1,270 nonempty
+  responses and six empty responses. All questions and labels pair with the
+  saved annotations. Rendered prompts total 1,619,299 UTF-8 bytes, with a
+  maximum of 1,815 bytes per nonempty prompt; these byte lengths are not treated
+  as a verified token upper bound.
 
-## Engineering and budget guard
+## Scorer and offline verification
 
-`repro/scripts/score_saved_answers.py` is a standalone, append-only scorer. It
-reuses `prompt_agent_verify_answer_referencing` and the existing first-whole-word
-`yes|no` parser. It locks the named run, provider, model, fixed 1,270-attempt
-limit, and RMB 100 maximum. It requires a local exact-model tokenizer plus
-evidence for a provider-side input-overhead upper bound before any request. It
-calculates all pending per-row reserves before starting, rounds every reserve
-up to CNY 0.01, persists each outcome with `fsync`, deduplicates by
-`(video_id, id)`, and disables OpenAI SDK retries. It stops on the first API,
-usage, truncation, or parse problem.
+`复现代码/m3-agent-repro-vendored/repro/scripts/score_saved_answers.py` is an
+append-only score-only tool for the named run. It uses the existing judge prompt
+and parser, checks the official provider/model/endpoint, disables SDK retries,
+fsyncs each result, resumes by `(video_id, id)`, and stops at the first API,
+usage, truncation, or parse issue. Its full-batch preflight still requires a
+local exact-model tokenizer and evidence for any provider-side input-overhead
+upper bound before making a request.
 
-The offline test suite passed 11/11 tests. One mock test exercised the complete
-1,270-row flow with 1,270 in-process fake responses and six no-request empty
-rows; a second mock injected a request error and verified exactly one attempt,
-an `UNJUDGED`/`HOLD` record, and immediate stop. These were mocks only, not API
-attempts.
+After the provider correction, the API routing and documented request parameter
+were updated without changing the prompt, temperature, or parser. The scorer's
+offline mock tests pass **11/11**. These mocks generated no GLM API traffic.
 
 ## Execution status: HOLD before first request
 
-The original environment's Transformers version is 4.51.0. Loading the exact
-GLM-5.3-Flash tokenizer in offline-only mode failed because it is not cached.
-The Alibaba docs reviewed here do not provide a corresponding token-count
-endpoint for this alias. Z.ai's official tokenizer endpoint requires a Z.ai
-Bearer token and documents only GLM-4.6, GLM-4.6v, and GLM-4.5, so it is not an
-authorized or matching counter for the configured Bailian endpoint:
-[Z.ai tokenizer API](https://docs.z.ai/api-reference/tools/tokenizer).
+No exact GLM-5.3-Flash tokenizer is cached in the original node01 environment;
+offline loading with Transformers 4.51.0 failed. No documented provider-side
+input-overhead ceiling has been established. Without those bounds, the 1,270-row
+full-batch input reserve cannot be shown to fit the approved budget. The
+documented absolute context ceiling alone reserves CNY 0.85 per row when rounded
+up to cents, or CNY 1,079.50 for 1,270 requests, before any prior spend; this is
+above the CNY 100 cap. Therefore no live request has been made.
 
-Therefore the measured UTF-8 byte lengths cannot be promoted to a reliable
-token upper bound, and no provider-added input overhead ceiling is verified.
-The 1,048,576-token absolute model limit would reserve more than the approved
-RMB 100 across all 1,270 calls. The scorer correctly remains gated and no real
-judge call has been made. Current real API attempts: **0 sent, 0 successful,
-0 failed**. No score, accuracy, or scientific gate result exists. ResearchOps
-scientific stage remains `BOOTSTRAP`, with `scientific_head_sha=null`.
-
-No L4 protocol-change task was opened; this work uses the existing protocol.
+Current live scoring attempts: **0 sent, 0 successful, 0 failed**. No score,
+accuracy, or scientific gate result exists. ResearchOps scientific stage remains
+`BOOTSTRAP`, and `scientific_head_sha` remains `null`.

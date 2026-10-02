@@ -85,7 +85,7 @@ class ScoreSavedAnswersTests(unittest.TestCase):
         item = scorer.ScoreItem("v", "q", "q", "gt", "answer")
         bound = scorer.input_bound_for_item(FakeTokenizer(), item, 17, "official provider source")
         self.assertEqual(bound, len(item.prompt.encode("utf-8")) + 3 + 17)
-        self.assertEqual(scorer.REQUEST_MAX_COMPLETION_TOKENS, 502)
+        self.assertEqual(scorer.REQUEST_MAX_TOKENS, 512)
         self.assertEqual(scorer.MAX_BILLED_OUTPUT_TOKENS, 512)
 
     def test_costs_round_up_per_request_to_a_cent(self):
@@ -148,7 +148,8 @@ class ScoreSavedAnswersTests(unittest.TestCase):
         self.assertEqual(len(appended), 1276)
         self.assertEqual(sum(record["status"] == "EMPTY_WRONG" for record in appended), 6)
         self.assertEqual(sum(record["status"] == "SCORED" for record in appended), 1270)
-        self.assertTrue(all(call["max_completion_tokens"] == 502 for call in calls))
+        self.assertTrue(all(call["max_tokens"] == 512 for call in calls))
+        self.assertTrue(all(call["temperature"] == 0 for call in calls))
 
     def test_mock_api_error_is_written_as_hold_and_stops_without_retry(self):
         items = [
