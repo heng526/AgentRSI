@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_42af4594-83fd-4e05-ae7b-f5492aa2d5ca",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T13:14:16Z",
+  "input_state_version": 6,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002",
+  "correlation_id": "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488",
+  "causation_id": "rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35",
+  "summary": "Approved GLM scoring remains blocked before the first live request because the input-token/provider-overhead upper bound cannot be proven",
+  "payload": {
+    "status": "BLOCKED",
+    "status_scope": "L3 user authorization recorded; scoring not executed and no scientific metric or gate result produced",
+    "executed_source_sha": null,
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002-EXISTING-RUN-ONCE",
+    "tests": {
+      "original_node01_environment": "PASS; read-only access to the authorized m3-agent-repro environment",
+      "provider_model_region": "PASS; bailian / ZHIPU/GLM-5.3-Flash / Beijing DashScope compatible endpoint",
+      "official_list_price": "PASS; input CNY 0.8/M, output CNY 2.8/M",
+      "saved_run_pairing": "PASS; 1,276 unique pairs, 1,270 nonempty response values, six empty, all labels/questions matched",
+      "rendered_prompt_size": "1,619,299 total UTF-8 bytes, max 1,815 per nonempty prompt; not used as token upper bound",
+      "local_exact_model_tokenizer": "BLOCKED; not cached; offline-only loading failed in Transformers 4.51.0",
+      "provider_added_input_overhead_bound": "BLOCKED; no matching documented bound established",
+      "whole_run_cost_bound": "BLOCKED; strict input upper bound unavailable; absolute model context ceiling would exceed the approved RMB 100 over 1,270 requests",
+      "scoring_api_attempts": "0 sent, 0 successful, 0 failed",
+      "inference_embedding_gpu": "NOT_RUN",
+      "scientific_state_change": "NOT_RUN; stage remains BOOTSTRAP and scientific_head_sha remains null"
+    },
+    "runs": [
+      {
+        "run_id": "qwen33b-glmembed-robot-full-20260929a",
+        "kind": "existing_saved_answer_glm_judging",
+        "qa_rows": 1276,
+        "eligible_nonempty": 1270,
+        "empty_wrong_without_call": 6,
+        "judge_result_rows": 0,
+        "evaluation": "NOT_RUN",
+        "artifacts": [
+          "runs/qwen33b-glmembed-robot-full-20260929a/answers.jsonl"
+        ]
+      }
+    ],
+    "metrics": {},
+    "artifacts": [
+      "reports/agent_rsi/ROBOT_SCORING_EXECUTION_20261002.md",
+      "复现代码/m3-agent-repro-vendored/repro/scripts/score_saved_answers.py",
+      "复现代码/m3-agent-repro-vendored/repro/tests/test_score_saved_answers.py"
+    ],
+    "unauthorized_actions_started": false,
+    "to_verify": [
+      "The approved one-shot call scope remains unconsumed; resume only after a reliable exact-model input-token bound and provider-side overhead ceiling are available and the RMB 100 invariant passes."
+    ]
+  }
+}

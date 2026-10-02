@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35",
+  "record_type": "approval",
+  "actor": "human",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T13:14:14Z",
+  "input_state_version": 6,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002",
+  "summary": "One-shot approval for the explicitly scoped existing-run GLM judge scoring, subject to the hard budget preflight",
+  "payload": {
+    "authorization_level": "L3_SCIENTIFIC_RUN",
+    "approved": true,
+    "one_shot": true,
+    "approved_at": "2026-10-02T12:32:38Z",
+    "source_message_ids": [
+      "Sentinel_2f7e76d42284819180a876165ac8f673",
+      "Sentinel_90c142b529488191b2782a9ffce647d5",
+      "Sentinel_9b7b7848617081919a4cdcf0d25d1484"
+    ],
+    "scope": {
+      "run_id": "qwen33b-glmembed-robot-full-20260929a",
+      "input": "Only 1,270 already-saved nonempty response values from the named run; six empty responses are wrong without a request.",
+      "judge_provider": "bailian (Alibaba Model Studio Beijing)",
+      "judge_model": "ZHIPU/GLM-5.3-Flash",
+      "prompt_parser": "Reuse the existing answer-referencing prompt and first whole-word yes/no parser.",
+      "api_attempts_max": 1270,
+      "per_row_attempts_max": 1,
+      "budget_rmb_max": "100.00",
+      "budget_invariant": "Before every request, conservatively reserve worst-case input and output cost; cumulative actual spend plus outstanding reservations must not exceed RMB 100.",
+      "failure_policy": "API, usage, truncation, or parse error is UNJUDGED/HOLD; stop immediately; do not retry; do not count it as wrong.",
+      "forbidden": [
+        "No inference rerun, embedding, second GLM generation run, recharge, subscription purchase, split/label/metric/prompt change, or memory-repair experiment."
+      ]
+    },
+    "authorization_consumed": false,
+    "execution_status": "Not invoked; the required reliable input-token/provider-overhead bound is not established. Live API attempts remain zero."
+  }
+}

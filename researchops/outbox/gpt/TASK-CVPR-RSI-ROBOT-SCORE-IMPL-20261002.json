@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_b5be4038-cecf-441e-a89d-d07efead8be7",
+  "record_type": "task",
+  "actor": "gpt",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T13:14:12Z",
+  "input_state_version": 5,
+  "task_id": "CVPR-RSI-ROBOT-SCORE-IMPL-20261002",
+  "correlation_id": null,
+  "causation_id": null,
+  "summary": "Late registration of the user-authorized score-only implementation and offline mock test work; no remote requests",
+  "payload": {
+    "authorization_level": "L1_ENGINEERING",
+    "mission": "Implement a standalone, fail-closed scorer for already-saved Robot responses and exercise it offline with mocks. Preserve the exact existing prompt and parser semantics. Do not change scientific code, labels, splits, metrics, or the default evaluator.",
+    "scientific_question": "",
+    "idempotency_key": "CVPR-RSI-ROBOT-SCORE-IMPL-20261002-LOCAL-ONLY",
+    "authorization_source": "User-authorized L1 engineering/offline tests in the delegated continuation from source thread 01a0faac-9831-7522-8c7a-074a9398f035; scoring policy is separately recorded with the one-shot human approval record.",
+    "frozen_provenance": {
+      "repository": "heng526/AgentRSI",
+      "local_branch": "main",
+      "local_head_before_changes": "9a4699d0a7531d1a7eaef6ae4f67a4ef39eaa5e8",
+      "project_id": "CVPR-RSI",
+      "scientific_stage": "BOOTSTRAP",
+      "scientific_head_sha": null,
+      "registration_timing": "Late registration: local engineering began under the explicit user task before this append-only task record was written."
+    },
+    "authorized_now": [
+      "Add a standalone score-only script for the single named existing run.",
+      "Add offline unit and mock tests covering scope, prompt/parser reuse, deduplication, budget guards, empty rows, and immediate stop on error.",
+      "Write a factual execution-status note and ResearchOps records."
+    ],
+    "authorized_only_if": [],
+    "hard_prohibitions": [
+      "Do not make real GLM or other API calls under this L1 task.",
+      "Do not run inference, embeddings, GPU work, or memory repair.",
+      "Do not alter prompt, parser semantics, split, labels, metrics, scientific protocol, or default L2 dispatch ceiling.",
+      "Do not read or disclose credential values."
+    ],
+    "required_tests": [
+      "Run the offline scorer tests and compilation check; mocks must replace all client calls.",
+      "Exercise the full 1,270-row mock path, six empty no-call rows, and one-request failure stop."
+    ],
+    "required_preflight": [
+      "Check this task ID and idempotency key for duplication before reduction.",
+      "Inspect only the approved run’s saved answer fields and referenced annotation labels when computing aggregate prompt sizes."
+    ],
+    "required_outputs": [
+      "A resumable append-only scorer with a hard budget/attempt preflight and no automatic retries.",
+      "A factual engineering result and a separate one-shot approval/scoring task record preserving provenance."
+    ],
+    "stop_conditions": [
+      "Stop before any real request unless a reliable input-token upper bound and provider-overhead bound are established.",
+      "Any API, usage, truncation, or parse failure must record HOLD and stop without retry."
+    ]
+  }
+}

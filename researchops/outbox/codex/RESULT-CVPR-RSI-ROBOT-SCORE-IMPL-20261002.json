@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_63b7c32f-4f8b-4944-add3-aebe7f9ea7c2",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T13:14:13Z",
+  "input_state_version": 5,
+  "task_id": "CVPR-RSI-ROBOT-SCORE-IMPL-20261002",
+  "correlation_id": "rec_b5be4038-cecf-441e-a89d-d07efead8be7",
+  "causation_id": "rec_b5be4038-cecf-441e-a89d-d07efead8be7",
+  "summary": "Score-only implementation and offline mock coverage complete; the live scoring call remains gated on a reliable input bound",
+  "payload": {
+    "status": "PASS",
+    "status_scope": "L1 engineering and offline mock tests only; not a scientific score or API execution",
+    "executed_source_sha": null,
+    "idempotency_key": "CVPR-RSI-ROBOT-SCORE-IMPL-20261002-LOCAL-ONLY",
+    "tests": {
+      "offline_unit_and_mock_tests": "PASS; 11/11",
+      "full_scope_mock": "PASS; 1,270 fake successful responses and six empty wrong/no-call rows; zero live requests",
+      "mock_request_error": "PASS; exactly one fake attempt, UNJUDGED/HOLD record, immediate stop, no retry",
+      "python_compile": "PASS",
+      "scoring_api_calls": "NOT_RUN; 0 sent, 0 successful, 0 failed",
+      "inference_embedding_gpu": "NOT_RUN",
+      "researchops_protocol_or_dispatcher_change": "NOT_RUN"
+    },
+    "artifacts": [
+      "复现代码/m3-agent-repro-vendored/repro/scripts/score_saved_answers.py",
+      "复现代码/m3-agent-repro-vendored/repro/tests/test_score_saved_answers.py",
+      "reports/agent_rsi/ROBOT_SCORING_EXECUTION_20261002.md"
+    ],
+    "artifact_sha256": {
+      "score_saved_answers.py": "dcfa83d533a1b9e38fbff054fdf490f65a176c17b2f595663effbbb0ea1aab85",
+      "test_score_saved_answers.py": "7826c4f4f268ebe8dce471edf81d83573cc05bfa40de19c1e79514e745c78060"
+    },
+    "unauthorized_actions_started": false,
+    "to_verify": [
+      "The local exact-model tokenizer and documented provider-side input-overhead bound are unavailable, so the L3 task must remain BLOCKED before its first live request."
+    ]
+  }
+}

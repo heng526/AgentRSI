@@ -1,21 +1,27 @@
 {
-  "last_seq": 8,
-  "latest_approval_id": null,
+  "last_seq": 13,
+  "latest_approval_id": "rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35",
   "latest_decision_id": null,
   "latest_record_by_actor": {
-    "codex": "rec_3384fc30-0650-4bdb-b40e-f2e9e8f8e2ad",
-    "gpt": "rec_c7b886d5-fcac-48b4-868d-4c15a4d76e38"
+    "codex": "rec_42af4594-83fd-4e05-ae7b-f5492aa2d5ca",
+    "gpt": "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488",
+    "human": "rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35"
   },
-  "latest_result_id": "rec_3384fc30-0650-4bdb-b40e-f2e9e8f8e2ad",
+  "latest_result_id": "rec_42af4594-83fd-4e05-ae7b-f5492aa2d5ca",
   "processed_records": {
     "rec_3384fc30-0650-4bdb-b40e-f2e9e8f8e2ad": 8,
+    "rec_42af4594-83fd-4e05-ae7b-f5492aa2d5ca": 13,
     "rec_442ce990-b68f-43e1-8041-2ae806901227": 1,
     "rec_4f944884-df70-41bc-97ef-0c9c356b4045": 5,
+    "rec_63b7c32f-4f8b-4944-add3-aebe7f9ea7c2": 10,
     "rec_6e91c849-1e7d-4e79-92c8-3285a630c00d": 3,
     "rec_a4508014-4a6b-4cbd-82f9-8f73dbd25572": 6,
+    "rec_b5be4038-cecf-441e-a89d-d07efead8be7": 9,
     "rec_b7f4d317-fc17-4db5-a965-f1b8d363c6c4": 4,
     "rec_c7b886d5-fcac-48b4-868d-4c15a4d76e38": 7,
-    "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2": 2
+    "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2": 2,
+    "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488": 12,
+    "rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35": 11
   },
   "project_id": "CVPR-RSI",
   "project_slug": "agent_rsi",
@@ -28,7 +34,7 @@
     "immutable_run_shas": {},
     "scientific_head_sha": null
   },
-  "state_version": 5,
+  "state_version": 6,
   "tasks": {
     "CVPR-RSI-NODE01-READ-20261002": {
       "authorization_level": "L0_READ",
@@ -46,6 +52,22 @@
       "status": "PASS",
       "task_record_id": "rec_442ce990-b68f-43e1-8041-2ae806901227"
     },
+    "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002": {
+      "authorization_level": "L3_SCIENTIFIC_RUN",
+      "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002-EXISTING-RUN-ONCE",
+      "input_state_version": 6,
+      "latest_result_id": "rec_42af4594-83fd-4e05-ae7b-f5492aa2d5ca",
+      "status": "BLOCKED",
+      "task_record_id": "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488"
+    },
+    "CVPR-RSI-ROBOT-SCORE-IMPL-20261002": {
+      "authorization_level": "L1_ENGINEERING",
+      "idempotency_key": "CVPR-RSI-ROBOT-SCORE-IMPL-20261002-LOCAL-ONLY",
+      "input_state_version": 5,
+      "latest_result_id": "rec_63b7c32f-4f8b-4944-add3-aebe7f9ea7c2",
+      "status": "PASS",
+      "task_record_id": "rec_b5be4038-cecf-441e-a89d-d07efead8be7"
+    },
     "CVPR-RSI-ROBOT-SCORING-PREP-20261002": {
       "authorization_level": "L0_READ",
       "idempotency_key": "CVPR-RSI-ROBOT-SCORING-PREP-20261002-READONLY",
@@ -55,5 +77,5 @@
       "task_record_id": "rec_c7b886d5-fcac-48b4-868d-4c15a4d76e38"
     }
   },
-  "updated_at": "2026-10-02T10:39:37.461503+00:00"
+  "updated_at": "2026-10-02T13:17:30.797194+00:00"
 }

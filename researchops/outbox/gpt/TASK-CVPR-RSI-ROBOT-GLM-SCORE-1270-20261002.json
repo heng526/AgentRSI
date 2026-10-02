@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488",
+  "record_type": "task",
+  "actor": "gpt",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T13:14:15Z",
+  "input_state_version": 6,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002",
+  "correlation_id": "rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35",
+  "causation_id": "rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35",
+  "summary": "One-shot user-approved GLM judging of 1,270 saved Robot responses; blocked until the complete request cost bound is proven",
+  "payload": {
+    "authorization_level": "L3_SCIENTIFIC_RUN",
+    "mission": "For the named existing run only, judge every nonempty saved response using the existing prompt/parser and approved GLM provider. Reserve worst-case input and output cost before every call; append each result immediately and resume by (video_id,id).",
+    "scientific_question": "What is the correctness score of the already-generated nonempty Robot answers under the existing GLM judge?",
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002-EXISTING-RUN-ONCE",
+    "authorization_source": "One-shot human approval rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35; source messages Sentinel_2f7e76d42284819180a876165ac8f673 (GLM selection), Sentinel_90c142b529488191b2782a9ffce647d5 (RMB 100 approval at 2026-10-02T12:32:38Z), and proposal Sentinel_9b7b7848617081919a4cdcf0d25d1484 (1,270/6/error-stop scope).",
+    "frozen_provenance": {
+      "repository": "heng526/AgentRSI",
+      "local_branch": "main",
+      "local_head_before_scoring_changes": "9a4699d0a7531d1a7eaef6ae4f67a4ef39eaa5e8",
+      "project_id": "CVPR-RSI",
+      "scientific_stage": "BOOTSTRAP",
+      "scientific_head_sha": null,
+      "run_id": "qwen33b-glmembed-robot-full-20260929a"
+    },
+    "authorized_now": [
+      "Use only the 1,270 nonempty response rows already saved in the named run.",
+      "Record the six empty response rows as wrong without API calls.",
+      "Use provider bailian and exact model ZHIPU/GLM-5.3-Flash with the existing prompt and parser.",
+      "Spend at most RMB 100, at most 1,270 actual attempts, and at most one attempt per answer key.",
+      "Preserve raw answer, raw judge output/reasoning if returned, response model, UTC time, and token usage; fsync each row."
+    ],
+    "authorized_only_if": [
+      "A reliable exact-model input-token upper bound is available for every exact chat message, including documented provider-side overhead.",
+      "Public-list-price input/output reservations for the complete remaining run, plus prior spend, fit within RMB 100 with per-request billing-rounding reserve.",
+      "The configured provider/model/region still match the approved values and automatic retries are disabled.",
+      "The existing scorer offline/mock test task passed."
+    ],
+    "hard_prohibitions": [
+      "Do not call another provider or use another provider's credential/tokenizer API.",
+      "Do not retry, continue after any API/usage/truncation/parse error, or count an error as wrong.",
+      "Do not rerun inference, generate a second GLM answer set, re-embed, train, or change splits, labels, prompts, metrics, methods, or judge semantics.",
+      "Do not recharge or buy a subscription.",
+      "Do not claim a holdout, accuracy, or scientific-gate PASS from this run."
+    ],
+    "required_tests": [
+      "Run only the previously authorized offline tests before scoring; do not issue a smoke-test judge request.",
+      "Persist every success immediately and verify attempts never exceed 1,270."
+    ],
+    "required_preflight": [
+      "Check this task ID and idempotency key before execution.",
+      "Verify exact tokenizer and provider-added token overhead bound before making any request.",
+      "Use input CNY 0.8/M and output CNY 2.8/M public prices as conservative list prices; reserve up to 512 billed output tokens per call.",
+      "Check total spent plus all pending worst-case reservations before the first call and before each subsequent call."
+    ],
+    "required_outputs": [
+      "Append-only per-answer result JSONL keyed by (video_id,id), with raw answer/judge output, model/time/usage, and cost reservation.",
+      "A ResearchOps result that clearly separates judge outcomes from scientific gate status."
+    ],
+    "stop_conditions": [
+      "If any input bound, provider overhead, or total budget invariant is unproven, issue zero API calls and mark BLOCKED.",
+      "On the first API, usage, truncation, or parse error, append UNJUDGED/HOLD and stop with no retry.",
+      "Do not promote the BOOTSTRAP scientific stage or set scientific_head_sha."
+    ]
+  }
+}

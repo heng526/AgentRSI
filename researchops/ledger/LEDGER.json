@@ -79,6 +79,56 @@
       "seq": 8,
       "summary": "Completed read-only preparation for scoring existing Robot answers; recorded matching, evaluator behavior, run counts, holdout gaps, and decisions needed before any scoring.",
       "task_id": "CVPR-RSI-ROBOT-SCORING-PREP-20261002"
+    },
+    {
+      "actor": "gpt",
+      "created_at": "2026-10-02T13:14:12Z",
+      "path": "researchops/outbox/gpt/TASK-CVPR-RSI-ROBOT-SCORE-IMPL-20261002.json",
+      "record_id": "rec_b5be4038-cecf-441e-a89d-d07efead8be7",
+      "record_type": "task",
+      "seq": 9,
+      "summary": "Late registration of the user-authorized score-only implementation and offline mock test work; no remote requests",
+      "task_id": "CVPR-RSI-ROBOT-SCORE-IMPL-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T13:14:13Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-SCORE-IMPL-20261002.json",
+      "record_id": "rec_63b7c32f-4f8b-4944-add3-aebe7f9ea7c2",
+      "record_type": "result",
+      "seq": 10,
+      "summary": "Score-only implementation and offline mock coverage complete; the live scoring call remains gated on a reliable input bound",
+      "task_id": "CVPR-RSI-ROBOT-SCORE-IMPL-20261002"
+    },
+    {
+      "actor": "human",
+      "created_at": "2026-10-02T13:14:14Z",
+      "path": "researchops/outbox/human/APPROVAL-CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002.json",
+      "record_id": "rec_fa0d6c4e-8c67-4b63-b1cf-d0a8397b9a35",
+      "record_type": "approval",
+      "seq": 11,
+      "summary": "One-shot approval for the explicitly scoped existing-run GLM judge scoring, subject to the hard budget preflight",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
+    },
+    {
+      "actor": "gpt",
+      "created_at": "2026-10-02T13:14:15Z",
+      "path": "researchops/outbox/gpt/TASK-CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002.json",
+      "record_id": "rec_f0c5e5c9-d59a-4c32-aa97-88a0a6a87488",
+      "record_type": "task",
+      "seq": 12,
+      "summary": "One-shot user-approved GLM judging of 1,270 saved Robot responses; blocked until the complete request cost bound is proven",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T13:14:16Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002.json",
+      "record_id": "rec_42af4594-83fd-4e05-ae7b-f5492aa2d5ca",
+      "record_type": "result",
+      "seq": 13,
+      "summary": "Approved GLM scoring remains blocked before the first live request because the input-token/provider-overhead upper bound cannot be proven",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
     }
   ],
   "project_id": "CVPR-RSI",
