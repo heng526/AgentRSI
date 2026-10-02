@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T09:14:02Z",
+  "input_state_version": 0,
+  "task_id": "CVPR-RSI-OPS-SYNC-SIDECAR-20261002",
+  "correlation_id": "rec_442ce990-b68f-43e1-8041-2ae806901227",
+  "causation_id": "rec_442ce990-b68f-43e1-8041-2ae806901227",
+  "record_id": "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2",
+  "record_type": "result",
+  "actor": "codex",
+  "summary": "Local and live GitHub main matched; existing BOOTSTRAP ResearchOps sidecar audited, L1 records reduced and structurally validated. No scientific status inferred.",
+  "payload": {
+    "status": "PASS",
+    "executed_source_sha": "12a8ac07cb1a81ff1ca6ab831c87b35ff0ef1129",
+    "idempotency_key": "CVPR-RSI-OPS-SYNC-20261002-12a8ac07",
+    "tests": {
+      "local_head_equals_live_main_before_write": "PASS",
+      "worktree_clean_before_write": "PASS",
+      "tracked_secret_pattern_scan": "PASS; no candidate files",
+      "researchops_validator": "PASS; state_version 1, last_seq 2",
+      "remote_branch_is_unprotected_and_write_permission_present": "PASS"
+    },
+    "runs": [],
+    "metrics": {},
+    "artifacts": [
+      "researchops/outbox/gpt/TASK-CVPR-RSI-OPS-SYNC-SIDECAR-20261002.json",
+      "researchops/outbox/codex/RESULT-CVPR-RSI-OPS-SYNC-SIDECAR-20261002.json",
+      "researchops/state/STATE.json",
+      "researchops/ledger/LEDGER.json",
+      "researchops/ledger/LEDGER.md",
+      "reports/agent_rsi/INDEX.md"
+    ],
+    "unauthorized_actions_started": false,
+    "to_verify": [
+      "No original experiment runs imported: node01 audit and archived raw-result reconciliation are pending.",
+      "Scientific stage remains BOOTSTRAP with null scientific_head_sha pending evidence."
+    ]
+  }
+}

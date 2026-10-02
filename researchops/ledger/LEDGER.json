@@ -1,5 +1,26 @@
 {
-  "schema_version": 1,
+  "entries": [
+    {
+      "actor": "gpt",
+      "created_at": "2026-10-02T09:14:02Z",
+      "path": "researchops/outbox/gpt/TASK-CVPR-RSI-OPS-SYNC-SIDECAR-20261002.json",
+      "record_id": "rec_442ce990-b68f-43e1-8041-2ae806901227",
+      "record_type": "task",
+      "seq": 1,
+      "summary": "L1 engineering audit and safe synchronization of AgentRSI ResearchOps sidecar",
+      "task_id": "CVPR-RSI-OPS-SYNC-SIDECAR-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T09:14:02Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-OPS-SYNC-SIDECAR-20261002.json",
+      "record_id": "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2",
+      "record_type": "result",
+      "seq": 2,
+      "summary": "Local and live GitHub main matched; existing BOOTSTRAP ResearchOps sidecar audited, L1 records reduced and structurally validated. No scientific status inferred.",
+      "task_id": "CVPR-RSI-OPS-SYNC-SIDECAR-20261002"
+    }
+  ],
   "project_id": "CVPR-RSI",
-  "entries": []
+  "schema_version": 1
 }

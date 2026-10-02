@@ -1,16 +1,37 @@
 {
-  "schema_version": 1,
+  "last_seq": 2,
+  "latest_approval_id": null,
+  "latest_decision_id": null,
+  "latest_record_by_actor": {
+    "codex": "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2",
+    "gpt": "rec_442ce990-b68f-43e1-8041-2ae806901227"
+  },
+  "latest_result_id": "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2",
+  "processed_records": {
+    "rec_442ce990-b68f-43e1-8041-2ae806901227": 1,
+    "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2": 2
+  },
   "project_id": "CVPR-RSI",
   "project_slug": "agent_rsi",
-  "state_version": 0,
-  "last_seq": 0,
-  "updated_at": null,
   "reducer_writer": "researchops-reducer",
-  "processed_records": {},
-  "latest_record_by_actor": {},
-  "tasks": {},
-  "latest_decision_id": null,
-  "latest_result_id": null,
-  "latest_approval_id": null,
-  "scientific": {"current_stage":"BOOTSTRAP","scientific_head_sha":null,"immutable_run_shas":{},"data_provenance":{},"current_index_path":"reports/agent_rsi/INDEX.md"}
+  "schema_version": 1,
+  "scientific": {
+    "current_index_path": "reports/agent_rsi/INDEX.md",
+    "current_stage": "BOOTSTRAP",
+    "data_provenance": {},
+    "immutable_run_shas": {},
+    "scientific_head_sha": null
+  },
+  "state_version": 1,
+  "tasks": {
+    "CVPR-RSI-OPS-SYNC-SIDECAR-20261002": {
+      "authorization_level": "L1_ENGINEERING",
+      "idempotency_key": "CVPR-RSI-OPS-SYNC-20261002-12a8ac07",
+      "input_state_version": 0,
+      "latest_result_id": "rec_e261fea3-1f7a-4254-8c92-fc2911f579f2",
+      "status": "PASS",
+      "task_record_id": "rec_442ce990-b68f-43e1-8041-2ae806901227"
+    }
+  },
+  "updated_at": "2026-10-02T09:14:02.497165+00:00"
 }
