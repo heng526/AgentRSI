@@ -69,6 +69,16 @@
       "seq": 7,
       "summary": "Prepare a bounded Chinese decision checklist for scoring existing Robot answers; read-only, no scoring execution.",
       "task_id": "CVPR-RSI-ROBOT-SCORING-PREP-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T10:38:30Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-SCORING-PREP-20261002.json",
+      "record_id": "rec_3384fc30-0650-4bdb-b40e-f2e9e8f8e2ad",
+      "record_type": "result",
+      "seq": 8,
+      "summary": "Completed read-only preparation for scoring existing Robot answers; recorded matching, evaluator behavior, run counts, holdout gaps, and decisions needed before any scoring.",
+      "task_id": "CVPR-RSI-ROBOT-SCORING-PREP-20261002"
     }
   ],
   "project_id": "CVPR-RSI",

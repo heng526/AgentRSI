@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_3384fc30-0650-4bdb-b40e-f2e9e8f8e2ad",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T10:38:30Z",
+  "input_state_version": 4,
+  "task_id": "CVPR-RSI-ROBOT-SCORING-PREP-20261002",
+  "correlation_id": "rec_c7b886d5-fcac-48b4-868d-4c15a4d76e38",
+  "causation_id": "rec_c7b886d5-fcac-48b4-868d-4c15a4d76e38",
+  "summary": "Completed read-only preparation for scoring existing Robot answers; recorded matching, evaluator behavior, run counts, holdout gaps, and decisions needed before any scoring.",
+  "payload": {
+    "status": "PASS",
+    "status_scope": "L0 preparation and evidence inventory only; not a scoring run, metric, or scientific gate",
+    "executed_source_sha": null,
+    "idempotency_key": "CVPR-RSI-ROBOT-SCORING-PREP-20261002-READONLY",
+    "tests": {
+      "local_code_and_saved_artifact_inspection": "PASS",
+      "scoped_node01_read_only_audit": "PASS; only the two named existing runs and their referenced saved files",
+      "output_to_annotation_pair_validation": "PASS; 1276/1276 per run",
+      "scoring_or_judge_api_calls": "NOT_RUN",
+      "inference_or_embedding": "NOT_RUN",
+      "scientific_state_change": "NOT_RUN",
+      "researchops_validator": "PASS; state_version=5 last_seq=8"
+    },
+    "runs": [
+      {
+        "run_id": "qwen33b-glmembed-robot-full-20260929a",
+        "kind": "robot_full_retrieval_generation",
+        "role": "local Control run; candidate for later scoring only",
+        "qa_rows": 1276,
+        "unique_ids": 1276,
+        "duplicate_ids": 0,
+        "unknown_ids": 0,
+        "pair_matches": 1276,
+        "question_matches": 1276,
+        "reference_answer_exact_matches": 1276,
+        "nonempty_responses": 1270,
+        "unanswered": 6,
+        "judge_result_rows": 0,
+        "gpt_eval_rows": 0,
+        "evaluation": "NOT_RUN",
+        "artifacts": [
+          "runs/qwen33b-glmembed-robot-full-20260929a/report.md",
+          "runs/qwen33b-glmembed-robot-full-20260929a/answers.jsonl"
+        ]
+      },
+      {
+        "run_id": "bigmodel-glm53flash-robot-full-20260929a",
+        "kind": "robot_full_retrieval_generation",
+        "qa_rows": 1276,
+        "unique_ids": 1276,
+        "duplicate_ids": 0,
+        "unknown_ids": 0,
+        "pair_matches": 1276,
+        "question_matches": 1276,
+        "reference_answer_exact_matches": 1276,
+        "nonempty_responses": 1115,
+        "unanswered": 161,
+        "judge_result_rows": 0,
+        "gpt_eval_rows": 0,
+        "evaluation": "NOT_RUN",
+        "artifacts": [
+          "runs/bigmodel-glm53flash-robot-full-20260929a/report.md",
+          "runs/bigmodel-glm53flash-robot-full-20260929a/answers.jsonl"
+        ]
+      }
+    ],
+    "metrics": {},
+    "artifacts": [
+      "reports/agent_rsi/ROBOT_SCORING_PREPARATION.md",
+      "reports/agent_rsi/NODE01_READONLY_EVIDENCE.md",
+      "复现代码/m3-agent-repro-vendored/m3_agent/control.py",
+      "复现代码/m3-agent-repro-vendored/mmagent/prompts.py",
+      "复现代码/m3-agent-repro-vendored/run_split.sh",
+      "复现代码/m3-agent-repro-vendored/summarize_results.py",
+      "复现代码/m3-agent-repro-vendored/qa_selection.py",
+      "/home/hust/projects/WXM/rsi/m3-agent-repro/data/annotations/robot.json"
+    ],
+    "unauthorized_actions_started": false,
+    "to_verify": [
+      "User confirmation of judge provider and exact model/deployment, run scope, empty-answer policy, unresolved/error policy, total request cap, and per-row retry cap before any scoring run.",
+      "Account billing and model availability are unknown; no API was tested.",
+      "No saved sample IDs or per-run config/log snapshot establish a development set or independent holdout.",
+      "Reported source commit 0e3e419… had a dirty working tree, so the exact historical executed source tree is not frozen.",
+      "Any later tuning or held-out evaluation requires a separately agreed sample boundary."
+    ]
+  }
+}
