@@ -1,0 +1,47 @@
+{
+  "bare": {
+    "mean": 0.8888888888888888,
+    "per_task": {
+      "Production-Capacity-Planning/harbor_gdpval_36": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task1": 0.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task2": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task3": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task4": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task5": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task6": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task7": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task8": 1.0
+    },
+    "tasks": 9,
+    "trials": 9
+  },
+  "paired": {
+    "base_mean": 88.88888888888889,
+    "ci95_pp": [
+      -33.33333333333333,
+      33.33333333333333
+    ],
+    "delta_pp": 0.0,
+    "excludes_zero": false,
+    "improved": 1,
+    "n_tasks": 9,
+    "regressed": 1,
+    "skill_mean": 88.88888888888889
+  },
+  "skill": {
+    "mean": 0.8888888888888888,
+    "per_task": {
+      "Production-Capacity-Planning/harbor_gdpval_36": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task1": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task2": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task3": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task4": 0.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task5": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task6": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task7": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task8": 1.0
+    },
+    "tasks": 9,
+    "trials": 9
+  }
+}

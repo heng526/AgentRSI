@@ -1,0 +1,22 @@
+videos
+memory_graphs
+intermediate_outputs
+__pycache__
+idl
+speakerlab
+models
+logs
+out*
+*.log
+data.jsonl
+results
+
+# Local reproduction outputs and credentials.
+configs/api_config.json
+data/memory_graphs/
+data/memory_graphs_glm/
+data/memory_graphs_bailian/
+data/results/
+runs/
+.hf-cache/
+*.py[cod]

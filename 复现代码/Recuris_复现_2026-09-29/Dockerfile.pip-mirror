@@ -1,0 +1,2 @@
+FROM skillflow/harbor-cli-base:qwen0.24.6-orig
+ENV PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple

@@ -1,0 +1,353 @@
+{
+  "status": "complete",
+  "round": 1,
+  "payload": {
+    "outcome": "rejected",
+    "ledger": {
+      "round": 1,
+      "phase": "gate",
+      "verdict": {
+        "round": 1,
+        "accept": false,
+        "gate_stage": "held-out",
+        "dev_evaluated": true,
+        "net_pp": -25.0,
+        "ci": [
+          -25.0,
+          -25.0
+        ],
+        "up": 0,
+        "dn": 1,
+        "repair_base": 0,
+        "repair_cand": 0.75,
+        "repair_ok": true,
+        "repair_changes": [
+          {
+            "task": "41",
+            "trial": 1,
+            "seed": 373753,
+            "direction": "improved",
+            "baseline": 0,
+            "candidate": 1
+          },
+          {
+            "task": "41",
+            "trial": 2,
+            "seed": 361454,
+            "direction": "improved",
+            "baseline": 0,
+            "candidate": 1
+          },
+          {
+            "task": "41",
+            "trial": 3,
+            "seed": 1567,
+            "direction": "improved",
+            "baseline": 0,
+            "candidate": 1
+          }
+        ],
+        "gate_stats": {
+          "dev_flips": [
+            0,
+            1,
+            4
+          ],
+          "p_dev_pos": 1.0,
+          "p_harm": 0.5,
+          "repair_flips": [
+            3,
+            0,
+            4
+          ],
+          "p_rep": 0.125
+        },
+        "held_out_damage": {
+          "perfect_tasks": 1,
+          "lost_cells": 1,
+          "lost_tasks": [
+            "6"
+          ],
+          "lost_rate_pp": -25.0,
+          "null_rate_pp": -0.0,
+          "reject_authority": false
+        },
+        "mechanism_delta": {
+          "deliver_inject": 34,
+          "ledger_update_ok": -3
+        },
+        "regressed_mechanism_delta": {
+          "ledger_update_ok": -3,
+          "deliver_inject": 34
+        },
+        "evidence_status": "inconclusive",
+        "cand_dev_seeds": {
+          "6": [
+            626729,
+            373753,
+            361454,
+            1567
+          ]
+        },
+        "cand_dev_benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+        "cand_dev_benchmark_input_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060",
+        "candidate_tree_sha256": "dc2e1eef747d748c12e7f8e67a143999c4504584c16f3cd5b217ed748e7a7c2f",
+        "repair_task_count": 1,
+        "working_base_provisional_round": null,
+        "vs_bare_net_pp": -25.0,
+        "vs_bare_ci": [
+          -25.0,
+          -25.0
+        ],
+        "vs_bare_up": 0,
+        "vs_bare_dn": 1
+      },
+      "plan_bundle_sha256": "085581d4003c88db2a5e122aa0b1bab087ab00eee1566e7138a91835f4d69c67",
+      "plan_summary": [
+        {
+          "cluster": "c1",
+          "component": "E",
+          "tasks": [
+            "41"
+          ],
+          "fixes": [
+            "add_card"
+          ]
+        },
+        {
+          "cluster": "c2",
+          "component": "RHO",
+          "tasks": [
+            "41"
+          ],
+          "fixes": [
+            "set_delivery"
+          ]
+        },
+        {
+          "cluster": "c3",
+          "component": "E",
+          "tasks": [
+            "41"
+          ],
+          "fixes": [
+            "add_card"
+          ]
+        },
+        {
+          "cluster": "c4",
+          "component": "RHO",
+          "tasks": [
+            "41"
+          ],
+          "fixes": [
+            "set_delivery"
+          ]
+        },
+        {
+          "cluster": "c5",
+          "component": "W",
+          "tasks": [
+            "41"
+          ],
+          "fixes": [
+            "set_wm",
+            "set_wm"
+          ]
+        }
+      ],
+      "ceilings": []
+    },
+    "lesson": {
+      "round": 1,
+      "verdict": "REJECT",
+      "gate": {
+        "round": 1,
+        "accept": false,
+        "gate_stage": "held-out",
+        "dev_evaluated": true,
+        "net_pp": -25.0,
+        "ci": [
+          -25.0,
+          -25.0
+        ],
+        "up": 0,
+        "dn": 1,
+        "repair_base": 0,
+        "repair_cand": 0.75,
+        "repair_ok": true,
+        "repair_changes": [
+          {
+            "task": "41",
+            "trial": 1,
+            "seed": 373753,
+            "direction": "improved",
+            "baseline": 0,
+            "candidate": 1
+          },
+          {
+            "task": "41",
+            "trial": 2,
+            "seed": 361454,
+            "direction": "improved",
+            "baseline": 0,
+            "candidate": 1
+          },
+          {
+            "task": "41",
+            "trial": 3,
+            "seed": 1567,
+            "direction": "improved",
+            "baseline": 0,
+            "candidate": 1
+          }
+        ],
+        "gate_stats": {
+          "dev_flips": [
+            0,
+            1,
+            4
+          ],
+          "p_dev_pos": 1.0,
+          "p_harm": 0.5,
+          "repair_flips": [
+            3,
+            0,
+            4
+          ],
+          "p_rep": 0.125
+        },
+        "held_out_damage": {
+          "perfect_tasks": 1,
+          "lost_cells": 1,
+          "lost_tasks": [
+            "6"
+          ],
+          "lost_rate_pp": -25.0,
+          "null_rate_pp": -0.0,
+          "reject_authority": false
+        },
+        "mechanism_delta": {
+          "deliver_inject": 34,
+          "ledger_update_ok": -3
+        },
+        "regressed_mechanism_delta": {
+          "ledger_update_ok": -3,
+          "deliver_inject": 34
+        },
+        "evidence_status": "inconclusive",
+        "cand_dev_seeds": {
+          "6": [
+            626729,
+            373753,
+            361454,
+            1567
+          ]
+        },
+        "cand_dev_benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+        "cand_dev_benchmark_input_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060",
+        "candidate_tree_sha256": "dc2e1eef747d748c12e7f8e67a143999c4504584c16f3cd5b217ed748e7a7c2f",
+        "repair_task_count": 1,
+        "working_base_provisional_round": null,
+        "vs_bare_net_pp": -25.0,
+        "vs_bare_ci": [
+          -25.0,
+          -25.0
+        ],
+        "vs_bare_up": 0,
+        "vs_bare_dn": 1
+      },
+      "causal_interpretation": "inconclusive; rejection protects best but does not prove which individual fix caused the outcome",
+      "plan": [
+        {
+          "component": "E",
+          "fixes": [
+            {
+              "action": "add_card",
+              "em_type": "action_result",
+              "card_id": "modify_items_refund_original_payment",
+              "sketch": "Before executing modify_pending_order_items, verify that payment_method_id equals the original payment method used for the order, read from the order's payment_history (fetched via get_order_details). Teach with a simulated placeholder call using <ORDER_ID>, <OLD_ITEM_ID>, <NEW_ITEM_ID> and <ORIGINAL_PAYMENT_METHOD_ID>, and list the common mistake of substituting another payment method stored on the user profile, which sends the refund to the wrong instrument and fails the request.",
+              "trigger_event": "pre_write",
+              "trigger_tool": "modify_pending_order_items"
+            }
+          ],
+          "tasks": [
+            "41"
+          ]
+        },
+        {
+          "component": "RHO",
+          "fixes": [
+            {
+              "action": "set_delivery",
+              "deliverer": "exemplar_bounce",
+              "cfg": {
+                "em_type": "action_result",
+                "exact_only": true
+              }
+            }
+          ],
+          "tasks": [
+            "41"
+          ]
+        },
+        {
+          "component": "E",
+          "fixes": [
+            {
+              "action": "add_card",
+              "em_type": "knowledge",
+              "card_id": "address_correction_covers_pending_orders",
+              "sketch": "When a customer reports that an address was entered incorrectly, treat the correction as potentially applying to every pending order on the account: fetch the details of each pending order, check the stored address, and confirm with the customer whether to update all affected pending orders and the account default address before any write. Warn that fixing only one order leaves the reported error in place elsewhere.",
+              "trigger_event": "turn_start",
+              "trigger_tool": "*"
+            }
+          ],
+          "tasks": [
+            "41"
+          ]
+        },
+        {
+          "component": "RHO",
+          "fixes": [
+            {
+              "action": "set_delivery",
+              "deliverer": "boundary_inject",
+              "cfg": {
+                "at": "turn_start",
+                "when": "has_pending",
+                "em_type": "knowledge",
+                "tool": "*",
+                "max_cards": 1
+              }
+            }
+          ],
+          "tasks": [
+            "41"
+          ]
+        },
+        {
+          "component": "W",
+          "fixes": [
+            {
+              "action": "set_wm",
+              "field": "entry_kind",
+              "value": "service_request"
+            },
+            {
+              "action": "set_wm",
+              "field": "manager",
+              "value": "self_maintain_each_turn"
+            }
+          ],
+          "tasks": [
+            "41"
+          ]
+        }
+      ]
+    },
+    "blocked_additions": []
+  },
+  "created_at": "2026-09-29 13:00:47",
+  "completed_at": "2026-09-29 13:01:02"
+}

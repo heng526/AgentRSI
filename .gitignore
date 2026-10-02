@@ -1,0 +1,46 @@
+# Secrets and local credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.key
+*.pem
+secrets/
+
+# Datasets, model weights, and generated run output
+data/
+datasets/
+checkpoints/
+weights/
+runs/
+outputs/
+wandb/
+*.pth
+*.pt
+*.ckpt
+
+# Python and editor-local files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mimosa/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Temporary research retrieval/cache products
+**/raw/
+**/fulltext/
+**/fulltext_txt/
+**/_txt/
+**/logs/
+**/research_cache/
+*.log
+*.tar.gz
+*.db
+*.sqlite
+*.sqlite3
+
+# Keep the live upstream checkout local; publish its reviewed snapshot instead.
+复现代码/_staging_m3_agent_repro/

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_REPLACE_UUID",
+  "record_type": "task",
+  "actor": "gpt",
+  "project_id": "CVPR-RSI",
+  "created_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "input_state_version": 0,
+  "task_id": "PROJECT-STAGE-TASK",
+  "correlation_id": null,
+  "causation_id": null,
+  "summary": "Short task summary",
+  "payload": {"authorization_level":"L1_ENGINEERING","mission":"","scientific_question":"","idempotency_key":"","frozen_provenance":{},"authorized_now":[],"authorized_only_if":[],"hard_prohibitions":[],"required_tests":[],"required_preflight":[],"required_outputs":[],"stop_conditions":[]}
+}

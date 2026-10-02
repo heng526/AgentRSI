@@ -1,0 +1,42 @@
+name: ResearchOps Reduce
+
+on:
+  push:
+    paths:
+      - "researchops/outbox/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: researchops-reducer-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  reduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reduce immutable records
+        run: python tools/researchops/reduce_researchops.py --repo-root .
+      - name: Validate derived state
+        run: python tools/researchops/validate_researchops.py --repo-root .
+      - name: Commit derived state if changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "researchops-reducer"
+          git config user.email "researchops-reducer@users.noreply.github.com"
+          git add researchops/state researchops/ledger reports
+          if git diff --cached --quiet; then
+            echo "No derived-state changes"
+            exit 0
+          fi
+          git commit -m "chore(researchops): reduce new records"
+          git push

@@ -1,0 +1,91 @@
+--- /dev/null
++++ candidate/em/action_result/modify_items_refund_original_payment.md
+@@ -0,0 +1,33 @@
++---
++id: modify_items_refund_original_payment
++type: action_result
++trigger:
++  event: pre_write
++  tool: modify_pending_order_items
++source: metaagent_generated
++---
++
++Purpose: when modifying items in a pending order, the price difference (refund or
++charge) must be settled on the payment method the order was originally paid with.
++
++RULE: Before calling `modify_pending_order_items`, read the order's
++`payment_history` (via `get_order_details`) and use that original payment
++method as `payment_method_id`. Do not substitute another payment method that
++merely exists on the customer's profile.
++
++Simulated correct call (placeholders only):
++
++```
++modify_pending_order_items({
++  "order_id": "<ORDER_ID>",
++  "item_ids": ["<OLD_ITEM_ID>"],
++  "new_item_ids": ["<NEW_ITEM_ID>"],
++  "payment_method_id": "<ORIGINAL_PAYMENT_METHOD_ID_FROM_PAYMENT_HISTORY>"
++})
++```
++
++Common mistakes:
++- Picking a different stored payment method (e.g. a credit card on the profile)
++  instead of the one in the order's `payment_history` — the refund then lands on
++  the wrong instrument and the modification does not match the customer's request.
++- Guessing the payment method without fetching the order details first.
+--- /dev/null
++++ candidate/em/knowledge/address_correction_covers_pending_orders.md
+@@ -0,0 +1,25 @@
++---
++id: address_correction_covers_pending_orders
++type: knowledge
++trigger:
++  event: turn_start
++  tool: "*"
++source: metaagent_generated
++---
++
++When a customer reports that an address was typed incorrectly (for an order or
++the account), treat the correction as potentially applying to **every pending
++order** on the account, not just one.
++
++RULE (distilled from the retail policy's order-modification workflow):
++1. Fetch the details of each pending order (`get_order_details`) and compare the
++   stored shipping address with the corrected address the customer gives.
++2. Confirm with the customer whether to update the address on **all** affected
++   pending orders **and** the account default address before executing any write.
++3. Only then apply the corrections with `modify_pending_order_address` /
++   `modify_user_address`.
++
++Common mistakes:
++- Fixing the address on only one pending order and the account while another
++  pending order still carries the wrong address.
++- Skipping the second pending order because the customer did not name it.
+--- base/manifest.yaml
++++ candidate/manifest.yaml
+@@ -1,6 +1,23 @@
+ name: tau2_retail_ma_neutral
+ 
+-delivery: []
++wm:
++  entry_kind: service_request
++  manager: self_maintain_each_turn
++  manager_cfg: {}
++
++delivery:
++  - use: exemplar_bounce
++    cfg:
++      em_type: action_result
++      exact_only: true
++  - use: boundary_inject
++    cfg:
++      at: turn_start
++      when: has_pending
++      em_type: knowledge
++      tool: "*"
++      max_cards: 1
++
+ checkers: []
+ 
+ board:

@@ -1,0 +1,980 @@
+{
+  "dataset": "zhang-ziao/SkillFlow-Task",
+  "revision": "ecaadb0e25d5d5cfd87bd86d81e77b4abe3a00bc",
+  "families": {
+    "Production-Capacity-Planning": {
+      "tasks": [
+        "harbor_gdpval_36",
+        "harbor_gdpval_36_task1",
+        "harbor_gdpval_36_task2",
+        "harbor_gdpval_36_task3",
+        "harbor_gdpval_36_task4",
+        "harbor_gdpval_36_task5",
+        "harbor_gdpval_36_task6",
+        "harbor_gdpval_36_task7",
+        "harbor_gdpval_36_task8"
+      ],
+      "files": [
+        {
+          "path": "test_tasks/Production-Capacity-Planning/ALL_TASK_DIFFICULTY_RANKING.json",
+          "size": 249,
+          "sha256": "ee140990dd66dc66db11c0a2c5a3945aa9138d988ba9a84bc8f5b361b4701e32"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/Dockerfile",
+          "size": 405,
+          "sha256": "ac4ebb50ed28135148aa09aa609542b56ef7262bbe5689d509ba1f443a6af8c5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/copy_of_capacity_sheet.xlsx",
+          "size": 13991,
+          "sha256": "4e38b04e8edcb5875cd36e58ee7f821ca90d99ec3e9202df2994d4a49215c98b"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/Create Manufacturing Schedule Analysis Dashboard/SKILL.md",
+          "size": 3503,
+          "sha256": "256e4edf1f062fe7d81935be183c48925a89b51fb4dea4861f1f8166b40bfd5a"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/autonomy-windowed/README.md",
+          "size": 1701,
+          "sha256": "58b170cfd4c3d8d10f6cb6f9d928a23a1677e277c9301c375878197c0c73926b"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/autonomy-windowed/SKILL.md",
+          "size": 10274,
+          "sha256": "de38f54bacbd789345f420225f62e9d5ad9a0e72fe86f799d04c4323345b0c24"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/autonomy-windowed/_meta.json",
+          "size": 294,
+          "sha256": "73dfe2185bb81bd9b52fa8dd12cd6b4da8682a30b366fe56b61363de3151d9fb"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/manufacturing-team-momentum/SKILL.md",
+          "size": 5274,
+          "sha256": "058810d12bb14a2d9091fd32fd8149b282525ecdbb896502de835761546cfeb9"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/token-efficiency-guide/GUIDE.md",
+          "size": 8794,
+          "sha256": "c2a83b5281f66f9f0d22f765f524edbf7a85dbb9e835526021c82a27c2a46e02"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/token-efficiency-guide/SKILL.md",
+          "size": 1740,
+          "sha256": "7a4187eb23870ed7ff7289d9ec670333d9b73610d67fca9500c17074e3ab331e"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/token-efficiency-guide/_meta.json",
+          "size": 300,
+          "sha256": "6cfad560366c4111755d21c1eaee5e1eca9d7be11e88969224a158b3708a24ae"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/verification-before-completion/SKILL.md",
+          "size": 4201,
+          "sha256": "ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/environment/skills/verification-before-completion/_meta.json",
+          "size": 315,
+          "sha256": "206850aa013cc41f34dd0f937fa3a34d884ee823f774aa31266b3c0c086829ee"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/instruction.md",
+          "size": 2169,
+          "sha256": "b34bbed2fea66659bb4fafa3cd84d8ee12a5ef40c4bde683a436bdcd352ee760"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/solution/solve.sh",
+          "size": 4902,
+          "sha256": "3c92b0306fd57dba6616cfdc3f32156d83d4348e6e2780dc28cf605e2041cf9e"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/task.toml",
+          "size": 407,
+          "sha256": "b963be647c67a06911f58e8cbba8a1cb32a540d976dc9a44fff58f0601cc4eb5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36/tests/test_outputs.py",
+          "size": 7273,
+          "sha256": "52a7751b3908e6b290c4563d5d566ed56efc8ead58510138c4a37eca2fff1181"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task1/environment/Dockerfile",
+          "size": 357,
+          "sha256": "5852cbef4fe3157403e2106efb9c6f735f3aa62660801cef1a36cfa4d3e28a16"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task1/environment/copy_of_capacity_sheet.xlsx",
+          "size": 5586,
+          "sha256": "22bd67eaa172ca415c0c067bda983b8eae012f59b90a61bf5ba42278d569222e"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task1/instruction.md",
+          "size": 2169,
+          "sha256": "b34bbed2fea66659bb4fafa3cd84d8ee12a5ef40c4bde683a436bdcd352ee760"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task1/solution/solve.sh",
+          "size": 4589,
+          "sha256": "01e9e142830fd1efc7b6b0dd23ca678b7098fb07e61e32acfa66e41c2d2a6f45"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task1/task.toml",
+          "size": 407,
+          "sha256": "4c46cf1a08b39c1f00e5fd0d21d4c9cbe77a3c29f5b1393b82f5aaa232df3c2d"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task1/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task1/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task1/tests/test_outputs.py",
+          "size": 6938,
+          "sha256": "ace949c882160749070fcefe95a3df5df70a3450b17ad81fd46d7c9cd6a3e2e2"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task2/environment/Dockerfile",
+          "size": 357,
+          "sha256": "5852cbef4fe3157403e2106efb9c6f735f3aa62660801cef1a36cfa4d3e28a16"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task2/environment/mill_demand_sheet.xlsx",
+          "size": 5620,
+          "sha256": "f9e152298677d18777b174739fa6d81c8fbfa103ac58b206c1fa49db66df75f8"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task2/instruction.md",
+          "size": 2223,
+          "sha256": "f008b1bd5acb1dca277885873b77de1ac67438f6b5bfd3c66511237bb5e8459b"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task2/solution/solve.sh",
+          "size": 4668,
+          "sha256": "54f2593b18cf69d34a817dd87e25a114a5374fcc1395c359c90c368bbe22a644"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task2/task.toml",
+          "size": 414,
+          "sha256": "ca080cb6c3415199037712b69f437961ce2d7c82514ed66cddb7a9bafe2321d8"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task2/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task2/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task2/tests/test_outputs.py",
+          "size": 7085,
+          "sha256": "3267d1f4ad20ef9fef1cf3e6c43e629b1edd576f7429805d58fbc5cb460abe67"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task3/environment/Dockerfile",
+          "size": 357,
+          "sha256": "5852cbef4fe3157403e2106efb9c6f735f3aa62660801cef1a36cfa4d3e28a16"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task3/environment/assembly_schedule.xlsx",
+          "size": 6321,
+          "sha256": "204f76b287a3ae0dd2b08bd5747264b0342c9b34d5258b9f8bb634081e5c6f29"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task3/instruction.md",
+          "size": 2355,
+          "sha256": "022d1d004ee36225c28a96b7a13f8dc2bc0f85e45ce05ac576d1ad616811a08a"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task3/solution/solve.sh",
+          "size": 5497,
+          "sha256": "a9f766fdf241041cbcfce2c36dcd826430cdd48b0abef53a9f1c31489624da19"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task3/task.toml",
+          "size": 414,
+          "sha256": "a1bac616a2e18b1988c9cc77fae785242d690ebb6f447a54004d02c23c8d6fb0"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task3/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task3/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task3/tests/test_outputs.py",
+          "size": 7781,
+          "sha256": "3b7cca5a933aa6a7cea7ebcc7f66b0a929e183cd1c02ad699b6c939c0a5244de"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/environment/Dockerfile",
+          "size": 357,
+          "sha256": "5852cbef4fe3157403e2106efb9c6f735f3aa62660801cef1a36cfa4d3e28a16"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/environment/hvac_demand_sheet.xlsx",
+          "size": 5602,
+          "sha256": "c0f7e496245c678cf88f570dabf5ba07e2f953170315c4be00446a48fc3ba510"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/environment/hvac_existing_plan.xlsx",
+          "size": 5424,
+          "sha256": "e31b58cf1e78c39e37682fc2a5a2a4b60210da9e7cd9cdce64a36eb6b56eb104"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/instruction.md",
+          "size": 2694,
+          "sha256": "f79ff7f05d61a97cc0238808bcf110a855e9e84e50488ac044482ca7f8ad30f4"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/solution/solve.sh",
+          "size": 4881,
+          "sha256": "d552f98bc334bf72d1b402a7b3ee3c46a4ed663047be4e4f02e6f48f68261a34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/task.toml",
+          "size": 415,
+          "sha256": "b9299cfcdb0646a319f3d20c89af9004c8ad6b32d4de446089e6d66da9e194a6"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task4/tests/test_outputs.py",
+          "size": 7800,
+          "sha256": "7e748665338cd0dabffa19228e5edfff828e30ae3d151fb880ceae2295297d2a"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task5/environment/Dockerfile",
+          "size": 357,
+          "sha256": "5852cbef4fe3157403e2106efb9c6f735f3aa62660801cef1a36cfa4d3e28a16"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task5/environment/glass_demand_sheet.xlsx",
+          "size": 5590,
+          "sha256": "7984dcdf6e845c3f914b6ec39cb461b0399a3468c3300fbfc9b0ac982e598014"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task5/instruction.md",
+          "size": 2192,
+          "sha256": "5bd301921b6a5f5f7399a8b755545d8b24912badb11ca45ffadc2ecbcd75bafa"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task5/solution/solve.sh",
+          "size": 4597,
+          "sha256": "4b994a81fdc851fa257116e4afc28b2440d2a689203c0cf24661ec05909ec538"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task5/task.toml",
+          "size": 416,
+          "sha256": "944d0b5ad99b72a9830897d64c83e1b8de87c25c60a8db53d137630600f8a6a7"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task5/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task5/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task5/tests/test_outputs.py",
+          "size": 6946,
+          "sha256": "a15adfe17db126388abcdfd95357319fa0c6d975e40809ae5acfb3ce622019fe"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task6/environment/Dockerfile",
+          "size": 357,
+          "sha256": "5852cbef4fe3157403e2106efb9c6f735f3aa62660801cef1a36cfa4d3e28a16"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task6/environment/dye_demand_sheet.xlsx",
+          "size": 6791,
+          "sha256": "aeffebda5895c23cc56e95d3c2effe54c5e526b6a506177caeb896c3891c69e1"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task6/instruction.md",
+          "size": 2379,
+          "sha256": "59c396b5935b002e134fc79e8e17e587e9fc1a5719e37898637de6f641b28cb6"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task6/solution/solve.sh",
+          "size": 5339,
+          "sha256": "2be1f3d4a3bb12761be6abc42fab25e4e08242c6a69a86b272c040ebed15e337"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task6/task.toml",
+          "size": 418,
+          "sha256": "1e1c4c56f387448ea09fbe9415c3ec99312e3002fc5c040c8eb7f7278541ac40"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task6/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task6/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task6/tests/test_outputs.py",
+          "size": 8081,
+          "sha256": "90e00fde79b6985a40c4dc319098e2c423ccb4aa6b93ed25eeb552ad63e1e5bd"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task7/environment/Dockerfile",
+          "size": 356,
+          "sha256": "daf7c7b3a03b49cdcc0cbbe4336db4e68f206627584c1480ad8c36892bc1ae5d"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task7/environment/ship_demand.csv",
+          "size": 469,
+          "sha256": "b0ec8341647ebbe249546e0749f152f6731106c19fe0240ab10433f5bd9ca059"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task7/instruction.md",
+          "size": 2497,
+          "sha256": "08e46938e8fcf045f9cbb9ab2e16f8a9a781b3760447dbabd9ee8360a4c084fe"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task7/solution/solve.sh",
+          "size": 4865,
+          "sha256": "68e24b0d4773c978e3cb6f2aef8a1cfa44888fd2a1dd5be8eee9d5d5dbb82f7f"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task7/task.toml",
+          "size": 430,
+          "sha256": "4709e7bd53c6995b25a49d03c1ec7af3c946b5a03d94916bff797e52531c34de"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task7/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task7/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task7/tests/test_outputs.py",
+          "size": 7086,
+          "sha256": "d7ecbbda959c042e2fea3c576b51e3535ba07ad79ec4c56db354b833524fe000"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task8/environment/Dockerfile",
+          "size": 357,
+          "sha256": "b4878def343c2471694fd84f7750a095da9d11618b65075dc91e989efc4f2ee7"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task8/environment/chemical_demand.json",
+          "size": 5507,
+          "sha256": "a0e7bd36606507eae9654e1e6941721f936003821a725d4083737ae1a4bccfe6"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task8/instruction.md",
+          "size": 2469,
+          "sha256": "ac310152aa2a01a9c5fcecb1060165c28d67a402b058800539890208d8137a34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task8/solution/solve.sh",
+          "size": 4649,
+          "sha256": "87ac2ef9b52b6a56fd5d1515a0da18bb96b9c3fb0a6877aff6c9fb0f7933eb6b"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task8/task.toml",
+          "size": 427,
+          "sha256": "c3718ac778ef796752bc8808a9b25f66787a666913940102364e19710a4d2639"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task8/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task8/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Production-Capacity-Planning/harbor_gdpval_36_task8/tests/test_outputs.py",
+          "size": 7002,
+          "sha256": "fae92549913b4d733707461f2f6bf65a4b90640f36e565a18afaedaac181a580"
+        }
+      ]
+    },
+    "Cross-Format-Data-Reconciliation": {
+      "tasks": [
+        "01-cloud-service-portfolio-diff",
+        "02-hospital-capacity-portfolio-diff",
+        "03-retail-supply-category-diff",
+        "04-university-program-funding-diff",
+        "05-datacenter-hardware-registry-diff",
+        "06-hospital-medication-reconciliation",
+        "07-shipping-container-manifest-diff",
+        "08-university-course-catalog-diff"
+      ],
+      "files": [
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/environment/Dockerfile",
+          "size": 430,
+          "sha256": "88f7c669ea51752f6c9cdfe8dc0063a31a7efda88417319b620f1863f10de505"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/environment/data/cloud_service_portfolio_archive.pdf",
+          "size": 2263,
+          "sha256": "82ae47668130f25bae4f9a59f17882f96d265602b67eabc4ce5b02a80bedb6f3"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/environment/data/cloud_service_portfolio_current.xlsx",
+          "size": 5272,
+          "sha256": "594c3fee810f0ba180347ce88a6928981353fc2a06a4ef8b5fb083d72d0df12a"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/instruction.md",
+          "size": 1379,
+          "sha256": "01b7ce91a81bff211516e12eb4a43202a8425b3e0063f0dad738f099a22297f3"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/solution/solve.sh",
+          "size": 156,
+          "sha256": "cb4e58358bba8d4d3ced37f0bc8c0f9c86e2a80f08b7f41c3d1574c432519057"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/solution/task_config.json",
+          "size": 397,
+          "sha256": "64cdb26ff22ade3fa37452cfa2e0c6aacce6fef64da4782164001cffd933956c"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/solution/tools/__pycache__/reconcile_snapshot.cpython-313.pyc",
+          "size": 6541,
+          "sha256": "bdd7d0b6d536893f530a933c70ae773de1e6318c933a5013b7217e352decb5fc"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/solution/tools/reconcile_snapshot.py",
+          "size": 4680,
+          "sha256": "29b04014558e3b61e50f5229509c78b356797595a53b04e2939a870f91e62b16"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/task.toml",
+          "size": 426,
+          "sha256": "8d0d1712761ffd1587eca7f5e81097c63886d36749dcf61ee1eea188c66844c3"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/tests/__pycache__/test_outputs.cpython-313.pyc",
+          "size": 3668,
+          "sha256": "cade0dcc54dbbd62458b7c2cbb5e5749bb20b1f1befa99025fd5c652c8554572"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff/tests/test_outputs.py",
+          "size": 3653,
+          "sha256": "c38cca2cd767245f9ee029fe5882244a60b956d4b840986ffcfa96c72a97664c"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/environment/Dockerfile",
+          "size": 430,
+          "sha256": "88f7c669ea51752f6c9cdfe8dc0063a31a7efda88417319b620f1863f10de505"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/environment/data/hospital_capacity_archive.pdf",
+          "size": 2274,
+          "sha256": "91ac07cdba3aeb0cdf24886d7462e3ae933fa6c298cbeb8304b9aba932a15129"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/environment/data/hospital_capacity_current.xlsx",
+          "size": 5296,
+          "sha256": "5bf33bc21334d5f96e4ef3b0dd14af04388c7697737bae7a629c37c23136150f"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/instruction.md",
+          "size": 1383,
+          "sha256": "4b800c17f58cb245607d7a80fcd62650d4a3b6933fda5cba1d34dcddfaf62d50"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/solution/solve.sh",
+          "size": 156,
+          "sha256": "cb4e58358bba8d4d3ced37f0bc8c0f9c86e2a80f08b7f41c3d1574c432519057"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/solution/task_config.json",
+          "size": 392,
+          "sha256": "6a5db0073d804e8bb1a6dc3b7793b3319c9a3f2a8f7883f3b781a73e286dedba"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/solution/tools/__pycache__/reconcile_snapshot.cpython-313.pyc",
+          "size": 6545,
+          "sha256": "b5728453767f113695b120a667dac2850d44124db16f579f8c00767792ce06e4"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/solution/tools/reconcile_snapshot.py",
+          "size": 4680,
+          "sha256": "29b04014558e3b61e50f5229509c78b356797595a53b04e2939a870f91e62b16"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/task.toml",
+          "size": 427,
+          "sha256": "6bb34cd9bf88c8e1903e2f1fe8a001bb1f830a49e55f0ab9a1b720d047b1b3a2"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/tests/__pycache__/test_outputs.cpython-313.pyc",
+          "size": 3677,
+          "sha256": "8828d7b8a20e831ac32e963faebc786e07721002cf9d9360083c271dc33a3051"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff/tests/test_outputs.py",
+          "size": 3659,
+          "sha256": "3d7ce2818852446e7ebd04376fa76790b3eca44027ed43b1078f1616e6719e47"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/environment/Dockerfile",
+          "size": 430,
+          "sha256": "88f7c669ea51752f6c9cdfe8dc0063a31a7efda88417319b620f1863f10de505"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/environment/data/retail_supply_archive.pdf",
+          "size": 2206,
+          "sha256": "86d26e0c0da29bde1a7fb402c4c4fc9117102bad4819bc6124fea79304405a52"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/environment/data/retail_supply_current.xlsx",
+          "size": 5248,
+          "sha256": "333e2cca5086d1198b4a9dbb03e0c040fbd35c533bed271a510f738276807f7b"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/instruction.md",
+          "size": 1361,
+          "sha256": "1977450abf503336c0c87f2ddf1b286b9523b079833a6c1c7383320fc589c496"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/solution/solve.sh",
+          "size": 156,
+          "sha256": "cb4e58358bba8d4d3ced37f0bc8c0f9c86e2a80f08b7f41c3d1574c432519057"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/solution/task_config.json",
+          "size": 376,
+          "sha256": "6f3b4fbacf020b8a6e908eb9af5149498394251e43c6685d2edb813002c3531a"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/solution/tools/__pycache__/reconcile_snapshot.cpython-313.pyc",
+          "size": 6540,
+          "sha256": "397f91015844e5e8f97b7fc34235577dfc1fbe7890d77914a8723eb111483e92"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/solution/tools/reconcile_snapshot.py",
+          "size": 4680,
+          "sha256": "29b04014558e3b61e50f5229509c78b356797595a53b04e2939a870f91e62b16"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/task.toml",
+          "size": 423,
+          "sha256": "a9e706a420858c2b02c274f87a169dceaecd838ef593203cb2f0d7efc142ab26"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/tests/__pycache__/test_outputs.cpython-313.pyc",
+          "size": 3640,
+          "sha256": "9e68e28e773a52d3db9059f2b4cc386d5e9570efe93c8b3eabfe47d9474720fe"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/03-retail-supply-category-diff/tests/test_outputs.py",
+          "size": 3629,
+          "sha256": "0ee3e79d70c209114bb7d309ec304dca20f8050ae8ee79cc6df26795f57c92a3"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/environment/Dockerfile",
+          "size": 430,
+          "sha256": "88f7c669ea51752f6c9cdfe8dc0063a31a7efda88417319b620f1863f10de505"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/environment/data/university_funding_archive.pdf",
+          "size": 2290,
+          "sha256": "f7afbb3cb34a8a778912918f4fe87afecc980e2c9b781a1ab1dc144c473577af"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/environment/data/university_funding_current.xlsx",
+          "size": 5307,
+          "sha256": "db8a9104b5f592fab2a81b833648070e1b2e6e817dcfab28909174f88b9f22d5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/instruction.md",
+          "size": 1366,
+          "sha256": "256c34a4b714e318e74a666f3394f13142540e07b6a79045ef452f258a96ab63"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/solution/solve.sh",
+          "size": 156,
+          "sha256": "cb4e58358bba8d4d3ced37f0bc8c0f9c86e2a80f08b7f41c3d1574c432519057"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/solution/task_config.json",
+          "size": 388,
+          "sha256": "7562c71289aac3b87de8b8eff4626ccc1d4416e976f31da1afede1cb13ce08ba"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/solution/tools/__pycache__/reconcile_snapshot.cpython-313.pyc",
+          "size": 6544,
+          "sha256": "dba2efb2b162a1e385bcbd20253e981e9c4cc627f68cd579ecbf3b6a300f7252"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/solution/tools/reconcile_snapshot.py",
+          "size": 4680,
+          "sha256": "29b04014558e3b61e50f5229509c78b356797595a53b04e2939a870f91e62b16"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/task.toml",
+          "size": 429,
+          "sha256": "e7e59a0c33d34caafa7ae3985405ea8f321b49fa59679dec5ff8939d39382518"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/tests/__pycache__/test_outputs.cpython-313.pyc",
+          "size": 3680,
+          "sha256": "276d3bbe77fad2dd9e40e9059ac419921bbe519d1f2596bd168cf3a5af3083d8"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/04-university-program-funding-diff/tests/test_outputs.py",
+          "size": 3656,
+          "sha256": "5c10791204778f0f28345bcf6e36504ca84ace80a977f1bcdc1cecba661071c5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/environment/Dockerfile",
+          "size": 430,
+          "sha256": "88f7c669ea51752f6c9cdfe8dc0063a31a7efda88417319b620f1863f10de505"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/environment/data/hardware_registry_q1.pdf",
+          "size": 9557,
+          "sha256": "9f9ad18c9119543c4c4dfa84f0e7414382ae6aff7306dc5469c49a67d70ca0bc"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/environment/data/hardware_registry_q2.xlsx",
+          "size": 8200,
+          "sha256": "7d1af8903321362319144ae86d714fa6421e6fe6950fe54bf45a65f356ae4ae4"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/instruction.md",
+          "size": 1310,
+          "sha256": "bec10186d835439f9e31730bdaabf305885b8f3ca3fc9e7dd4f45f70004e6cfe"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/solution/solve.sh",
+          "size": 156,
+          "sha256": "cb4e58358bba8d4d3ced37f0bc8c0f9c86e2a80f08b7f41c3d1574c432519057"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/solution/task_config.json",
+          "size": 327,
+          "sha256": "49dfe675a881114449f7c971d0a3472f0c96645604ab9150066ea60713014e35"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/solution/tools/__pycache__/reconcile_snapshot.cpython-313.pyc",
+          "size": 6546,
+          "sha256": "7c401e045f382170cdd6f00c55fe0bffac766eca9573b7d343172a5de0f613a9"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/solution/tools/reconcile_snapshot.py",
+          "size": 4680,
+          "sha256": "29b04014558e3b61e50f5229509c78b356797595a53b04e2939a870f91e62b16"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/task.toml",
+          "size": 424,
+          "sha256": "ad5da4f886449dffdfd792b51100bf75c43c91c05a7abda4634f037bd8c8127a"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/tests/__pycache__/test_outputs.cpython-313.pyc",
+          "size": 3641,
+          "sha256": "c6ef40f256a18b1ed5cc202b567d7f65628223eda978fb3df936c990228f4e19"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff/tests/test_outputs.py",
+          "size": 3644,
+          "sha256": "cf397a268515243fadd6c389dd23f88f6e4083d19b1a66b2a60c9525abffaf6f"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/environment/Dockerfile",
+          "size": 430,
+          "sha256": "88f7c669ea51752f6c9cdfe8dc0063a31a7efda88417319b620f1863f10de505"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/environment/data/medications_archive.pdf",
+          "size": 9626,
+          "sha256": "b0ebcbba81c12121660d0cfd95de315e8dc04464014d5854a69eaff5e8025bde"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/environment/data/medications_live.xlsx",
+          "size": 8048,
+          "sha256": "fff3e5af14588db855509edb0d32c7286535976de7b2d5d5da06789145ac5c1e"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/instruction.md",
+          "size": 1335,
+          "sha256": "56c74c89c5b1a6b02350f5b811129283e4a9f636c6fc619adf771444484395c0"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/solution/solve.sh",
+          "size": 156,
+          "sha256": "cb4e58358bba8d4d3ced37f0bc8c0f9c86e2a80f08b7f41c3d1574c432519057"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/solution/task_config.json",
+          "size": 348,
+          "sha256": "883098517edefb33c3e940ab24fe83af08ab03789998b1f795431572c5dc541f"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/solution/tools/__pycache__/reconcile_snapshot.cpython-313.pyc",
+          "size": 6547,
+          "sha256": "6dfe644a769354b9023b7c9ff8c599c466a854bf2067a30cb19e488f8b79d577"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/solution/tools/reconcile_snapshot.py",
+          "size": 4680,
+          "sha256": "29b04014558e3b61e50f5229509c78b356797595a53b04e2939a870f91e62b16"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/task.toml",
+          "size": 422,
+          "sha256": "06f5c630daf969193468432169985d600cb497a506b33ca94dfa9a97c19fbbc0"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/tests/__pycache__/test_outputs.cpython-313.pyc",
+          "size": 3668,
+          "sha256": "9da6eeb163fa937b0dc28490e4543146a6e569bb43316d3bc48da0e7e57a9d43"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation/tests/test_outputs.py",
+          "size": 3668,
+          "sha256": "f899b96c08ae8760fe23c4772f9da55dc4be5da4da6d5c3d3b3ac06768719525"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/environment/Dockerfile",
+          "size": 430,
+          "sha256": "88f7c669ea51752f6c9cdfe8dc0063a31a7efda88417319b620f1863f10de505"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/environment/data/container_manifest_current.xlsx",
+          "size": 8791,
+          "sha256": "329fb5ee2ef0c4758d32bd32369c7107d26975df6e7dd6e57e391b4f0f2cec33"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/environment/data/container_manifest_old.pdf",
+          "size": 10340,
+          "sha256": "f93b17ca85e5e0ff51dec0cd7d62ae351fc1e84d59fad571455d8347631fd310"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/instruction.md",
+          "size": 1322,
+          "sha256": "8ada2660f0226d6022bb0ad440c0de3731dbb2d7bb65a0c625392bfebb532c4e"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/solution/solve.sh",
+          "size": 156,
+          "sha256": "cb4e58358bba8d4d3ced37f0bc8c0f9c86e2a80f08b7f41c3d1574c432519057"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/solution/task_config.json",
+          "size": 337,
+          "sha256": "c71608d3e9d1514942e64a63d1c2bb5ca1a09f964ac2dba0fadcd512180f6c9e"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/solution/tools/__pycache__/reconcile_snapshot.cpython-313.pyc",
+          "size": 6545,
+          "sha256": "ad5744670de0bbcf79ef5e18684c718e9be8e6f1681760b5699e25f0e8659cfb"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/solution/tools/reconcile_snapshot.py",
+          "size": 4680,
+          "sha256": "29b04014558e3b61e50f5229509c78b356797595a53b04e2939a870f91e62b16"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/task.toml",
+          "size": 409,
+          "sha256": "c4fed31b37f8f375d7110847cb5aaea06c6bab4d73ac082e1ad0c0345849b6c7"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/tests/__pycache__/test_outputs.cpython-313.pyc",
+          "size": 3673,
+          "sha256": "aac70b4f25c83ada33bc854d24d89fa66d63b06abfed6dae9d0cf1f05f2b7289"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff/tests/test_outputs.py",
+          "size": 3672,
+          "sha256": "c3607d72b680e9cd55427421ab9b435205a9cc8690ad7c5208aa72af9fdfa57a"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/environment/Dockerfile",
+          "size": 430,
+          "sha256": "88f7c669ea51752f6c9cdfe8dc0063a31a7efda88417319b620f1863f10de505"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/environment/data/course_catalog_2024.pdf",
+          "size": 10738,
+          "sha256": "96b0482a78c3512837c64f86773a9b3ef4d3426264a0a2d00e1fd0adf6dabc3e"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/environment/data/course_catalog_2025.xlsx",
+          "size": 8622,
+          "sha256": "477fd76a9e06ed4101a487ab9811c3d34acf080befaf7ad6ec6da002a590e72e"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/instruction.md",
+          "size": 1320,
+          "sha256": "f63c0f95824de10527c0e4cc1a9d6e2aa2714c303494288dab410394bcd4d0c9"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/solution/solve.sh",
+          "size": 156,
+          "sha256": "cb4e58358bba8d4d3ced37f0bc8c0f9c86e2a80f08b7f41c3d1574c432519057"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/solution/task_config.json",
+          "size": 315,
+          "sha256": "8f57948bee37eebff8aba93ce75f1dd0dabc7df1aeb0fe04d7c94549b2f62dcf"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/solution/tools/__pycache__/reconcile_snapshot.cpython-313.pyc",
+          "size": 6543,
+          "sha256": "62595e785e7938dc20d03a83550857946cb1c2b95683c8262064cda280dc2ee2"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/solution/tools/reconcile_snapshot.py",
+          "size": 4680,
+          "sha256": "29b04014558e3b61e50f5229509c78b356797595a53b04e2939a870f91e62b16"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/task.toml",
+          "size": 426,
+          "sha256": "c90945909973504f0d1b1c39cefc92e8fd4eef40f81d6118591a3f656e283b0a"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/tests/__pycache__/test_outputs.cpython-313.pyc",
+          "size": 3623,
+          "sha256": "1414480cc3efef3741a8d8e514c15d921e1ab0744ee0c7860c9fa6fc5845519c"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/tests/test.sh",
+          "size": 1112,
+          "sha256": "ba3fd9d55565d4d61d1618ae5685be341510b71c2e4f60bf66ea0de61ee727e5"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/tests/test_output.py",
+          "size": 597,
+          "sha256": "261318caddd0fb2d350a161a8d2cf04c8c8987c5060080cb08fb3413cf993d34"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/08-university-course-catalog-diff/tests/test_outputs.py",
+          "size": 3575,
+          "sha256": "169a60d8c7fb47c2e8d804dec5699750341c3ab22d1fcf668fd8703a0d492804"
+        },
+        {
+          "path": "test_tasks/Cross-Format-Data-Reconciliation/ALL_TASK_DIFFICULTY_RANKING.json",
+          "size": 322,
+          "sha256": "2ae207cabaf0c4dc77e2f2839b3ea8f2be9d837a57e708d125ecbd4a5ec60690"
+        }
+      ]
+    }
+  }
+}

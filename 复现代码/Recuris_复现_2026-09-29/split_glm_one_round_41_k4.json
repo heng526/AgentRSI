@@ -1,0 +1,1 @@
+{"train":["41"],"dev":["6"],"test":[],"selection_rule":"GLM process replication with four paired trials on difficult retail task 41; disjoint dev task 6","fixed_budget":{"k":4,"train_tasks":1,"dev_tasks":1,"complete_entire_train_tranche":true,"stop_rule":"Complete all four train trials and paired held-out gate."}}

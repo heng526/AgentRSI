@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "project_id": "CVPR-RSI",
+  "project_slug": "agent_rsi",
+  "state_version": 0,
+  "last_seq": 0,
+  "updated_at": null,
+  "reducer_writer": "researchops-reducer",
+  "processed_records": {},
+  "latest_record_by_actor": {},
+  "tasks": {},
+  "latest_decision_id": null,
+  "latest_result_id": null,
+  "latest_approval_id": null,
+  "scientific": {"current_stage":"BOOTSTRAP","scientific_head_sha":null,"immutable_run_shas":{},"data_provenance":{},"current_index_path":"reports/agent_rsi/INDEX.md"}
+}

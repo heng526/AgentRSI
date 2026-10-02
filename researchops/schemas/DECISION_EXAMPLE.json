@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_REPLACE_UUID",
+  "record_type": "decision",
+  "actor": "gpt",
+  "project_id": "CVPR-RSI",
+  "created_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "input_state_version": 0,
+  "task_id": null,
+  "correlation_id": null,
+  "causation_id": null,
+  "summary": "Scientific decision",
+  "payload": {"stage":"","decision":"HOLD","confirmed":[],"inference":[],"reviewer_risks":[],"next_gate":""}
+}

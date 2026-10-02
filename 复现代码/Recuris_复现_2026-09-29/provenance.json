@@ -1,0 +1,1726 @@
+{
+  "created_at": "2026-09-29 12:34:53",
+  "config": {
+    "driver_schema_version": 15,
+    "run_id": "glm_retail_one_round_v5_20260929",
+    "domain": "retail",
+    "arm": "autonomous",
+    "benchmark_protocol": "official",
+    "mode": "experiment",
+    "replay_source": null,
+    "splits": {
+      "path": "/home/hust/research_recuris/split_glm_one_round_41_k4.json",
+      "sha256": "f17ccc5ffca52089b2c31e20492bd56b30025785ab8ee4fa817a99a220f5ca0a",
+      "train": [
+        "41"
+      ],
+      "dev": [
+        "6"
+      ],
+      "test": []
+    },
+    "base": {
+      "kind": "neutral"
+    },
+    "worker": {
+      "model": "glm-5.3-flash",
+      "reasoning_effort": "low",
+      "temperature": 0.0,
+      "allowed_openai_params": [
+        "reasoning_effort"
+      ]
+    },
+    "simulator": {
+      "model": "glm-5.3-flash",
+      "reasoning_effort": "low",
+      "temperature": 0.0,
+      "allowed_openai_params": [
+        "reasoning_effort"
+      ]
+    },
+    "meta": {
+      "model": "glm-5.3-flash",
+      "reasoning_effort": "low",
+      "temperature": 0.0
+    },
+    "proxy_port": 4049,
+    "evaluation": {
+      "target_round": 1,
+      "k": 4,
+      "round_gate": "relaxed",
+      "reg_cap": 1,
+      "max_concurrency": 2,
+      "eval_timeout": 3600,
+      "eval_resume_attempts": 1,
+      "max_sims": 30,
+      "reuse_artifacts_run": "glm_retail_one_round_v2_20260929",
+      "provisional_accept": false
+    },
+    "recursive_loop": {
+      "diagnosis_review": false,
+      "same_task_history_rounds": 2,
+      "targeted_activation_cases": false,
+      "candidate_corrections": 3,
+      "shared_diagnosis_patch_context": true
+    },
+    "cc_timeout": 900,
+    "meta_workflow": "continuous"
+  },
+  "champion_tree_sha256": "afea57d670a22cfee95c15b8d580bc0835de805c76f10c5de423a8345ca13193",
+  "git_commit": "7d3745ab787b1206ccd981cb1511100476097266",
+  "git_dirty": true,
+  "tau2_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+  "tau2_git_dirty": true,
+  "runtime_sources": {
+    "tree_sha256": "21a42788db56b6c13693c0020b4d5daa49de7203701bd3c52e491074b93e589a",
+    "files": {
+      "pyproject.toml": "116b58889808ce001acc86f9d79e8de3922430e2c2dadd40b169b19d93cef65d",
+      "src/recuris/__init__.py": "f1939e8d3bb650b7b8be48d906bf4be35d33702b600eeb5305e333bf9e6f6433",
+      "src/recuris/adapters/__init__.py": "55ac984743b8ee5361f5c4a23468a875c7ceedc2b896bf7d4ab8c423a4bc9bbf",
+      "src/recuris/adapters/skillflow/__init__.py": "f53023bd487f9d401db97cf65b1156b436543276238695fec667f76daec438fa",
+      "src/recuris/adapters/skillflow/render_configs.py": "cf06a73aedf3def3183c7fb9bc7ad5f37c087095dbf3356ac8f319e5f11df0c5",
+      "src/recuris/adapters/skillflow/score.py": "c238af3e9c19d02bbf51ebffa30b330be1a89d6a8310508d58eabe5b8bf00990",
+      "src/recuris/adapters/skillflow/templates.py": "e4632c59df1b3f7827d8140c93f87b60f8272a74eb7b8a81859369c795ce9c8c",
+      "src/recuris/adapters/tau2/__init__.py": "1efa47f9946b3c45c6125ea9ebbd89c1b973f7f3c2f4e0df526710c1abeb68d5",
+      "src/recuris/adapters/tau2/agent.py": "dbed5972bb0740d170ace00ae4430d2e1573bd4ce8060ca5be4be469e0adbe48",
+      "src/recuris/adapters/tau2/emonly.py": "a665372c25d4e15517e3aaf0b6637a709781e17ede183c29d74ede297d1383f5",
+      "src/recuris/adapters/tau2/run.py": "cd138801f36ac73d1bb669a83a5c5efaf2a64803844326b1feb97ecfbc0f5949",
+      "src/recuris/adapters/tau2/treatment.py": "9d3cd495e1265671dc569a4246c4bb4f0d914646a737d4a94355d34977b47b1f",
+      "src/recuris/adapters/tb21/__init__.py": "b6b3fdc027749ead14ad0dfa43e6c34af3c391940e364577543a66282126b979",
+      "src/recuris/adapters/tb21/harbor_terminus.py": "2c4faf822a13a8b5156a8a6901ea7eb4ba61d38f42e0532d2291e769f97bd3c6",
+      "src/recuris/adapters/tb21/runtime_bridge.py": "6559be2f7287bf33a880f78b572890dab9e51c2660cda4fba994e9e0bd8f0c74",
+      "src/recuris/board.py": "21aa6c1ca5bee7ffea78e710652935ea59f30814d6b306f83e2dd48530416148",
+      "src/recuris/builtin/__init__.py": "82d57872afcddd69d627796056abd5fd8189c105bb4b91d011f26967d690789f",
+      "src/recuris/builtin/checkers.py": "0f8062ec4da1716712cb9b3b5854664934507bc19fb211de48c7b4dbda345fac",
+      "src/recuris/builtin/deliverers.py": "41f61d0c858439dc072a39ec071764534b7a6ec88b070d8ab16b0ccb11408119",
+      "src/recuris/builtin/embed_retrieval.py": "9ded954ea5e222db63a51133e14ce91e2c6752931afb6e0232cd77b743b86be9",
+      "src/recuris/builtin/entrykinds.py": "ae2cef36c60a0b45340b1cca21aa5fcc03a5c61019966ef1bdd6e376c91b9bc5",
+      "src/recuris/builtin/execution_gates.py": "47f112b395f2143c92f5cfd3af4279cf446d4e5571430a4931baf980daba03a8",
+      "src/recuris/builtin/managers.py": "3b8c0d472a2da8b11712b8b9c5425113f2b915f0abff790e01a9051de2821c45",
+      "src/recuris/checkpoint.py": "c0fff54b8b650d1038f9d6f4551b5e34e42d7d5f8e6ed55437782b2e0271c60f",
+      "src/recuris/cli.py": "14f01ebf87e1fdeee155dde8404eb51c8c0610cc3a03047a6e51136696f1826f",
+      "src/recuris/config.py": "d7068160e1bcbc8f7ae4fc14fe18cf82d8d774676df73b45721de6e7d145fc7a",
+      "src/recuris/confirmation.py": "fe4e93804c72f128f4ad177ea45c19e3489fcd9b5b1ceb1fa70c1d12488a4a6f",
+      "src/recuris/em/__init__.py": "308190a06cfa7ea5f63859d9d60bcaded0ace1105b37d7fca8131a093332cc8b",
+      "src/recuris/em/entry.py": "84d1ab24268e8b9cfbebf88b7b619ea46336771add6352b029a2f0c23606f3f1",
+      "src/recuris/em/store.py": "fa6bfacc83179be4cb8bcfdbe2139daf2bb3abc14e5cbcd8d383b4f3d8a2efc6",
+      "src/recuris/errors.py": "b7ba804c96146b19af0b2b397f42d510313fa5f7a86d6e2962459f0f12e151a0",
+      "src/recuris/events.py": "5919b0eeed822400da96b9ab1b78806d5893c4441c057ea763d9aa6e7ea29315",
+      "src/recuris/fingerprint.py": "2347f1ef83c90f7032fc4bc637f8cd73b97e3f5f2602278e8ff30a3bc2b63fa5",
+      "src/recuris/grounding.py": "6015c85af4a264f6e39cfb1c4160ebad213e66398acbe0345ee039b7e3356511",
+      "src/recuris/guards/__init__.py": "e617413da8527db71d7e5d8a4c2aa921479fca69d5508b980b8dfcd401ed6dcd",
+      "src/recuris/guards/sanitizer.py": "56725c16f5b994584de44a482b0e45d27723006d59b0a9f3b80a17c7f01c90c1",
+      "src/recuris/guards/truth.py": "d0abf5e80e023ac303723c1b4b347009f6876061aa423da7462c7b59a5a834f0",
+      "src/recuris/llm.py": "00272ebfc069c734eb6e2f2f356270f42efd6aee5298063312aa94556fde40b8",
+      "src/recuris/metaagent/__init__.py": "6747fdec81748ac0a6c1f97de20f6e5e11e247bbed24f07873e576e33fbffb88",
+      "src/recuris/metaagent/activation_probe.py": "54ed35e740096547a35990170ee1f6d524b5211aa38fa080a8aa2df68429f262",
+      "src/recuris/metaagent/benchmark_protocol.py": "2166b0c72a71917f9c8596468d3b93ef2c7ce87c8464008de0cb3c629c3a1c69",
+      "src/recuris/metaagent/domain_adapter.py": "06dd1534bb2c7b611b863a43d459ae76003066de0fd8d1966aebcecef425817d",
+      "src/recuris/metaagent/downstream.py": "fb16142f6294482ea8e6f581e60f4d934e55bc3fc8bc51c17bbdeba2af93233a",
+      "src/recuris/metaagent/driver.py": "8b3e2626e9fa70ba98d682b1295a8196f0c24ecd7653913dd0e12bdb179f7735",
+      "src/recuris/metaagent/eval_package.py": "39f21a18cf845057fc0683ebccfa139a17759b5a3e740661161dbea096bd19a0",
+      "src/recuris/metaagent/eval_run_guard.py": "fb16e49a9fed21606c45c1fe4f25a1449483f3439b4d78bba74af45d118336c6",
+      "src/recuris/metaagent/gate.py": "c21999581fa1f359cd9607634453d1c288d3e28a25456da7674ccb331f839cf0",
+      "src/recuris/metaagent/gates.py": "f864018a37c9466a9697f7df2e77ec13d9cbc624eab85caa4da03ccf1a6a29a6",
+      "src/recuris/metaagent/integrity.py": "5b96588cfe6327cc8c50776c3b5b7440ae0761e26181686612e5f4d475203d22",
+      "src/recuris/metaagent/lint.py": "50c7b7cf52066b0c159405d089656444ad37184f87b72bac6bae2c29f9bc5507",
+      "src/recuris/metaagent/plan_schema.py": "ab17cf48fcd48f4382f76717882d6bf3a5efd417319347c6b22e1b15d0d007d5",
+      "src/recuris/metaagent/proxy/__init__.py": "43e5dc02bc82f4c6cb79fc089f6064df4b812693133658ba1b0a00b741e50d69",
+      "src/recuris/metaagent/proxy/anthropic_openai_proxy.py": "13c8f5e859617fb1c6ed738d0a768e2b6204981b934cc254b727754be2f50e80",
+      "src/recuris/metaagent/reachability.py": "4cca2ecabc7709b69919e782fa740f49920870045d3ca3c6b0be64c2ba4340d3",
+      "src/recuris/metaagent/sanitize.py": "28223a6a734ac8b7823793eefcf0b788e6ce08629331299f1ed38356d472f4f3",
+      "src/recuris/metaagent/settle.py": "1eb05034d799f95088b6c343dffd9d92ea6c5befb179a90a0337c663234a6929",
+      "src/recuris/metaagent/tau2_domain_adapter.py": "e275e2ed43fabd5a094e145bc472e4fa81c1588faa52912b677bf3477024d848",
+      "src/recuris/paths.py": "40f4cc7013f539ea8cbd9355f4d555de350c4a44d29b42ff805ba0e9351dd1b8",
+      "src/recuris/runtime.py": "5b1da7b7730134cc574445c68c2b9a74820feabb65ff86af441494247e7c0f74",
+      "src/recuris/skillmemory.py": "12d2f21861f09bce88166d58b46b149e4a390031683e7663b6d1d1a5a6cda33f",
+      "src/recuris/spi.py": "46049d935729b7c69082534e4a575c516358a946c644cda352db2eda0770c220",
+      "src/recuris/tools/__init__.py": "4afe45f5716aa0d1a887231f9a61b66daa76038e60d58bb8132c1f99aa644357",
+      "src/recuris/tools/avgk.py": "162b51941362052c9307b737fc7d11563a23e4c54c25ac8cc28179efff221537",
+      "src/recuris/tools/compare_runs.py": "98765fdd9d014fbefcaf19f406fd167d9a8155b9e017d4a9956ad94cfec15bd3",
+      "src/recuris/tools/scorecard.py": "e3c66ff3c998feb3bab9b49e3f20a881791ddd81dc9560ada84445e96fbd6000",
+      "src/recuris/tta/__init__.py": "889efad99c05dbf53f577b8eca96278383700a47aa480f14834d99563b5ce22a",
+      "src/recuris/tta/driver.py": "1883f810645e3eb9cef06f54352257a4f088b1bbfd9378bff2937cb26dd371fb",
+      "src/recuris/wm/__init__.py": "5dc3c60cc009b93e50bfe1f385d50ba8eff24f5c58e21c398b7ffdcd1694cb50",
+      "src/recuris/wm/ledger.py": "0d045b5d6f86f9dda83ba78584a2d4659b8341698d3c45b210d6192a4eac94fc",
+      "src/recuris/wm/render.py": "9fdc8d924ae147c6601d590016524086ffbe67052bcbbc206d5ba824e7021b01",
+      "src/recuris/wm/schema.py": "15c4fff43f3b59176ea2f1963c0349b284f1afdf4c676b08b9f804bbd748cc6d",
+      "src/recuris/wm/selfmaintain.py": "f372dd45c6d0a425841145edbb6d3b986f672f1cf3338a4fffd59f0c8b4b8ee5",
+      "src/recuris/writereview.py": "c5469c64f73c93cbec55444ad24ddfd33f78aad3a2f9d5f900575f91c9ac8ba1",
+      "@tau2-bench/pyproject.toml": "a019397eef9592abbcdcd0b7a1a46c717c476dee60d6b31073448b3811a1d1fd",
+      "@tau2-bench/src/tau2/__init__.py": "0ce892494155fa432fe4e8caabc2ffb1349a19959ad756215f2d9031156bfb78",
+      "@tau2-bench/src/tau2/agent/__init__.py": "fe543554d2638c983cbbc64ca19b2a4ce39c08c36dbf8ec303ac4d65a0244075",
+      "@tau2-bench/src/tau2/agent/base/__init__.py": "c0099fefb99b15f6f1482c9ebd918d560d104aaa47471e86b8574b25c259f534",
+      "@tau2-bench/src/tau2/agent/base/llm_config.py": "3b5bf4c5f69e5df5357374a9e379e6932096bcdbfcf3e411c4791c33d73d35b4",
+      "@tau2-bench/src/tau2/agent/base/participant.py": "64609023945372948cbec447fbf3b9d7b2eb53701a185680305af5247402d420",
+      "@tau2-bench/src/tau2/agent/base/streaming.py": "2bd6ae56cee0469ecdb88a3d7437f35f19982c5799ea27a942c547e9a67e94c4",
+      "@tau2-bench/src/tau2/agent/base/streaming_utils.py": "e9b26a7f4f4bf1decd291fe8b3fd12da97a8158ecc250281a18b175f8d79cc15",
+      "@tau2-bench/src/tau2/agent/base/voice.py": "d749493fca8b1ca1be65af9ec57371e40dd1293bd24f0adf4814864669a1cd53",
+      "@tau2-bench/src/tau2/agent/base_agent.py": "97f1033723d03da99f3338ff7a12ed60114a55ed293928ff4ca0bdace6851b4d",
+      "@tau2-bench/src/tau2/agent/discrete_time_audio_native_agent.py": "3782ed75fe42615a17ed2f0d70e44c0f99cc1153d028e00420b1fdcbe4c82ead",
+      "@tau2-bench/src/tau2/agent/llm_agent.py": "4532506147d5db631bdde41df3dcacf9b31bcd80901cf8d5fb4b5c3f9155305a",
+      "@tau2-bench/src/tau2/agent/write_review.py": "32ce2e822e0deb47f377c0c1fb900a235fad6f62466e2a976348bae59832a717",
+      "@tau2-bench/src/tau2/api_service/__init__.py": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "@tau2-bench/src/tau2/api_service/api_config.py": "7eedc4d41d7dd41c45afa243037c6eb03b7de68f8be28bdda8db869ecae3ebc0",
+      "@tau2-bench/src/tau2/api_service/data_model.py": "3aa78323402498716bc5773217ff7d79ed0b703e2d0bce0d6f37699426a4152e",
+      "@tau2-bench/src/tau2/api_service/simulation_service.py": "b74b43da92ba0db9434130a9f403ce709d33c38b361ab63dd99cfb9b253564b2",
+      "@tau2-bench/src/tau2/cli.py": "45c9c3c65c43866f0b2bb7e35c6b40065a45687552b81621dad0faed6301ce9e",
+      "@tau2-bench/src/tau2/config.py": "59bd7168ffb5fc96bfd593e4965581f24c6c74caa5496fba89bf9cb7ddadd10b",
+      "@tau2-bench/src/tau2/data_model/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "@tau2-bench/src/tau2/data_model/audio.py": "443de1a2c4fa856621eaccf8b6d0637f4e8d4f0de0aba990e9732c49b3751bb0",
+      "@tau2-bench/src/tau2/data_model/audio_effects.py": "30fc2e70e27e1691b5e098c7e165cdaee44108efff48ee36c41ccef9fb448ee0",
+      "@tau2-bench/src/tau2/data_model/message.py": "378cc451ded5b4314c4fe177bf83e72abb2e0bba53b79c2a0e27c53f3cbd15b0",
+      "@tau2-bench/src/tau2/data_model/persona.py": "e012387070438f51673aed61291288541c7270bce310b9851fde89493fac8e19",
+      "@tau2-bench/src/tau2/data_model/simulation.py": "518a4eda9af783f25243e1bd2c714f4617cf86188878a0bb584fe73c9528a35a",
+      "@tau2-bench/src/tau2/data_model/tasks.py": "0243a6454b2e9c8a14b8364c38ff95dc1dd7512105b69fada9bf9295fc8170fa",
+      "@tau2-bench/src/tau2/data_model/voice.py": "019841fc7efa629043f4df2905c6f26c9c2d6b254421981ed60baf62a8515e82",
+      "@tau2-bench/src/tau2/data_model/voice_personas.py": "674761a5b702aebfe3064d87644dd9bf95ca86b0f38ffbb31f94f45191927264",
+      "@tau2-bench/src/tau2/domains/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "@tau2-bench/src/tau2/domains/airline/__init__.py": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "@tau2-bench/src/tau2/domains/airline/data_model.py": "a8083e2f590e4b9b66a65d7cd50b7a0247e4fa33d6961aaeb02e4d92488b3cff",
+      "@tau2-bench/src/tau2/domains/airline/environment.py": "64589faffbcb75c8ac7c95d2c94ad27f4bd70e23b9856a6928fa678a0f7fcc8d",
+      "@tau2-bench/src/tau2/domains/airline/tools.py": "3987f21c286314cb48764f97052934ff4fd60e27a0b2e4a43423911adf8eaa26",
+      "@tau2-bench/src/tau2/domains/airline/utils.py": "9da26327af3d7fa94e05d48869d8b06cd8110313fc24d308993a750106b11f06",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/__init__.py": "090929481bbbf2436b2e7ab84cba3d736b6dbd79f0c408157e41fc116fcf5cbc",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/data_model.py": "8451829795c7cf18668b26adc2db06c10426f4e69b553824ea886c40765ee3c4",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/db_query.py": "0f42b5cba53fdb8f41984af160bd6f2bc20416460973b3256542785fd318065a",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/environment.py": "62d1a8e880a1c0c998b8f1feba4653d82def987ac4f80635ea7cc262a465c74d",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/retrieval.py": "f4613a5862f952388bc05929842b086e58c5ea0e6cc0bac21c8f4b83ec4717c5",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/retrieval_mixins.py": "1eb9051ff164329ab16fb0976ac36f7442346a894061ce657b1fb86c8e1ff86e",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/retrieval_toolkits.py": "be37543d4459125e502ba983f5444e923b1d80ab24d57f58057592f331a15f3e",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/tools.py": "deb0132254516d00b9eefcc4b178462ef656759f2d445c8930623e3d4219799d",
+      "@tau2-bench/src/tau2/domains/banking_knowledge/utils.py": "ff116aef99e023d7492690fafff54fc24e9b6f3d3af18b7402a26b974b41fc66",
+      "@tau2-bench/src/tau2/domains/mock/__init__.py": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "@tau2-bench/src/tau2/domains/mock/data_model.py": "12f8be77d805d8d332291d6f0b3283d30ff0581c15d887ab5a1f37f8a9f395aa",
+      "@tau2-bench/src/tau2/domains/mock/environment.py": "4a45228c388606fe16203c107ae107622fb5d9505d90b56e6fbc33acc2dc0d51",
+      "@tau2-bench/src/tau2/domains/mock/tools.py": "926b077132c8eabd2bbae8173dbed299eea7fcd4a78c74c3986766626a24b928",
+      "@tau2-bench/src/tau2/domains/mock/user_data_model.py": "0c1d084d1f2e4539e050f28ba01d97528d2e05c6d4c4a3cb49cb8c9a0eb4ebd9",
+      "@tau2-bench/src/tau2/domains/mock/user_tools.py": "75a8e33dca3b358b2fab08786922aa142d03e053bc02c69c0d292af325a3131f",
+      "@tau2-bench/src/tau2/domains/mock/utils.py": "d9f43cf5eeefad0817973d188dad2113e73c37d1b9bae6fc86a6b0f1a703622e",
+      "@tau2-bench/src/tau2/domains/retail/__init__.py": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "@tau2-bench/src/tau2/domains/retail/data_model.py": "f5ad09590953855cc49d2ab2ad5c0594be408cae74d1500fb278e5a6bf2c50d6",
+      "@tau2-bench/src/tau2/domains/retail/environment.py": "5b819fb895a4ef49df71404c3d9678ab09e8578eec841b8ec9229c8f51e32405",
+      "@tau2-bench/src/tau2/domains/retail/tools.py": "34f4fe9702d36f0dd4697700fbcd63d0cf5386e6eb8e7499aaa336243bad8750",
+      "@tau2-bench/src/tau2/domains/retail/utils.py": "a385b085b63d0e5921c15f7e2201b00df1d984990f4dbb7b24a867e3bf7cb648",
+      "@tau2-bench/src/tau2/domains/telecom/__init__.py": "48747a78fd49944aaef6f540269b5b77e558b8b996cb0f7210b80317769bc032",
+      "@tau2-bench/src/tau2/domains/telecom/data_model.py": "f868cbbd344cadf6c376f21976edfa38b8cfe199922748e31eee666f791a0628",
+      "@tau2-bench/src/tau2/domains/telecom/environment.py": "96c2e58d5c1e4431ac99c3cfa488963865613bfc623bfb852822ed97e6618121",
+      "@tau2-bench/src/tau2/domains/telecom/tasks/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "@tau2-bench/src/tau2/domains/telecom/tasks/const.py": "1f7100229a56c86ea2f47d6c78fe26f7e0fbab65ad91150f9436f0fee09d7784",
+      "@tau2-bench/src/tau2/domains/telecom/tasks/create_tasks.py": "7ce75c5afc869a344985e68f7725d18709e51f6aa1233a91e5d387ba45bfac59",
+      "@tau2-bench/src/tau2/domains/telecom/tasks/manager.py": "ba1fe1c514e8a85c58c417cfbe5ecfa853289bbc181874e37e90e610bdee3e9e",
+      "@tau2-bench/src/tau2/domains/telecom/tasks/mms_issues.py": "f7350a6771ac28464ee392731f741486b421126ddf907082891d2cfc4a739b24",
+      "@tau2-bench/src/tau2/domains/telecom/tasks/mobile_data_issues.py": "2c5169d82c6fad894ffd9447b98c249312155354d428fb3d3f373176b82fd667",
+      "@tau2-bench/src/tau2/domains/telecom/tasks/service_issues.py": "a646ab516cdd7f9a3716dfa9acd7ca60741bb7db81494c26c2c988f2efe3db2a",
+      "@tau2-bench/src/tau2/domains/telecom/tasks/utils.py": "aaf9ee7d1e3699918292902951ca929ff7d0e7d7a2c8f782a0bd14e3bf13ca26",
+      "@tau2-bench/src/tau2/domains/telecom/tools.py": "388552434d1b8225e33e7958bdb6efccfe92b49e11d1838568d9b559514e9d01",
+      "@tau2-bench/src/tau2/domains/telecom/user_data_model.py": "27be0006694e9a740dd378f42099d6d1afecbd445f7906aedcd1f800087377c2",
+      "@tau2-bench/src/tau2/domains/telecom/user_tools.py": "03fa751eeea3734313a3f5274223d42750fd5c1a28f2624265a678f271ac309d",
+      "@tau2-bench/src/tau2/domains/telecom/utils.py": "9195707fca3d96b41d78de661bd2408cfaab75793769c9a739a7521b690fc6dd",
+      "@tau2-bench/src/tau2/environment/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "@tau2-bench/src/tau2/environment/db.py": "49e12f900a8aabe62d6137a9baa1e7d471f9b3e516cf7c85fb61ecde8a65154c",
+      "@tau2-bench/src/tau2/environment/environment.py": "ba862a9e5b8aa9e0360cf313b5d0f26bb8f7eea53a93bdfe75d22d6627244f8a",
+      "@tau2-bench/src/tau2/environment/server.py": "5ec31d6b75139106bf331a8a0125854ecf873fa3517bfe7420323bd560d12d4e",
+      "@tau2-bench/src/tau2/environment/tool.py": "6dd74021ba95a6f8dfa0971546b768b90e15b212f8f9051156ae6bcdd24b77d3",
+      "@tau2-bench/src/tau2/environment/toolkit.py": "3e897891e8878c3399aec72e42eb0eb5546642420c0c902b225421fc936b924a",
+      "@tau2-bench/src/tau2/environment/utils/interface_agent.py": "9c26fdc3f787c0551c2335d0932f6099c1e054cfa7d5f4da733ee8396a82b040",
+      "@tau2-bench/src/tau2/evaluator/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "@tau2-bench/src/tau2/evaluator/auth_classifier.py": "3a9184b16c7212ddfb81050d94bcc0f591c12ddec7517db0c4e7e83701eb2c2f",
+      "@tau2-bench/src/tau2/evaluator/evaluator.py": "85a05cf75f19708bf855ac8f97cf34d8aef05c99332d57dc066725200ca59444",
+      "@tau2-bench/src/tau2/evaluator/evaluator_action.py": "4347ec90fd09db73b9f7e46515220363f91f0c3b12aeddf7ece83346f49227f8",
+      "@tau2-bench/src/tau2/evaluator/evaluator_base.py": "1f79c11e5cb5c8cabc26cdaad7ff3a3a1687380f4d7fb1f9fbd9b6f9ab18e1ff",
+      "@tau2-bench/src/tau2/evaluator/evaluator_communicate.py": "7a082f91c746b84cc37c6994eb6ff78f297222fd067503a4cc86d45750696507",
+      "@tau2-bench/src/tau2/evaluator/evaluator_env.py": "e932ea5f675d7a172557350f30b73d66474659d9b4d976ecd763ca2929017633",
+      "@tau2-bench/src/tau2/evaluator/evaluator_nl_assertions.py": "cb6b3758cdceb02a726732b4ee1af618affcc08f8ab84b44f060146b8f3ad90a",
+      "@tau2-bench/src/tau2/evaluator/hallucination_reviewer.py": "10bb19e7dd0ae19a82df8fc6aa28d7c52e34c820316f72f73f12bcb17e212faa",
+      "@tau2-bench/src/tau2/evaluator/review_llm_judge.py": "34f3e44975b804e755cc94aaf07dd79cd6f1e8c3ffd4a8a5af80f5d3c24616e1",
+      "@tau2-bench/src/tau2/evaluator/review_llm_judge_user_only.py": "cf95c8e13192b8ad0447689b7a58b995ce0cb40cdbc738847e88758305d123cf",
+      "@tau2-bench/src/tau2/evaluator/reviewer.py": "3ff29a1527ae2fd5fd906846d964a06b4d0827fe52de94b0419b7613c5b3b933",
+      "@tau2-bench/src/tau2/gym/__init__.py": "8b617d7665ee63a601dd5b70e9b20afb85a826a81c5bad72f2a0192f4acd6511",
+      "@tau2-bench/src/tau2/gym/gym_agent.py": "109a7d5a84ecae3c84c56bc7a20fd4b9be8e87727a6cfd0e3bd3e6c011f4dcf7",
+      "@tau2-bench/src/tau2/knowledge/__init__.py": "7b2f1aa6e9f265c70cabe0c8aabcfe34bc27c2b680a841cd6c8d145b689e60d0",
+      "@tau2-bench/src/tau2/knowledge/config.py": "3c2d0048dc9af7d6af49cebfe25be54dff88cee2bdaff84456b17a6020b3e1dd",
+      "@tau2-bench/src/tau2/knowledge/document_preprocessors/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "@tau2-bench/src/tau2/knowledge/document_preprocessors/base.py": "1256bc851213dd0c28b3242938f97521503d7a6ea64faad65c2e621888451699",
+      "@tau2-bench/src/tau2/knowledge/document_preprocessors/bm25_indexer.py": "5808f4bd2a8406fcbe575dd8412dbfcdab7637b94bc0ca053414710dad0a9059",
+      "@tau2-bench/src/tau2/knowledge/document_preprocessors/embedding_indexer.py": "fc5a38d5ec4edbc54dae4239b763808612c1c7174781b4de317a231e1798b8b2",
+      "@tau2-bench/src/tau2/knowledge/embedders/__init__.py": "83b2044013a1a9e0d20c2db28a7c6ba832b07f0bdb4d23d37deed7caa3863f9f",
+      "@tau2-bench/src/tau2/knowledge/embedders/base.py": "8905218ed326c3ebca8cabdb21ab11e28aff752c61ba567e82379d40298aaf4d",
+      "@tau2-bench/src/tau2/knowledge/embedders/doubao_vision_embedder.py": "019847adb1ae36879deeed875d94d465104e7ef35c37b049c3ccb470352db5f1",
+      "@tau2-bench/src/tau2/knowledge/embedders/openai_embedder.py": "3da18207179a790930e507464d94d97be9f2cdbfdccb712df10a75c6f9cb47f9",
+      "@tau2-bench/src/tau2/knowledge/embedders/openrouter_embedder.py": "e3eed96867aaef0de493fd7535abd2ae58c5ba56f3e5421bf464554de4f7fb58",
+      "@tau2-bench/src/tau2/knowledge/embeddings_cache.py": "e57e299340338ae891027f98116a6d521efadcc5e0964dff5c50c616d7fe2f67",
+      "@tau2-bench/src/tau2/knowledge/input_preprocessors/__init__.py": "10a9fb1fc962f9b7642dbb338762945078309e3380a5aa08552cfd7902d239e6",
+      "@tau2-bench/src/tau2/knowledge/input_preprocessors/base.py": "32c1064e520195df17c0b0d0a1d0a8c1863ce84546dcd6139b9f9b697df2090c",
+      "@tau2-bench/src/tau2/knowledge/input_preprocessors/embedding_encoder.py": "7b0afb8dc3a644f4c4493debd6bdb4f9647345a5dc163dde66726d8557d0c825",
+      "@tau2-bench/src/tau2/knowledge/pipeline.py": "6aed4b8d6186986299a3af5cb840985b1041a69893ce94bf62c5ecdc2fc64286",
+      "@tau2-bench/src/tau2/knowledge/postprocessors/__init__.py": "63c5a76cb486e25617d2942c17378a9bda8211fc31fd9c4d590ce6b2fae4f6db",
+      "@tau2-bench/src/tau2/knowledge/postprocessors/base.py": "4cbffeb5028150f50a06d72e2cb861f651c5b34e56726ddc0c90875830935875",
+      "@tau2-bench/src/tau2/knowledge/postprocessors/bge_reranker.py": "4430889114d7f519abe3a69afa22a0815528d60e549e5c05699c5392306d811b",
+      "@tau2-bench/src/tau2/knowledge/postprocessors/pointwise_llm_reranker.py": "878a8f22f507727357e2d7cff8ff6d289b3101ea33b602a198594eb5e8e23503",
+      "@tau2-bench/src/tau2/knowledge/postprocessors/qwen_reranker.py": "430c5f4e7371950cba39457b77f49c8201809ce2da6ace868571969b8b19ea67",
+      "@tau2-bench/src/tau2/knowledge/registry.py": "98b476f3ac15de7555e2ee621c6ea16cf1b860d383b6e6b85e47bb0e097d815c",
+      "@tau2-bench/src/tau2/knowledge/retrievers/__init__.py": "1ebced75a6122c66f071f38443e6cab1d8eba909b8066935863428021d73c514",
+      "@tau2-bench/src/tau2/knowledge/retrievers/base.py": "14d5584225cf31d90bed97175e6b74c9e49a5b94f2296f673cbdf3f382cd1930",
+      "@tau2-bench/src/tau2/knowledge/retrievers/bm25_retriever.py": "2a9f6dc19db6e7bd05eb5d2d39d9944a5dc87019c69ea708c42b1d515f2834ba",
+      "@tau2-bench/src/tau2/knowledge/retrievers/cosine_retriever.py": "1c06852a79299e58d3a0b56175e72d870b90ae022b814ea68487ff7336bf01eb",
+      "@tau2-bench/src/tau2/knowledge/retrievers/grep_retriever.py": "ea7d5427b128666b71049ac5e5dc4851ef8c65ac4ddd0faf29a04b9bcc1d52cd",
+      "@tau2-bench/src/tau2/knowledge/sandbox_manager.py": "7bacd92019c51230616dffe73c731e721ccb76ebfa3bfa9c8da1cc2287168f10",
+      "@tau2-bench/src/tau2/metrics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "@tau2-bench/src/tau2/metrics/agent_metrics.py": "136b5ebcc0c115b5817a4f6d6b485a871aba199ddedf56458f35f339569a54dc",
+      "@tau2-bench/src/tau2/metrics/break_down_metrics.py": "8eb9e7571d49d7fa9e6a3dcf3c9dd9004b5326dea5cb8f7694f53ffb7b8d92fd",
+      "@tau2-bench/src/tau2/orchestrator/__init__.py": "8cfdda384404bbc2a14999757d3f304da71db2191d828723dbd19a40c8906828",
+      "@tau2-bench/src/tau2/orchestrator/environment_manager.py": "c548268b3c7a9a526c7b9fcfcef9058bff878dc3b17cef31793eccc695b6a049",
+      "@tau2-bench/src/tau2/orchestrator/full_duplex_orchestrator.py": "a674b6d2cba44dc3374eb80d054485cc0e96772bd7c8f527621cf25930e08b13",
+      "@tau2-bench/src/tau2/orchestrator/modes.py": "b2d131cef3f15b1558568b1e4b0b316aeea26ae7fbe1e1092d79febbb7d74553",
+      "@tau2-bench/src/tau2/orchestrator/orchestrator.py": "ebdc98cb7d3121397f5986ed09c7a4475310a8d9fd72a88bc50c24dda355dac0",
+      "@tau2-bench/src/tau2/orchestrator/utils.py": "b0940cb324f4c44bfd6a63e9a3cbaf9336a5b95c50c3da201ad1ea8340858dbe",
+      "@tau2-bench/src/tau2/registry.py": "d170c1f4b7323a75e26b2ead6754ed423b17a3deb91fe2c89e7e8ec78c6bf12a",
+      "@tau2-bench/src/tau2/run.py": "5a32c35582b8070e8d50c135508d436859392bf2db179a52711a3c53fb108dc9",
+      "@tau2-bench/src/tau2/runner/__init__.py": "a4691118a6a612a7e3339ae638a76910d2f1746ff3bd3ed584946e32731aef6e",
+      "@tau2-bench/src/tau2/runner/batch.py": "649a73d5cd4b373abfaca2bacfcc97693a43da4ef1dbb6b9098f673c7a0161db",
+      "@tau2-bench/src/tau2/runner/build.py": "cce161a3b2d2d2cac79ee96ac9e59d548bd4f8191c1009540b67ba740ee5ec2d",
+      "@tau2-bench/src/tau2/runner/checkpoint.py": "3c4cf66101ec30a3dc47ad7b3be35a4e542ffcbf85b3ba2bad66ad28064e9ca3",
+      "@tau2-bench/src/tau2/runner/helpers.py": "39f804b325b8bb73893fc75ba422a70d5bacd258bc64ebaf1c0fe71b2fa93b66",
+      "@tau2-bench/src/tau2/runner/progress.py": "3264ea8ad797f6d513626b9baec1a57c2a3b0aa499cebf9915f9038b90edf68f",
+      "@tau2-bench/src/tau2/runner/simulation.py": "1b98532199a05d87dcc14aead9d59c320d20f11d3d8e4c8458663ed5964eafef",
+      "@tau2-bench/src/tau2/scripts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "@tau2-bench/src/tau2/scripts/analyze_vad_silence.py": "2396b1b2326bfb1bf5a43864d68a927dfff0451175ac80015422a37fbcd9e317",
+      "@tau2-bench/src/tau2/scripts/check_data.py": "60878ba719227e2583c02fbe9dec93b6589ed33c6e56ce6874f1f2c7492acf03",
+      "@tau2-bench/src/tau2/scripts/evaluate_trajectories.py": "95359191d088d5fc4880ee05bcb1d6997b766611e9387cd0bd601a80098f7dd7",
+      "@tau2-bench/src/tau2/scripts/get_experiment_results.py": "d6355f0e4386c472ee84db55ad7acb7665ec623050951d0de55eb742cbe979a7",
+      "@tau2-bench/src/tau2/scripts/leaderboard/__init__.py": "af99294a3b149ff9a55c5c7d13bc3ff5e5fbfac6e8e0b9658f1f7bbafeebdfea",
+      "@tau2-bench/src/tau2/scripts/leaderboard/generate_schema.py": "4b8926308fd24d9478e42f8308022e2bbfed8f9ecd1a373ea2a63c91a470897f",
+      "@tau2-bench/src/tau2/scripts/leaderboard/leaderboard.py": "ec27bc5e56a6705003e49b72fe54d8b4b395c697c6d114bf6aad90558dd2b903",
+      "@tau2-bench/src/tau2/scripts/leaderboard/prepare_submission.py": "6018f1825469a1d56b0b68a75e984691ecca4209546069237c58ee35ee4ab92b",
+      "@tau2-bench/src/tau2/scripts/leaderboard/review_submission.py": "ea184d7cdff6d58ea1fadc6fdb4163fd49c504f8480d45f0c9eca1a16b9bc23e",
+      "@tau2-bench/src/tau2/scripts/leaderboard/submission.py": "7b6e6bb053cd7f74dbc0cb2696733b579c6dedcf8d38ec8aa86ca66ebc4cf4df",
+      "@tau2-bench/src/tau2/scripts/leaderboard/trim_trajectories.py": "9c38da31b884f96c29681ef93d965c071b4472bdfc73c6642051edaeafe4929e",
+      "@tau2-bench/src/tau2/scripts/leaderboard/verify_trajectories.py": "33260c9c00ea329aaabbf998d6413450af818f2e8f9fb66f8f82a94f0eca681a",
+      "@tau2-bench/src/tau2/scripts/leaderboard/verify_trajectories_private.py": "8559f11d219655a01093f74028a7be232161dcdea5fe6d1346c15184a463c22a",
+      "@tau2-bench/src/tau2/scripts/leaderboard/verify_trajectories_public.py": "577fdd4be68cfcada461698c60607a7f61487759819dd9dd4b44258075c69b71",
+      "@tau2-bench/src/tau2/scripts/manual_mode.py": "2b44a8dc68c7267bb859bc1b347e3bbac16cff9320865ed7762d0221f841cd60",
+      "@tau2-bench/src/tau2/scripts/per_task_summary.py": "2a2d23496501adda712e66b46cb0e298b800cb938b9c62f7034ef018c1e05b7a",
+      "@tau2-bench/src/tau2/scripts/recombine_rewards.py": "8c4843e7d3cd202a34441492570f7980fe7d874a7bcf2a6f9084405c1dd4ce0d",
+      "@tau2-bench/src/tau2/scripts/review_conversation.py": "2da50b56312097667557166427cf3d2a1601fb2a20971a61e217218d1a2ea5cd",
+      "@tau2-bench/src/tau2/scripts/show_domain_doc.py": "af6b584d51d05fa961df91434d2e262a10a751d5362d8fc1ad570ceec06432cc",
+      "@tau2-bench/src/tau2/scripts/start_servers.py": "d1d98bc7c6fb34b57569ded1ee2bf155b30f84028c9582d07913a79895d29688",
+      "@tau2-bench/src/tau2/scripts/view_simulations.py": "8f51839672bd89224196b4522daeaa8bc50e319d4d82cd54c889dc3dfc4408cb",
+      "@tau2-bench/src/tau2/user/__init__.py": "7698d14639e2eea82fc40169113ad99d0f57de30207a3cb47b8f9d5fa96ca351",
+      "@tau2-bench/src/tau2/user/user_simulator.py": "bfe1defe73bce25450b2be697c249d6cec2f3ba25a70e32e2452ba75a53a630c",
+      "@tau2-bench/src/tau2/user/user_simulator_base.py": "e6c4bae08fb7ae6fa6ee5ee29624bc35e0dd6c6fe8ffeab065592c7b51fa32f2",
+      "@tau2-bench/src/tau2/user/user_simulator_streaming.py": "2f045564e3e17192d83ac6fae23789bfc5af2d8d976cc0cc96473437895973b3",
+      "@tau2-bench/src/tau2/user/user_simulator_voice.py": "e4543b619836a5dab127ba125ffc150aa012ec2ee154109716095556d7563aeb",
+      "@tau2-bench/src/tau2/user_simulation_voice_presets.py": "0d5c480871549a6d565b9ec90339e66c1c43d674072b4b7c2a6cc325d91ddc30",
+      "@tau2-bench/src/tau2/utils/__init__.py": "e255aeff0258cf0042f57283c5375cd78b034509b886ba827cd927a2a6d27c6a",
+      "@tau2-bench/src/tau2/utils/display.py": "3f15b046d636b89999d53cb0411a7e340b374012053177a5196c1e536decef97",
+      "@tau2-bench/src/tau2/utils/io_utils.py": "ce66fb275b9bbf09a17be2cb2092bf2e696ab07655bf7571fe53ba8db4ed3015",
+      "@tau2-bench/src/tau2/utils/llm_utils.py": "8c1f1c297e879b2a2d48ac65394cdd497bbd10f42fefa0ce770e7a65ce42bf95",
+      "@tau2-bench/src/tau2/utils/pydantic_utils.py": "618dfc39b619bb0f623151682962ddc52bf2ea70bc2562dded884f118c84b78a",
+      "@tau2-bench/src/tau2/utils/retry.py": "8a4f833ea1880b79a3d6086ad2a87f78372949e8918acdff76d500e8a33bc550",
+      "@tau2-bench/src/tau2/utils/tools.py": "0b7900a9a31a5a65c32780410f30539dface4fdb94c68196199eb2dd575e5763",
+      "@tau2-bench/src/tau2/utils/utils.py": "e0c39544b01700e60a3a26c7cf2c2d17e37e3852d5f0fa466b8517f82b83622b",
+      "@tau2-bench/src/tau2/voice/__init__.py": "e134adb31cb51580d967b2ef853ecd0c54537f73f5f72336642cb52622e73b77",
+      "@tau2-bench/src/tau2/voice/audio_native/__init__.py": "946065799bbc9687cf4c4d9a9e49a71d59ed3a6016ce71bd986c0dcf382685ef",
+      "@tau2-bench/src/tau2/voice/audio_native/adapter.py": "90ec79760c3ab0cd43afa7a86a223c25ec4f3c7dcb652c92063b83e64d8bcc24",
+      "@tau2-bench/src/tau2/voice/audio_native/async_loop.py": "5597fb2e629f032474d22da1a122e96333709e2aa05f328c67aa55a5e270e7c0",
+      "@tau2-bench/src/tau2/voice/audio_native/audio_converter.py": "d674b43bfbf273a3e5691e6bb3625f6db9f154e99aac703fbdb58245cdf6abdb",
+      "@tau2-bench/src/tau2/voice/audio_native/gemini/__init__.py": "2452584629ff6ee1db4bc5c72ae4b8a4d4c0d9213db76d6e10d38848fa4bf024",
+      "@tau2-bench/src/tau2/voice/audio_native/gemini/discrete_time_adapter.py": "c143cc90d9cbe411f4b1dbd517993dfe24bc001c6af5b2d66322b927cacd17fb",
+      "@tau2-bench/src/tau2/voice/audio_native/gemini/events.py": "d8274f8addc5b401aa42463af4447fde2093c9318e2ed4ba0aa1d9fe3bcd3dd9",
+      "@tau2-bench/src/tau2/voice/audio_native/gemini/provider.py": "e6ade110583dbccae9125ffb895b942c62caa9b7334fc7dda1aa445f29168fe7",
+      "@tau2-bench/src/tau2/voice/audio_native/livekit/__init__.py": "e42ede2bb9f0ba349036c5be8586feca35f1f6a45edd3d3ab8bcf32810a72463",
+      "@tau2-bench/src/tau2/voice/audio_native/livekit/config.py": "4e1eda41b8058caab797944b9d2f76d217a28916e1549b6a4cf9c21204aab83f",
+      "@tau2-bench/src/tau2/voice/audio_native/livekit/discrete_time_adapter.py": "dd00c8dbe76c4eda20dc6d8e0384935a8898256f714343748d1997eabada5bd3",
+      "@tau2-bench/src/tau2/voice/audio_native/livekit/provider.py": "6107fa54c39c7735749e9278ac8c2e8fe50e2635e8576c40afd790051df12964",
+      "@tau2-bench/src/tau2/voice/audio_native/nova/__init__.py": "69f4c0b2cce21dac956a14a82f3a478d4eccfa6c50958512914240c9a2b0aae4",
+      "@tau2-bench/src/tau2/voice/audio_native/nova/discrete_time_adapter.py": "ac5e952ba19ac49c8e704f491620ccb75f1f2d0a009ff502731d3bb6e6395743",
+      "@tau2-bench/src/tau2/voice/audio_native/nova/events.py": "5a3dc62d596cb4bc339bd01cfab75281e4cdf14d1cdbabf42fed061a5c4a4275",
+      "@tau2-bench/src/tau2/voice/audio_native/nova/provider.py": "e1f40124b1a845b692b01eda0d74095a3659c7d0bcfba05bba80c6673d8ef6ed",
+      "@tau2-bench/src/tau2/voice/audio_native/nova/test_provider_standalone.py": "cea112576479eecae2f8d5e2f8e2040c249f55f81f32bc7c55bb87e55efc72ff",
+      "@tau2-bench/src/tau2/voice/audio_native/openai/__init__.py": "cccf047f0b2c9252ba147535114f363a0c5df9b1e79c180724f604825a7feeb7",
+      "@tau2-bench/src/tau2/voice/audio_native/openai/discrete_time_adapter.py": "3354a4b6e2c5b5dba9837e407b5ffac631142c5f69ac9fbe22b74da4f526e9f2",
+      "@tau2-bench/src/tau2/voice/audio_native/openai/events.py": "4730083edfa93ac0678c7ff81d4e5615ee9ae342505ac9e75770b826c180c37e",
+      "@tau2-bench/src/tau2/voice/audio_native/openai/provider.py": "7682d50a8f30622d0e5df38e0a5baed83be545105784d133bc1f9c366ee59e37",
+      "@tau2-bench/src/tau2/voice/audio_native/qwen/__init__.py": "c6a58014c11c456b01982c4b2269314bf7ae03627c2700cf42d03c514ba37d4c",
+      "@tau2-bench/src/tau2/voice/audio_native/qwen/discrete_time_adapter.py": "44e813984663cee8ce3b7f84b4bcdd748f412fb64ebc8dd49c81b7b6151e39bc",
+      "@tau2-bench/src/tau2/voice/audio_native/qwen/events.py": "ef6c33e4f001bb3967086a5b837a8c65399583796f3e62642d0b615c514ca74e",
+      "@tau2-bench/src/tau2/voice/audio_native/qwen/provider.py": "1402626e68f35717a2fe4638b5970d004c51131c31fb6d18d9591a98ef7598ec",
+      "@tau2-bench/src/tau2/voice/audio_native/tick_result.py": "40f5e2cbd5f4c9d6c76b7082e80ea70210f59c79e42bfda0e7aa4c746e7e171f",
+      "@tau2-bench/src/tau2/voice/audio_native/xai/__init__.py": "4b3c6e19820146b6481bb946acba25e865b5ec739879e9c2dda1f2245fd47f46",
+      "@tau2-bench/src/tau2/voice/audio_native/xai/discrete_time_adapter.py": "02f4884bf577626aabfbabc3b8730cab8fc35d2884104cc3a7341bc0bc89d1eb",
+      "@tau2-bench/src/tau2/voice/audio_native/xai/events.py": "93100ffc2f63e9034dc4b2e5e748d500f54bac5f4c7068e80980ed037ef0ba76",
+      "@tau2-bench/src/tau2/voice/audio_native/xai/provider.py": "cbc99718597be8e9f30cf34258da8793d4aaaf2d944a2bd99a5e3e20e74f72a9",
+      "@tau2-bench/src/tau2/voice/scripts/elevenlabs.py": "4eaf14e9a529b62083b66d1b5afd6a0d79bc473276560f6a82da3a3271b9c7d0",
+      "@tau2-bench/src/tau2/voice/scripts/setup_voices.py": "04ba1964f493df145bf0c286c9f085cb3411b5e16f7b9dbc84b4e4acab3881e2",
+      "@tau2-bench/src/tau2/voice/synthesis/__init__.py": "2568ad9034e97543894a35d973a11973ca74fcd3f70e88227c42111091b5a9a8",
+      "@tau2-bench/src/tau2/voice/synthesis/audio_effects/__init__.py": "4a7f6f50bb323e96b3e03854ba334231fa23e10a332097562dd5075291b68328",
+      "@tau2-bench/src/tau2/voice/synthesis/audio_effects/effects.py": "5de2d38c9ad0403394bd82fd629759baa8e39a861f19875f11c56e8622032b41",
+      "@tau2-bench/src/tau2/voice/synthesis/audio_effects/noise_generator.py": "97ee7b2ee4b44e9d593718a3e6cd60554a2be4332bfa63a7675ca42fc59ee4d9",
+      "@tau2-bench/src/tau2/voice/synthesis/audio_effects/processor.py": "9d91250848bb350a2740913a1d377a92ba723b5e4d1fda79c7d59cc3aed4b023",
+      "@tau2-bench/src/tau2/voice/synthesis/audio_effects/scheduler.py": "c52bc5a5d3a4f21c4c2b090c0861a089c07bf6c82e5bb55e217597b076b12fdf",
+      "@tau2-bench/src/tau2/voice/synthesis/audio_effects/speech_generator.py": "4a5392fed0c75c542582e1289a515da2c0ac54f510383e8cc6b1075abb83ef25",
+      "@tau2-bench/src/tau2/voice/synthesis/cli.py": "f4c46f67ea3a843c483f4f57e637fd759317921399b8602f1e5ce9889c829a0e",
+      "@tau2-bench/src/tau2/voice/synthesis/conversation_builder.py": "1fd98cb3d14b46daa6b74d7b09aeab748a5f9d8917b7c458fcc7b1f2ee6671d1",
+      "@tau2-bench/src/tau2/voice/synthesis/synthesize.py": "c5436ead082d5bd58fb6e2e9f373b59bb1359157d3366bd0288e001f68013b01",
+      "@tau2-bench/src/tau2/voice/transcription/__init__.py": "43d1f7cca8b2919f4a489422c818e9f110169d777fa7553b717815d0952a1118",
+      "@tau2-bench/src/tau2/voice/transcription/transcribe.py": "79fafd188681f7e32ee290218fd0e463e07ab271fd8f9c357f56f3c482d336e2",
+      "@tau2-bench/src/tau2/voice/transcription/transcription_test.py": "3383d6792d96bc8a2a50ee9fefb4b6f559e0171fda33831672b44cdc88817435",
+      "@tau2-bench/src/tau2/voice/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "@tau2-bench/src/tau2/voice/utils/audio_debug.py": "1b41b8f362a4ccef7ccf386da65467b9e53ea6994f77b8fe4cab8649142dc87e",
+      "@tau2-bench/src/tau2/voice/utils/audio_io.py": "0a42d9ae79029edcafead1639ddda9c78f275430ff34320b040ad6f495fae32e",
+      "@tau2-bench/src/tau2/voice/utils/audio_preprocessing.py": "88bc6d226f3d0423b3398769d3358eb284915f37c2fc518cc6c09070af7798e1",
+      "@tau2-bench/src/tau2/voice/utils/audio_tap.py": "7a1cfc3b84d629a7ce40dac51d67ef120cb0c32762e6320ded5f9f53e3cdcce1",
+      "@tau2-bench/src/tau2/voice/utils/conversation_builder.py": "8ce5f45becc6dd5439f9019155f274485419ee5b4e47c397a917d6fb519ce924",
+      "@tau2-bench/src/tau2/voice/utils/convert_audio_files.py": "923b7398b919d6d0632dca4a2a942f0fd282c0212b6b01112a82821f16e2aa12",
+      "@tau2-bench/src/tau2/voice/utils/elevenlabs_utils.py": "f488172e46b373b8902f56edd0fc8e24ae9c447aba49827464a7f6b00c225a71",
+      "@tau2-bench/src/tau2/voice/utils/openai_utils.py": "f41e76d7d1f47f760a6c62be57123cdd2ed9fcd133ba45230880edad1c66a915",
+      "@tau2-bench/src/tau2/voice/utils/probability.py": "76403e6293cf6cd170288fcad4972087dd1db267b1c6dd2e9b07c466404f38ec",
+      "@tau2-bench/src/tau2/voice/utils/text_effects.py": "ac9b4c92bf8a35b020b4bf6e365362f3e5593ef69638a94bf74328b1ad8225c3",
+      "@tau2-bench/src/tau2/voice/utils/transcript_utils.py": "cbe7b406058c8140448c5b6fc571794b87e24970e5e9e9baeeb6ffe98ee34312",
+      "@tau2-bench/src/tau2/voice/utils/utils.py": "70bc0caa3d46a7188535a2f941206d355ef2c3da311a36dd49827a851d1305a9",
+      "@tau2-bench/src/tau2/voice_config.py": "b644b1ef1c1f32c17e318d4f253ce420216b68c7ce30f184c6a1f5ff113f8121",
+      "@tau2-bench/uv.lock": "62d3a8c4807b89e85703b3c03f2c21048a2da9736ca83d9af6f61adc74ac5314"
+    }
+  },
+  "benchmark_inputs": {
+    "data_root": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+    "trees": {
+      "tau2/domains/retail": "97e79668225c3a196db6d705d873b2683e2a4b0cd521f2ece33932c43cfc1fdf",
+      "tau2/user_simulator": "9aee82f9587b28590b46c08bef2b4f2776d17d8f04271ed197dd26828a82d2ec"
+    },
+    "combined_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060"
+  },
+  "proxy_health": {
+    "ok": true,
+    "model": "glm-5.3-flash",
+    "endpoint": "https://open.bigmodel.cn/api/paas/v4",
+    "reasoning": "low",
+    "temperature": 0.0,
+    "seen_upstream_models": [
+      "glm-5.3-flash"
+    ],
+    "upstream_model_counts": {
+      "glm-5.3-flash": 3287
+    }
+  },
+  "meta_resolved_models": [
+    "glm-5.3-flash"
+  ],
+  "meta_sessions": [
+    {
+      "name": "r1_continuous",
+      "session_key": "r1_continuous_090cc029b4",
+      "timestamp": "2026-09-29 12:46:18",
+      "requested_model": "glm-5.3-flash",
+      "requested_reasoning_effort": "low",
+      "requested_temperature": 0.0,
+      "upstream_models": [
+        "glm-5.3-flash"
+      ],
+      "upstream_model_counts_before": {},
+      "upstream_model_counts_after": {
+        "glm-5.3-flash": 3287
+      },
+      "upstream_model_count_delta": {
+        "glm-5.3-flash": 3287
+      },
+      "upstream_chunk_count": 3287,
+      "upstream_counter_errors": [],
+      "trace_models": [
+        "glm-5.3-flash"
+      ],
+      "resolved_models": [
+        "glm-5.3-flash"
+      ],
+      "tool_surface": [
+        "Edit",
+        "Read"
+      ],
+      "observed_tools": [
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Read",
+        "Edit",
+        "Edit",
+        "Edit",
+        "Edit"
+      ],
+      "tool_calls": [
+        {
+          "id": "call_42109560b9cb49bca73f00e4",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/state.md"
+          }
+        },
+        {
+          "id": "call_9ce3c428540d4d759c898451",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/evidence.md"
+          }
+        },
+        {
+          "id": "call_d3095d2857d84d5c87ff1522",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/evidence/task_41.md"
+          }
+        },
+        {
+          "id": "call_c3de992445494ae89ae0ac15",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/history_index.md"
+          }
+        },
+        {
+          "id": "call_695c42b02058487db7efe4f4",
+          "name": "Read",
+          "input": {
+            "file_path": "external/tau2-bench/data/tau2/domains/retail/policy.md"
+          }
+        },
+        {
+          "id": "call_2e4f63c8a84a41cd8543d8a8",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/capability_manual.md"
+          }
+        },
+        {
+          "id": "call_3dd74f36a2d84a239c479033",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/tool_capabilities.json"
+          }
+        },
+        {
+          "id": "call_8e313df0c6b545ea8b60d82f",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/phase_continuous_diagnosis_protocol.md"
+          }
+        },
+        {
+          "id": "call_8bf4cdc1e6fd4512884022cb",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/phase_continuous_patch_protocol.md"
+          }
+        },
+        {
+          "id": "call_eecd64b92c8644aa9f010a5c",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/plan_spec.md"
+          }
+        },
+        {
+          "id": "call_8bd65f5e54c549cc82126c75",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/schema_rules.md"
+          }
+        },
+        {
+          "id": "call_a439b10e04064079b13b2b68",
+          "name": "Read",
+          "input": {
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/packages/candidate_r1/manifest.yaml"
+          }
+        },
+        {
+          "id": "call_8dabfa33a80c4bae849c26a0",
+          "name": "Edit",
+          "input": {
+            "replace_all": false,
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/round_1/plan.json",
+            "old_string": "",
+            "new_string": "{\n  \"round\": 1,\n  \"clusters\": [\n    {\n      \"cluster_id\": \"c1\",\n      \"evidence_tasks\": [\"41\"],\n      \"symptom\": \"On trials 0, 1 and 3 of task 41 the modify_pending_order_items call executes but the price-difference refund is credited to a payment method that was not the one used on the order, so the DB check fails (reward DB=0.0) even though NL_ASSERTION passes.\",\n      \"failing_step\": \"The modify_pending_order_items write is drafted with payment_method_id of a different stored payment method (the visa card) instead of the order's original payment method recorded in the order's payment_history.\",\n      \"failure_mode\": \"wrong_refund_payment_method_on_item_modification\",\n      \"component\": \"E\",\n      \"action_opportunity\": \"present\",\n      \"opportunity_evidence\": \"Each failed trace contains the actual pre-write draft of modify_pending_order_items (trial 0 tail after the two modify_pending_order_address calls; trial 1: tool_call modify_pending_order_items({'item_ids': ['1000000001'], 'new_item_ids': ['1000000002'], 'order_id': '#W0000001', 'payment_method_id': 'gift_card_0000002'}); trial 3 same with gift_card_0000002) while the required action specifies the original payment method from the order's payment_history. post_terminal_assistant_event is absent, so the fix targets these observed earlier draft events, not any post-terminal event.\",\n      \"patchability\": \"memory\",\n      \"evidence\": \"Reward breakdown {'DB': 0.0, 'NL_ASSERTION': 1.0} with MISSING/WRONG ACTION modify_pending_order_items(... payment_method_id gift_card_0000001) in trials 0/1/3; the executed call used a different payment method and the tool result shows the refund transaction went to that wrong method. Policy-grounded rule: the price difference on a pending-order item modification must be settled on the original payment method used for the order.\",\n      \"fixes\": [\n        {\n          \"action\": \"add_card\",\n          \"em_type\": \"action_result\",\n          \"card_id\": \"modify_items_refund_original_payment\",\n          \"sketch\": \"Before executing modify_pending_order_items, verify that payment_method_id equals the original payment method used for the order, read from the order's payment_history (fetched via get_order_details). Teach with a simulated placeholder call using <ORDER_ID>, <OLD_ITEM_ID>, <NEW_ITEM_ID> and <ORIGINAL_PAYMENT_METHOD_ID>, and list the common mistake of substituting another payment method stored on the user profile, which sends the refund to the wrong instrument and fails the request.\",\n          \"trigger_event\": \"pre_write\",\n          \"trigger_tool\": \"modify_pending_order_items\"\n        }\n      ]\n    },\n    {\n      \"cluster_id\": \"c2\",\n      \"evidence_tasks\": [\"41\"],\n      \"symptom\": \"The c1 action_result card needs a delivery carrier to be reviewed at draft time; without one it can never fire.\",\n      \"failing_step\": \"The neutral package has an empty delivery list, so the pre_write exemplar in c1 has no carrier.\",\n      \"failure_mode\": \"missing_carrier_for_action_result\",\n      \"component\": \"RHO\",\n      \"action_opportunity\": \"present\",\n      \"opportunity_evidence\": \"Same evidence as c1: the failed traces of task 41 contain concrete modify_pending_order_items draft calls (trials 0, 1, 3) at which pre_write review could have fired; no post-terminal event is involved.\",\n      \"patchability\": \"memory\",\n      \"evidence\": \"manifest.yaml currently has delivery: []; the capability contract states action_result cards reach the worker only through exemplar_bounce at pre_write with exact_only for new cards.\",\n      \"fixes\": [\n        {\n          \"action\": \"set_delivery\",\n          \"deliverer\": \"exemplar_bounce\",\n          \"cfg\": {\n            \"em_type\": \"action_result\",\n            \"exact_only\": true\n          }\n        }\n      ]\n    },\n    {\n      \"cluster_id\": \"c3\",\n      \"evidence_tasks\": [\"41\"],\n      \"symptom\": \"On trial 2 of task 41 the assistant updated only the puzzle order's address and the account default; the oracle additionally requires get_order_details and modify_pending_order_address for the other pending order, whose address was reported wrong at the account level, so DB=0.0.\",\n      \"failing_step\": \"When the customer said the address was mistyped when placing the order, the assistant enumerated the two pending orders but never fetched the second order's details and never proposed applying the correction to it before writing.\",\n      \"failure_mode\": \"address_correction_scope_limited_to_one_order\",\n      \"component\": \"E\",\n      \"action_opportunity\": \"present\",\n      \"opportunity_evidence\": \"The failed trial 2 transcript shows the concrete earlier assistant turn after get_user_details where the agent lists both pending orders (order #W0000002 and #W0000001) and asks which order contains the puzzle, then proceeds to fix only one order; the address-correction scope decision happens on that observed turn, long before termination (post_terminal_assistant_event absent).\",\n      \"patchability\": \"memory\",\n      \"evidence\": \"Trial 2 outcome evidence lists REQUIRED action NOT correctly done: get_order_details(#W0000002) and modify_pending_order_address(#W0000002, 445 Maple Drive...). The user's opening request states the address was mistyped when making the order and asks to check and fix it on the order and account; trials 0, 1 and 3 show the correct behavior of applying the correction to every pending order plus the account.\",\n      \"fixes\": [\n        {\n          \"action\": \"add_card\",\n          \"em_type\": \"knowledge\",\n          \"card_id\": \"address_correction_covers_pending_orders\",\n          \"sketch\": \"When a customer reports that an address was entered incorrectly, treat the correction as potentially applying to every pending order on the account: fetch the details of each pending order, check the stored address, and confirm with the customer whether to update all affected pending orders and the account default address before any write. Warn that fixing only one order leaves the reported error in place elsewhere.\",\n          \"trigger_event\": \"turn_start\",\n          \"trigger_tool\": \"*\"\n        }\n      ]\n    },\n    {\n      \"cluster_id\": \"c4\",\n      \"evidence_tasks\": [\"41\"],\n      \"symptom\": \"The c3 knowledge card needs a carrier; with an empty delivery list it can never be injected at turn start.\",\n      \"failing_step\": \"No configured deliverer exists to inject the address-scope knowledge when pending service work exists.\",\n      \"failure_mode\": \"missing_carrier_for_knowledge_card\",\n      \"component\": \"RHO\",\n      \"action_opportunity\": \"present\",\n      \"opportunity_evidence\": \"Same failed trial 2 turn as c3: the turn-start/pending-work moments in the failed trace precede the assistant's order-enumeration and single-order address fix; the intervention point is earlier than termination.\",\n      \"patchability\": \"memory\",\n      \"evidence\": \"manifest.yaml has delivery: []; the capability contract routes event-matched knowledge cards through boundary_inject at turn_start with a configured event/tool pair, which is the low-regression unscoped route for knowledge cards.\",\n      \"fixes\": [\n        {\n          \"action\": \"set_delivery\",\n          \"deliverer\": \"boundary_inject\",\n          \"cfg\": {\n            \"at\": \"turn_start\",\n            \"when\": \"has_pending\",\n            \"em_type\": \"knowledge\",\n            \"tool\": \"*\",\n            \"max_cards\": 1\n          }\n        }\n      ]\n    },\n    {\n      \"cluster_id\": \"c5\",\n      \"evidence_tasks\": [\"41\"],\n      \"symptom\": \"The has_pending predicate of the c4 boundary_inject carrier and any pending-ledger observation need a tool-preserving working-memory entry kind; the neutral package defines no wm section.\",\n      \"failing_step\": \"Without a service-request entry kind the runtime cannot record pending address/item work, so has_pending stays false and the c3 card never fires.\",\n      \"failure_mode\": \"missing_tool_preserving_wm_entry_kind\",\n      \"component\": \"W\",\n      \"action_opportunity\": \"present\",\n      \"opportunity_evidence\": \"The same failed trial 2 turn as c3/c4: the customer's stated need (fix wrong address, swap puzzle item) is a genuine user turn at which the WM manager can derive pending service requests; this precedes all writes and termination.\",\n      \"patchability\": \"memory\",\n      \"evidence\": \"Capability contract: service_request entries store description, tool, and params and are the tool-preserving kind required for pending-work detection; the neutral manifest contains no wm section (package changelog: deterministic neutral M0).\",\n      \"fixes\": [\n        {\n          \"action\": \"set_wm\",\n          \"field\": \"entry_kind\",\n          \"value\": \"service_request\"\n        },\n        {\n          \"action\": \"set_wm\",\n          \"field\": \"manager\",\n          \"value\": \"self_maintain_each_turn\"\n        }\n      ]\n    }\n  ]\n}\n"
+          }
+        },
+        {
+          "id": "call_5696ac69592a481e9e6fd20f",
+          "name": "Edit",
+          "input": {
+            "replace_all": false,
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/packages/candidate_r1/manifest.yaml",
+            "old_string": "name: tau2_retail_ma_neutral\n\ndelivery: []\ncheckers: []\n\nboard:\n  status_board: false\n  notice_in_wm: never",
+            "new_string": "name: tau2_retail_ma_neutral\n\nwm:\n  entry_kind: service_request\n  manager: self_maintain_each_turn\n  manager_cfg: {}\n\ndelivery:\n  - use: exemplar_bounce\n    cfg:\n      em_type: action_result\n      exact_only: true\n  - use: boundary_inject\n    cfg:\n      at: turn_start\n      when: has_pending\n      em_type: knowledge\n      tool: \"*\"\n      max_cards: 1\n\ncheckers: []\n\nboard:\n  status_board: false\n  notice_in_wm: never"
+          }
+        },
+        {
+          "id": "call_ae4dc8761b894bfcb91f5d97",
+          "name": "Edit",
+          "input": {
+            "replace_all": false,
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/packages/candidate_r1/em/action_result/modify_items_refund_original_payment.md",
+            "old_string": "",
+            "new_string": "---\nid: modify_items_refund_original_payment\ntype: action_result\ntrigger:\n  event: pre_write\n  tool: modify_pending_order_items\nsource: metaagent_generated\n---\n\nPurpose: when modifying items in a pending order, the price difference (refund or\ncharge) must be settled on the payment method the order was originally paid with.\n\nRULE: Before calling `modify_pending_order_items`, read the order's\n`payment_history` (via `get_order_details`) and use that original payment\nmethod as `payment_method_id`. Do not substitute another payment method that\nmerely exists on the customer's profile.\n\nSimulated correct call (placeholders only):\n\n```\nmodify_pending_order_items({\n  \"order_id\": \"<ORDER_ID>\",\n  \"item_ids\": [\"<OLD_ITEM_ID>\"],\n  \"new_item_ids\": [\"<NEW_ITEM_ID>\"],\n  \"payment_method_id\": \"<ORIGINAL_PAYMENT_METHOD_ID_FROM_PAYMENT_HISTORY>\"\n})\n```\n\nCommon mistakes:\n- Picking a different stored payment method (e.g. a credit card on the profile)\n  instead of the one in the order's `payment_history` — the refund then lands on\n  the wrong instrument and the modification does not match the customer's request.\n- Guessing the payment method without fetching the order details first.\n"
+          }
+        },
+        {
+          "id": "call_b7a37cf6e23f46f3b3f1b95d",
+          "name": "Edit",
+          "input": {
+            "replace_all": false,
+            "file_path": "ma_runs/glm_retail_one_round_v5_20260929/packages/candidate_r1/em/knowledge/address_correction_covers_pending_orders.md",
+            "old_string": "",
+            "new_string": "---\nid: address_correction_covers_pending_orders\ntype: knowledge\ntrigger:\n  event: turn_start\n  tool: \"*\"\nsource: metaagent_generated\n---\n\nWhen a customer reports that an address was typed incorrectly (for an order or\nthe account), treat the correction as potentially applying to **every pending\norder** on the account, not just one.\n\nRULE (distilled from the retail policy's order-modification workflow):\n1. Fetch the details of each pending order (`get_order_details`) and compare the\n   stored shipping address with the corrected address the customer gives.\n2. Confirm with the customer whether to update the address on **all** affected\n   pending orders **and** the account default address before executing any write.\n3. Only then apply the corrections with `modify_pending_order_address` /\n   `modify_user_address`.\n\nCommon mistakes:\n- Fixing the address on only one pending order and the account while another\n  pending order still carries the wrong address.\n- Skipping the second pending order because the customer did not name it.\n"
+          }
+        }
+      ],
+      "permission_denials": [
+        {
+          "tool_name": "Read",
+          "tool_use_id": "call_695c42b02058487db7efe4f4",
+          "tool_input": {
+            "file_path": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/tau2/domains/retail/policy.md"
+          }
+        },
+        {
+          "source": "tool_result",
+          "tool_use_id": "call_695c42b02058487db7efe4f4",
+          "tool": "Read",
+          "input": {
+            "file_path": "external/tau2-bench/data/tau2/domains/retail/policy.md"
+          },
+          "message": "<tool_use_error>File is in a directory that is denied by your permission settings.</tool_use_error>"
+        }
+      ],
+      "failed_read_results": [
+        {
+          "tool_use_id": "call_695c42b02058487db7efe4f4",
+          "input": {
+            "file_path": "external/tau2-bench/data/tau2/domains/retail/policy.md"
+          },
+          "message": "<tool_use_error>File is in a directory that is denied by your permission settings.</tool_use_error>",
+          "non_disclosing": false
+        }
+      ],
+      "failed_edit_results": [],
+      "launcher_returncode": 0,
+      "timed_out": false,
+      "no_progress": false,
+      "stray_writes": [],
+      "upstream_model_verified": true,
+      "read_scope_violations": [],
+      "search_scope_violations": [],
+      "edit_scope_violations": [],
+      "result_subtype": "success",
+      "result_is_error": false,
+      "failure_class": null,
+      "failure_detail": null,
+      "ok": true,
+      "trace": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/r1_continuous_090cc029b4.jsonl",
+      "trace_sha256": "689eaac0e77f2f580cca5da00b241eb1c604967d45aa510df363c9ec55a69152",
+      "prompt": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/r1_continuous_090cc029b4_prompt.txt",
+      "prompt_sha256": "35ca86feb92d4bccad75120c40fac11224a78dc19b7998ab9f462422024134a3",
+      "settings": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/r1_continuous_090cc029b4_settings.json",
+      "settings_sha256": "c7421eefdaa6d65abac5f759053d0e28477ad387c28b08a32008285671377605",
+      "stderr": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/r1_continuous_090cc029b4.err",
+      "stderr_sha256": "82258418cdf4a6b9c6259b015e8cf46aa4e8c77d5c265491c9bfe132e1994125",
+      "capability_disclosure": {
+        "schema_version": 1,
+        "round": 1,
+        "manual_path": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/round_1/capability_manual.md",
+        "manual_sha256": "3d5c574cb6f7b70c6b3dbc1869f992499ec2103acfbcfb429568d04d013aa8f9",
+        "tool_capabilities_path": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/round_1/tool_capabilities.json",
+        "tool_capabilities_sha256": "26f9dbafac993e1c78f79950f216cd63372e5a947bce4316ded95aa1926deea8",
+        "prompt_block_sha256": "9d6bddbd6110c3a2c49c3c5f1db5b469285b50a789ca466274332e8115735aa5",
+        "projection_fields": [
+          "name",
+          "tool_type",
+          "mutates_state"
+        ],
+        "delivery": "embedded-first-in-D-and-P-plus-exact-read-only-copies"
+      }
+    }
+  ],
+  "meta_api_calls": [
+    {
+      "phase": "round_review",
+      "round": 1,
+      "requested_model": "glm-5.3-flash",
+      "resolved_model": "glm-5.3-flash",
+      "reasoning_effort": "low",
+      "temperature": 0.0,
+      "timestamp": "2026-09-29 13:00:47"
+    },
+    {
+      "phase": "lesson",
+      "round": 1,
+      "requested_model": "glm-5.3-flash",
+      "resolved_model": "glm-5.3-flash",
+      "reasoning_effort": "low",
+      "temperature": 0.0,
+      "timestamp": "2026-09-29 13:01:02"
+    }
+  ],
+  "downstream_artifacts": [
+    {
+      "index": 1,
+      "token": "0001_r0_bare_35c117502347",
+      "tag": "r0_bare",
+      "status": "success",
+      "started_at_unix": 1790656495.4188833,
+      "save_to": "metaagent/glm_retail_one_round_v5_20260929/0001_r0_bare_35c117502347",
+      "fingerprint": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0001_r0_bare_35c117502347_fp.jsonl",
+      "fingerprint_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0001_r0_bare_35c117502347.log",
+      "results": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent/glm_retail_one_round_v5_20260929/0001_r0_bare_35c117502347/results.json",
+      "results_sha256": "d7c938af785d4d3379f4a9592486d405c4a0e52fd2a888ebac06e78df11735dd",
+      "package_tree_sha256": null,
+      "agent_implementation": "llm_agent",
+      "requested_task_ids": [
+        "6"
+      ],
+      "num_trials": 4,
+      "base_seed": 300,
+      "trial_seeds": {
+        "6": [
+          626729,
+          373753,
+          361454,
+          1567
+        ]
+      },
+      "benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+      "benchmark_protocol": "official",
+      "benchmark_protocol_manifest": null,
+      "benchmark_inputs": {
+        "data_root": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "trees": {
+          "tau2/domains/retail": "97e79668225c3a196db6d705d873b2683e2a4b0cd521f2ece33932c43cfc1fdf",
+          "tau2/user_simulator": "9aee82f9587b28590b46c08bef2b4f2776d17d8f04271ed197dd26828a82d2ec"
+        },
+        "combined_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060"
+      },
+      "observed_response_models": {
+        "worker": [
+          "glm-5.3-flash"
+        ],
+        "simulator": [
+          "glm-5.3-flash"
+        ]
+      },
+      "worker": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "simulator": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "sanitized_env_prefixes": [
+        "TAU2_",
+        "RECURIS_",
+        "OPENAI_",
+        "ANTHROPIC_",
+        "LITELLM_"
+      ],
+      "controlled_mechanism_env": {
+        "TAU2_DATA_DIR": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "RECURIS_FINGERPRINT": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0001_r0_bare_35c117502347_fp.jsonl",
+        "RECURIS_SKILL_MEMORY": null,
+        "RECURIS_EMBED_CACHE": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/embed_cache/bare",
+        "RECURIS_EMBED_FINGERPRINT_V1": null
+      },
+      "resume_policy": {
+        "max_resume_attempts": 1,
+        "mode": "same-checkpoint-explicit-resume",
+        "simulation_timeout_seconds": null,
+        "whole_simulation_retries": 0,
+        "whole_simulation_retry_delay_seconds": 1.0,
+        "retryable_termination_reasons": [
+          "infrastructure_error",
+          "timeout"
+        ]
+      },
+      "process_attempts": [
+        {
+          "attempt": 1,
+          "resume": false,
+          "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0001_r0_bare_35c117502347.log",
+          "timeout_seconds": 3600,
+          "started_at_unix": 1790656495.418971,
+          "status": "success",
+          "finished_at_unix": 1790656650.51245
+        }
+      ],
+      "finished_at_unix": 1790656650.5392342,
+      "opportunity_summary": {
+        "all": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "failed": {
+          "present": 0,
+          "absent": 0,
+          "unknown": 0
+        },
+        "total": 4,
+        "failed_total": 0
+      },
+      "fingerprint_embedding": {
+        "required": false,
+        "mode": "legacy-sidecar-only",
+        "records": 0,
+        "matches_sidecar": null
+      }
+    },
+    {
+      "index": 2,
+      "token": "0002_r0_neutral_d0631a4cc128",
+      "tag": "r0_neutral",
+      "status": "success",
+      "started_at_unix": 1790656650.6286485,
+      "save_to": "metaagent/glm_retail_one_round_v5_20260929/0002_r0_neutral_d0631a4cc128",
+      "fingerprint": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0002_r0_neutral_d0631a4cc128_fp.jsonl",
+      "fingerprint_sha256": "6674b5f8e3a1593725ce0db0db61c0d791d27d8bf98ae1a18d4e1f10b8c380f5",
+      "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0002_r0_neutral_d0631a4cc128.log",
+      "results": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent/glm_retail_one_round_v5_20260929/0002_r0_neutral_d0631a4cc128/results.json",
+      "results_sha256": "36ada2426ea4f021fa06bf8a67b7208d114a9aaab5e8e107ce5e8ec3a9e38230",
+      "package_tree_sha256": "1b8bfff665fe8e407cf14fb9b8de02d57eae98b0a91afeb7caa734f6f8e54892",
+      "agent_implementation": "recuris_agent",
+      "requested_task_ids": [
+        "6"
+      ],
+      "num_trials": 4,
+      "base_seed": 300,
+      "trial_seeds": {
+        "6": [
+          626729,
+          373753,
+          361454,
+          1567
+        ]
+      },
+      "benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+      "benchmark_protocol": "official",
+      "benchmark_protocol_manifest": null,
+      "benchmark_inputs": {
+        "data_root": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "trees": {
+          "tau2/domains/retail": "97e79668225c3a196db6d705d873b2683e2a4b0cd521f2ece33932c43cfc1fdf",
+          "tau2/user_simulator": "9aee82f9587b28590b46c08bef2b4f2776d17d8f04271ed197dd26828a82d2ec"
+        },
+        "combined_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060"
+      },
+      "observed_response_models": {
+        "worker": [
+          "glm-5.3-flash"
+        ],
+        "simulator": [
+          "glm-5.3-flash"
+        ]
+      },
+      "worker": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "simulator": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "sanitized_env_prefixes": [
+        "TAU2_",
+        "RECURIS_",
+        "OPENAI_",
+        "ANTHROPIC_",
+        "LITELLM_"
+      ],
+      "controlled_mechanism_env": {
+        "TAU2_DATA_DIR": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "RECURIS_FINGERPRINT": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0002_r0_neutral_d0631a4cc128_fp.jsonl",
+        "RECURIS_SKILL_MEMORY": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/packages/candidate_r0",
+        "RECURIS_EMBED_CACHE": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/embed_cache/1b8bfff665fe8e407cf14fb9b8de02d57eae98b0a91afeb7caa734f6f8e54892",
+        "RECURIS_EMBED_FINGERPRINT_V1": "1"
+      },
+      "resume_policy": {
+        "max_resume_attempts": 1,
+        "mode": "same-checkpoint-explicit-resume",
+        "simulation_timeout_seconds": null,
+        "whole_simulation_retries": 0,
+        "whole_simulation_retry_delay_seconds": 1.0,
+        "retryable_termination_reasons": [
+          "infrastructure_error",
+          "timeout"
+        ]
+      },
+      "process_attempts": [
+        {
+          "attempt": 1,
+          "resume": false,
+          "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0002_r0_neutral_d0631a4cc128.log",
+          "timeout_seconds": 3600,
+          "started_at_unix": 1790656650.6287193,
+          "status": "success",
+          "finished_at_unix": 1790656811.0430021
+        }
+      ],
+      "fingerprint_reconciliation": {
+        "authority": "trajectory-embedded-v1",
+        "raw_attempt_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0002_r0_neutral_d0631a4cc128.raw_attempt_fingerprint.jsonl",
+        "raw_attempt_sidecar_sha256": "80e804e9ee558e7089ddd440bfc415a642a1307cbfb95310e7e964d8a805e5d7",
+        "raw_attempt_summary": {
+          "records": 4,
+          "valid_records": 4,
+          "invalid_records": 0,
+          "records_by_tag": {
+            "task6": 4
+          },
+          "unexpected_tags": {}
+        },
+        "committed_records": 4,
+        "committed_records_by_tag": {
+          "task6": 4
+        },
+        "attempt_minus_committed_by_tag": {},
+        "committed_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0002_r0_neutral_d0631a4cc128_fp.jsonl",
+        "committed_sidecar_sha256": "6674b5f8e3a1593725ce0db0db61c0d791d27d8bf98ae1a18d4e1f10b8c380f5"
+      },
+      "finished_at_unix": 1790656811.1244185,
+      "opportunity_summary": {
+        "all": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "failed": {
+          "present": 0,
+          "absent": 0,
+          "unknown": 0
+        },
+        "total": 4,
+        "failed_total": 0
+      },
+      "fingerprint_embedding": {
+        "required": true,
+        "mode": "trajectory-embedded-v1",
+        "records": 4,
+        "matches_sidecar": true
+      }
+    },
+    {
+      "index": 3,
+      "token": "0003_r1_train_728cdfc3c8ea",
+      "tag": "r1_train",
+      "status": "success",
+      "started_at_unix": 1790656811.3604639,
+      "save_to": "metaagent/glm_retail_one_round_v5_20260929/0003_r1_train_728cdfc3c8ea",
+      "fingerprint": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0003_r1_train_728cdfc3c8ea_fp.jsonl",
+      "fingerprint_sha256": "a987cd2cd56a75e27d6232f353c6a6993631e6f8c59ba75474b4eae4bede00ba",
+      "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0003_r1_train_728cdfc3c8ea.log",
+      "results": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent/glm_retail_one_round_v5_20260929/0003_r1_train_728cdfc3c8ea/results.json",
+      "results_sha256": "2ed86d709d3ad080c5b014d9f063cad82e63a32ee1082bf2b1c3ea03a17bdaff",
+      "package_tree_sha256": "1b8bfff665fe8e407cf14fb9b8de02d57eae98b0a91afeb7caa734f6f8e54892",
+      "agent_implementation": "recuris_agent",
+      "requested_task_ids": [
+        "41"
+      ],
+      "num_trials": 4,
+      "base_seed": 300,
+      "trial_seeds": {
+        "41": [
+          626729,
+          373753,
+          361454,
+          1567
+        ]
+      },
+      "benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+      "benchmark_protocol": "official",
+      "benchmark_protocol_manifest": null,
+      "benchmark_inputs": {
+        "data_root": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "trees": {
+          "tau2/domains/retail": "97e79668225c3a196db6d705d873b2683e2a4b0cd521f2ece33932c43cfc1fdf",
+          "tau2/user_simulator": "9aee82f9587b28590b46c08bef2b4f2776d17d8f04271ed197dd26828a82d2ec"
+        },
+        "combined_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060"
+      },
+      "observed_response_models": {
+        "worker": [
+          "glm-5.3-flash"
+        ],
+        "simulator": [
+          "glm-5.3-flash"
+        ]
+      },
+      "worker": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "simulator": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "sanitized_env_prefixes": [
+        "TAU2_",
+        "RECURIS_",
+        "OPENAI_",
+        "ANTHROPIC_",
+        "LITELLM_"
+      ],
+      "controlled_mechanism_env": {
+        "TAU2_DATA_DIR": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "RECURIS_FINGERPRINT": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0003_r1_train_728cdfc3c8ea_fp.jsonl",
+        "RECURIS_SKILL_MEMORY": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/packages/versions/M0",
+        "RECURIS_EMBED_CACHE": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/embed_cache/1b8bfff665fe8e407cf14fb9b8de02d57eae98b0a91afeb7caa734f6f8e54892",
+        "RECURIS_EMBED_FINGERPRINT_V1": "1"
+      },
+      "resume_policy": {
+        "max_resume_attempts": 1,
+        "mode": "same-checkpoint-explicit-resume",
+        "simulation_timeout_seconds": null,
+        "whole_simulation_retries": 0,
+        "whole_simulation_retry_delay_seconds": 1.0,
+        "retryable_termination_reasons": [
+          "infrastructure_error",
+          "timeout"
+        ]
+      },
+      "process_attempts": [
+        {
+          "attempt": 1,
+          "resume": false,
+          "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0003_r1_train_728cdfc3c8ea.log",
+          "timeout_seconds": 3600,
+          "started_at_unix": 1790656811.3605263,
+          "status": "success",
+          "finished_at_unix": 1790657013.2908444
+        }
+      ],
+      "fingerprint_reconciliation": {
+        "authority": "trajectory-embedded-v1",
+        "raw_attempt_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0003_r1_train_728cdfc3c8ea.raw_attempt_fingerprint.jsonl",
+        "raw_attempt_sidecar_sha256": "4c35506f351e9b2b240eabc22a3f52385a18a755433e5274a807e3ee0896b2bf",
+        "raw_attempt_summary": {
+          "records": 4,
+          "valid_records": 4,
+          "invalid_records": 0,
+          "records_by_tag": {
+            "task41": 4
+          },
+          "unexpected_tags": {}
+        },
+        "committed_records": 4,
+        "committed_records_by_tag": {
+          "task41": 4
+        },
+        "attempt_minus_committed_by_tag": {},
+        "committed_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0003_r1_train_728cdfc3c8ea_fp.jsonl",
+        "committed_sidecar_sha256": "a987cd2cd56a75e27d6232f353c6a6993631e6f8c59ba75474b4eae4bede00ba"
+      },
+      "finished_at_unix": 1790657013.322819,
+      "opportunity_summary": {
+        "all": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "failed": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "total": 4,
+        "failed_total": 4
+      },
+      "fingerprint_embedding": {
+        "required": true,
+        "mode": "trajectory-embedded-v1",
+        "records": 4,
+        "matches_sidecar": true
+      }
+    },
+    {
+      "index": 4,
+      "token": "0004_r1_base_rep_13c128fab0ff",
+      "tag": "r1_base_rep",
+      "status": "success",
+      "started_at_unix": 1790657180.8405046,
+      "save_to": "metaagent/glm_retail_one_round_v5_20260929/0004_r1_base_rep_13c128fab0ff",
+      "fingerprint": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0004_r1_base_rep_13c128fab0ff_fp.jsonl",
+      "fingerprint_sha256": "8b80993a2751038b5d449c46575c31fd1c6c2bd2b1fef59337b80f75c1d1b798",
+      "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0004_r1_base_rep_13c128fab0ff.log",
+      "results": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent/glm_retail_one_round_v5_20260929/0004_r1_base_rep_13c128fab0ff/results.json",
+      "results_sha256": "fd595bae2680d5cbcf9fcffaa26aff0a25b398c30a8a263a5dcf5e721e24b618",
+      "package_tree_sha256": "1b8bfff665fe8e407cf14fb9b8de02d57eae98b0a91afeb7caa734f6f8e54892",
+      "agent_implementation": "recuris_agent",
+      "requested_task_ids": [
+        "41"
+      ],
+      "num_trials": 4,
+      "base_seed": 300,
+      "trial_seeds": {
+        "41": [
+          626729,
+          373753,
+          361454,
+          1567
+        ]
+      },
+      "benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+      "benchmark_protocol": "official",
+      "benchmark_protocol_manifest": null,
+      "benchmark_inputs": {
+        "data_root": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "trees": {
+          "tau2/domains/retail": "97e79668225c3a196db6d705d873b2683e2a4b0cd521f2ece33932c43cfc1fdf",
+          "tau2/user_simulator": "9aee82f9587b28590b46c08bef2b4f2776d17d8f04271ed197dd26828a82d2ec"
+        },
+        "combined_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060"
+      },
+      "observed_response_models": {
+        "worker": [
+          "glm-5.3-flash"
+        ],
+        "simulator": [
+          "glm-5.3-flash"
+        ]
+      },
+      "worker": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "simulator": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "sanitized_env_prefixes": [
+        "TAU2_",
+        "RECURIS_",
+        "OPENAI_",
+        "ANTHROPIC_",
+        "LITELLM_"
+      ],
+      "controlled_mechanism_env": {
+        "TAU2_DATA_DIR": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "RECURIS_FINGERPRINT": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0004_r1_base_rep_13c128fab0ff_fp.jsonl",
+        "RECURIS_SKILL_MEMORY": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/packages/versions/M0",
+        "RECURIS_EMBED_CACHE": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/embed_cache/1b8bfff665fe8e407cf14fb9b8de02d57eae98b0a91afeb7caa734f6f8e54892",
+        "RECURIS_EMBED_FINGERPRINT_V1": "1"
+      },
+      "resume_policy": {
+        "max_resume_attempts": 1,
+        "mode": "same-checkpoint-explicit-resume",
+        "simulation_timeout_seconds": null,
+        "whole_simulation_retries": 0,
+        "whole_simulation_retry_delay_seconds": 1.0,
+        "retryable_termination_reasons": [
+          "infrastructure_error",
+          "timeout"
+        ]
+      },
+      "process_attempts": [
+        {
+          "attempt": 1,
+          "resume": false,
+          "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0004_r1_base_rep_13c128fab0ff.log",
+          "timeout_seconds": 3600,
+          "started_at_unix": 1790657180.8405843,
+          "status": "success",
+          "finished_at_unix": 1790657393.1598058
+        }
+      ],
+      "fingerprint_reconciliation": {
+        "authority": "trajectory-embedded-v1",
+        "raw_attempt_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0004_r1_base_rep_13c128fab0ff.raw_attempt_fingerprint.jsonl",
+        "raw_attempt_sidecar_sha256": "662177f4e6c6ea10f3eaeb50db9cb63cb3f726db698b3db2f676dcf885819f4f",
+        "raw_attempt_summary": {
+          "records": 4,
+          "valid_records": 4,
+          "invalid_records": 0,
+          "records_by_tag": {
+            "task41": 4
+          },
+          "unexpected_tags": {}
+        },
+        "committed_records": 4,
+        "committed_records_by_tag": {
+          "task41": 4
+        },
+        "attempt_minus_committed_by_tag": {},
+        "committed_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0004_r1_base_rep_13c128fab0ff_fp.jsonl",
+        "committed_sidecar_sha256": "8b80993a2751038b5d449c46575c31fd1c6c2bd2b1fef59337b80f75c1d1b798"
+      },
+      "finished_at_unix": 1790657393.1923401,
+      "opportunity_summary": {
+        "all": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "failed": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "total": 4,
+        "failed_total": 4
+      },
+      "fingerprint_embedding": {
+        "required": true,
+        "mode": "trajectory-embedded-v1",
+        "records": 4,
+        "matches_sidecar": true
+      }
+    },
+    {
+      "index": 5,
+      "token": "0005_r1_rep_8fc1a9e899e4",
+      "tag": "r1_rep",
+      "status": "success",
+      "started_at_unix": 1790657393.2845204,
+      "save_to": "metaagent/glm_retail_one_round_v5_20260929/0005_r1_rep_8fc1a9e899e4",
+      "fingerprint": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0005_r1_rep_8fc1a9e899e4_fp.jsonl",
+      "fingerprint_sha256": "8a8a8a01b84d51f23339512a0d54cb814addc3ab63d87a4d0f07db99612a621a",
+      "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0005_r1_rep_8fc1a9e899e4.log",
+      "results": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent/glm_retail_one_round_v5_20260929/0005_r1_rep_8fc1a9e899e4/results.json",
+      "results_sha256": "b5e3539386015390d613e36bb7797af24e9c2c91530b3af012b51dd20fe41e51",
+      "package_tree_sha256": "dc2e1eef747d748c12e7f8e67a143999c4504584c16f3cd5b217ed748e7a7c2f",
+      "agent_implementation": "recuris_agent",
+      "requested_task_ids": [
+        "41"
+      ],
+      "num_trials": 4,
+      "base_seed": 300,
+      "trial_seeds": {
+        "41": [
+          626729,
+          373753,
+          361454,
+          1567
+        ]
+      },
+      "benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+      "benchmark_protocol": "official",
+      "benchmark_protocol_manifest": null,
+      "benchmark_inputs": {
+        "data_root": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "trees": {
+          "tau2/domains/retail": "97e79668225c3a196db6d705d873b2683e2a4b0cd521f2ece33932c43cfc1fdf",
+          "tau2/user_simulator": "9aee82f9587b28590b46c08bef2b4f2776d17d8f04271ed197dd26828a82d2ec"
+        },
+        "combined_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060"
+      },
+      "observed_response_models": {
+        "worker": [
+          "glm-5.3-flash"
+        ],
+        "simulator": [
+          "glm-5.3-flash"
+        ]
+      },
+      "worker": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "simulator": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "sanitized_env_prefixes": [
+        "TAU2_",
+        "RECURIS_",
+        "OPENAI_",
+        "ANTHROPIC_",
+        "LITELLM_"
+      ],
+      "controlled_mechanism_env": {
+        "TAU2_DATA_DIR": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "RECURIS_FINGERPRINT": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0005_r1_rep_8fc1a9e899e4_fp.jsonl",
+        "RECURIS_SKILL_MEMORY": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/packages/candidate_r1",
+        "RECURIS_EMBED_CACHE": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/embed_cache/dc2e1eef747d748c12e7f8e67a143999c4504584c16f3cd5b217ed748e7a7c2f",
+        "RECURIS_EMBED_FINGERPRINT_V1": "1"
+      },
+      "resume_policy": {
+        "max_resume_attempts": 1,
+        "mode": "same-checkpoint-explicit-resume",
+        "simulation_timeout_seconds": null,
+        "whole_simulation_retries": 0,
+        "whole_simulation_retry_delay_seconds": 1.0,
+        "retryable_termination_reasons": [
+          "infrastructure_error",
+          "timeout"
+        ]
+      },
+      "process_attempts": [
+        {
+          "attempt": 1,
+          "resume": false,
+          "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0005_r1_rep_8fc1a9e899e4.log",
+          "timeout_seconds": 3600,
+          "started_at_unix": 1790657393.2845798,
+          "status": "success",
+          "finished_at_unix": 1790657650.8303816
+        }
+      ],
+      "fingerprint_reconciliation": {
+        "authority": "trajectory-embedded-v1",
+        "raw_attempt_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0005_r1_rep_8fc1a9e899e4.raw_attempt_fingerprint.jsonl",
+        "raw_attempt_sidecar_sha256": "b6c1d6dd74c8d4b374e5bb09fdff35efbf390e685716965f0abc44d4b9ae888d",
+        "raw_attempt_summary": {
+          "records": 4,
+          "valid_records": 4,
+          "invalid_records": 0,
+          "records_by_tag": {
+            "task41": 4
+          },
+          "unexpected_tags": {}
+        },
+        "committed_records": 4,
+        "committed_records_by_tag": {
+          "task41": 4
+        },
+        "attempt_minus_committed_by_tag": {},
+        "committed_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0005_r1_rep_8fc1a9e899e4_fp.jsonl",
+        "committed_sidecar_sha256": "8a8a8a01b84d51f23339512a0d54cb814addc3ab63d87a4d0f07db99612a621a"
+      },
+      "finished_at_unix": 1790657650.9052296,
+      "opportunity_summary": {
+        "all": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "failed": {
+          "present": 1,
+          "absent": 0,
+          "unknown": 0
+        },
+        "total": 4,
+        "failed_total": 1
+      },
+      "fingerprint_embedding": {
+        "required": true,
+        "mode": "trajectory-embedded-v1",
+        "records": 4,
+        "matches_sidecar": true
+      }
+    },
+    {
+      "index": 6,
+      "token": "0006_r1_base_dev_d44adf3382d4",
+      "tag": "r1_base_dev",
+      "status": "success",
+      "started_at_unix": 1790657651.0324519,
+      "save_to": "metaagent/glm_retail_one_round_v5_20260929/0006_r1_base_dev_d44adf3382d4",
+      "fingerprint": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0006_r1_base_dev_d44adf3382d4_fp.jsonl",
+      "fingerprint_sha256": "1537a9118d5816226666211d9b8769416e530b2f958a9419a093d8fd410e3446",
+      "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0006_r1_base_dev_d44adf3382d4.log",
+      "results": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent/glm_retail_one_round_v5_20260929/0006_r1_base_dev_d44adf3382d4/results.json",
+      "results_sha256": "0594405d9d0e09ea640db30c2b2263eeec6c9c22ea88a14d8ed6156c643ff42b",
+      "package_tree_sha256": "1b8bfff665fe8e407cf14fb9b8de02d57eae98b0a91afeb7caa734f6f8e54892",
+      "agent_implementation": "recuris_agent",
+      "requested_task_ids": [
+        "6"
+      ],
+      "num_trials": 4,
+      "base_seed": 300,
+      "trial_seeds": {
+        "6": [
+          626729,
+          373753,
+          361454,
+          1567
+        ]
+      },
+      "benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+      "benchmark_protocol": "official",
+      "benchmark_protocol_manifest": null,
+      "benchmark_inputs": {
+        "data_root": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "trees": {
+          "tau2/domains/retail": "97e79668225c3a196db6d705d873b2683e2a4b0cd521f2ece33932c43cfc1fdf",
+          "tau2/user_simulator": "9aee82f9587b28590b46c08bef2b4f2776d17d8f04271ed197dd26828a82d2ec"
+        },
+        "combined_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060"
+      },
+      "observed_response_models": {
+        "worker": [
+          "glm-5.3-flash"
+        ],
+        "simulator": [
+          "glm-5.3-flash"
+        ]
+      },
+      "worker": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "simulator": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "sanitized_env_prefixes": [
+        "TAU2_",
+        "RECURIS_",
+        "OPENAI_",
+        "ANTHROPIC_",
+        "LITELLM_"
+      ],
+      "controlled_mechanism_env": {
+        "TAU2_DATA_DIR": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "RECURIS_FINGERPRINT": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0006_r1_base_dev_d44adf3382d4_fp.jsonl",
+        "RECURIS_SKILL_MEMORY": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/packages/versions/M0",
+        "RECURIS_EMBED_CACHE": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/embed_cache/1b8bfff665fe8e407cf14fb9b8de02d57eae98b0a91afeb7caa734f6f8e54892",
+        "RECURIS_EMBED_FINGERPRINT_V1": "1"
+      },
+      "resume_policy": {
+        "max_resume_attempts": 1,
+        "mode": "same-checkpoint-explicit-resume",
+        "simulation_timeout_seconds": null,
+        "whole_simulation_retries": 0,
+        "whole_simulation_retry_delay_seconds": 1.0,
+        "retryable_termination_reasons": [
+          "infrastructure_error",
+          "timeout"
+        ]
+      },
+      "process_attempts": [
+        {
+          "attempt": 1,
+          "resume": false,
+          "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0006_r1_base_dev_d44adf3382d4.log",
+          "timeout_seconds": 3600,
+          "started_at_unix": 1790657651.0325122,
+          "status": "success",
+          "finished_at_unix": 1790657838.229433
+        }
+      ],
+      "fingerprint_reconciliation": {
+        "authority": "trajectory-embedded-v1",
+        "raw_attempt_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0006_r1_base_dev_d44adf3382d4.raw_attempt_fingerprint.jsonl",
+        "raw_attempt_sidecar_sha256": "45fa916b1540648723257670339050a6af4d19296037e8e901ce08389c76c643",
+        "raw_attempt_summary": {
+          "records": 4,
+          "valid_records": 4,
+          "invalid_records": 0,
+          "records_by_tag": {
+            "task6": 4
+          },
+          "unexpected_tags": {}
+        },
+        "committed_records": 4,
+        "committed_records_by_tag": {
+          "task6": 4
+        },
+        "attempt_minus_committed_by_tag": {},
+        "committed_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0006_r1_base_dev_d44adf3382d4_fp.jsonl",
+        "committed_sidecar_sha256": "1537a9118d5816226666211d9b8769416e530b2f958a9419a093d8fd410e3446"
+      },
+      "finished_at_unix": 1790657838.3038418,
+      "opportunity_summary": {
+        "all": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "failed": {
+          "present": 0,
+          "absent": 0,
+          "unknown": 0
+        },
+        "total": 4,
+        "failed_total": 0
+      },
+      "fingerprint_embedding": {
+        "required": true,
+        "mode": "trajectory-embedded-v1",
+        "records": 4,
+        "matches_sidecar": true
+      }
+    },
+    {
+      "index": 7,
+      "token": "0007_r1_dev_10c3d64cf54a",
+      "tag": "r1_dev",
+      "status": "success",
+      "started_at_unix": 1790657838.4322665,
+      "save_to": "metaagent/glm_retail_one_round_v5_20260929/0007_r1_dev_10c3d64cf54a",
+      "fingerprint": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0007_r1_dev_10c3d64cf54a_fp.jsonl",
+      "fingerprint_sha256": "79d35d16d4e3edde136c94f4cb76a6cf3982fe3c3e6b24f7e81bf22293e35807",
+      "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0007_r1_dev_10c3d64cf54a.log",
+      "results": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent/glm_retail_one_round_v5_20260929/0007_r1_dev_10c3d64cf54a/results.json",
+      "results_sha256": "c5df11f7dce7fdffbd4b4563cb0da397f103d6216cf88cfe97d406a807f42775",
+      "package_tree_sha256": "dc2e1eef747d748c12e7f8e67a143999c4504584c16f3cd5b217ed748e7a7c2f",
+      "agent_implementation": "recuris_agent",
+      "requested_task_ids": [
+        "6"
+      ],
+      "num_trials": 4,
+      "base_seed": 300,
+      "trial_seeds": {
+        "6": [
+          626729,
+          373753,
+          361454,
+          1567
+        ]
+      },
+      "benchmark_git_commit": "8ebb7499622fc2be9b9d510d6f7a7653461f4f29",
+      "benchmark_protocol": "official",
+      "benchmark_protocol_manifest": null,
+      "benchmark_inputs": {
+        "data_root": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "trees": {
+          "tau2/domains/retail": "97e79668225c3a196db6d705d873b2683e2a4b0cd521f2ece33932c43cfc1fdf",
+          "tau2/user_simulator": "9aee82f9587b28590b46c08bef2b4f2776d17d8f04271ed197dd26828a82d2ec"
+        },
+        "combined_sha256": "2233fdbfc1415ccef7bde43b54434bf69f5cd70175dde12f9ae3b743a1829060"
+      },
+      "observed_response_models": {
+        "worker": [
+          "glm-5.3-flash"
+        ],
+        "simulator": [
+          "glm-5.3-flash"
+        ]
+      },
+      "worker": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "simulator": {
+        "model": "glm-5.3-flash",
+        "reasoning_effort": "low",
+        "llm_args": {
+          "temperature": 0.0,
+          "timeout": 360,
+          "num_retries": 2,
+          "reasoning_effort": "low",
+          "allowed_openai_params": [
+            "reasoning_effort"
+          ]
+        }
+      },
+      "sanitized_env_prefixes": [
+        "TAU2_",
+        "RECURIS_",
+        "OPENAI_",
+        "ANTHROPIC_",
+        "LITELLM_"
+      ],
+      "controlled_mechanism_env": {
+        "TAU2_DATA_DIR": "/home/hust/research_recuris/Recuris/external/tau2-bench/data",
+        "RECURIS_FINGERPRINT": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0007_r1_dev_10c3d64cf54a_fp.jsonl",
+        "RECURIS_SKILL_MEMORY": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/packages/candidate_r1",
+        "RECURIS_EMBED_CACHE": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/embed_cache/dc2e1eef747d748c12e7f8e67a143999c4504584c16f3cd5b217ed748e7a7c2f",
+        "RECURIS_EMBED_FINGERPRINT_V1": "1"
+      },
+      "resume_policy": {
+        "max_resume_attempts": 1,
+        "mode": "same-checkpoint-explicit-resume",
+        "simulation_timeout_seconds": null,
+        "whole_simulation_retries": 0,
+        "whole_simulation_retry_delay_seconds": 1.0,
+        "retryable_termination_reasons": [
+          "infrastructure_error",
+          "timeout"
+        ]
+      },
+      "process_attempts": [
+        {
+          "attempt": 1,
+          "resume": false,
+          "log": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0007_r1_dev_10c3d64cf54a.log",
+          "timeout_seconds": 3600,
+          "started_at_unix": 1790657838.4323263,
+          "status": "success",
+          "finished_at_unix": 1790658007.9109538
+        }
+      ],
+      "fingerprint_reconciliation": {
+        "authority": "trajectory-embedded-v1",
+        "raw_attempt_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0007_r1_dev_10c3d64cf54a.raw_attempt_fingerprint.jsonl",
+        "raw_attempt_sidecar_sha256": "02ac25b0ee379db5eb25210cdf2e53fcf142c272d1678ba1d29f7bb0c12e3892",
+        "raw_attempt_summary": {
+          "records": 4,
+          "valid_records": 4,
+          "invalid_records": 0,
+          "records_by_tag": {
+            "task6": 4
+          },
+          "unexpected_tags": {}
+        },
+        "committed_records": 4,
+        "committed_records_by_tag": {
+          "task6": 4
+        },
+        "attempt_minus_committed_by_tag": {},
+        "committed_sidecar": "/home/hust/research_recuris/Recuris/external/tau2-bench/data/simulations/metaagent_fingerprints/glm_retail_one_round_v5_20260929/0007_r1_dev_10c3d64cf54a_fp.jsonl",
+        "committed_sidecar_sha256": "79d35d16d4e3edde136c94f4cb76a6cf3982fe3c3e6b24f7e81bf22293e35807"
+      },
+      "finished_at_unix": 1790658007.986701,
+      "opportunity_summary": {
+        "all": {
+          "present": 4,
+          "absent": 0,
+          "unknown": 0
+        },
+        "failed": {
+          "present": 1,
+          "absent": 0,
+          "unknown": 0
+        },
+        "total": 4,
+        "failed_total": 1
+      },
+      "fingerprint_embedding": {
+        "required": true,
+        "mode": "trajectory-embedded-v1",
+        "records": 4,
+        "matches_sidecar": true
+      }
+    }
+  ],
+  "capability_disclosures": {
+    "1": {
+      "schema_version": 1,
+      "round": 1,
+      "manual_path": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/round_1/capability_manual.md",
+      "manual_sha256": "3d5c574cb6f7b70c6b3dbc1869f992499ec2103acfbcfb429568d04d013aa8f9",
+      "tool_capabilities_path": "/home/hust/research_recuris/Recuris/ma_runs/glm_retail_one_round_v5_20260929/round_1/tool_capabilities.json",
+      "tool_capabilities_sha256": "26f9dbafac993e1c78f79950f216cd63372e5a947bce4316ded95aa1926deea8",
+      "prompt_block_sha256": "9d6bddbd6110c3a2c49c3c5f1db5b469285b50a789ca466274332e8115735aa5",
+      "projection_fields": [
+        "name",
+        "tool_type",
+        "mutates_state"
+      ],
+      "delivery": "embedded-first-in-D-and-P-plus-exact-read-only-copies"
+    }
+  }
+}

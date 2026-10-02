@@ -1,0 +1,63 @@
+{
+  "bare": {
+    "mean": 0.9411764705882353,
+    "per_task": {
+      "Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/03-retail-supply-category-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/04-university-program-funding-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation": 1.0,
+      "Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/08-university-course-catalog-diff": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task1": 0.5,
+      "Production-Capacity-Planning/harbor_gdpval_36_task2": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task3": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task4": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task5": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task6": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task7": 0.5,
+      "Production-Capacity-Planning/harbor_gdpval_36_task8": 1.0
+    },
+    "tasks": 17,
+    "trials": 34
+  },
+  "paired": {
+    "base_mean": 94.11764705882352,
+    "ci95_pp": [
+      -5.88235294117647,
+      11.76470588235294
+    ],
+    "delta_pp": 2.941176470588235,
+    "excludes_zero": false,
+    "improved": 2,
+    "n_tasks": 17,
+    "regressed": 1,
+    "skill_mean": 97.05882352941177
+  },
+  "skill": {
+    "mean": 0.9705882352941176,
+    "per_task": {
+      "Cross-Format-Data-Reconciliation/01-cloud-service-portfolio-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/02-hospital-capacity-portfolio-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/03-retail-supply-category-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/04-university-program-funding-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/05-datacenter-hardware-registry-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/06-hospital-medication-reconciliation": 1.0,
+      "Cross-Format-Data-Reconciliation/07-shipping-container-manifest-diff": 1.0,
+      "Cross-Format-Data-Reconciliation/08-university-course-catalog-diff": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task1": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task2": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task3": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task4": 0.5,
+      "Production-Capacity-Planning/harbor_gdpval_36_task5": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task6": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task7": 1.0,
+      "Production-Capacity-Planning/harbor_gdpval_36_task8": 1.0
+    },
+    "tasks": 17,
+    "trials": 34
+  }
+}

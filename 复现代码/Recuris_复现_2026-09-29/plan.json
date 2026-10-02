@@ -1,0 +1,120 @@
+{
+  "round": 1,
+  "clusters": [
+    {
+      "cluster_id": "c1",
+      "evidence_tasks": ["41"],
+      "symptom": "On trials 0, 1 and 3 of task 41 the modify_pending_order_items call executes but the price-difference refund is credited to a payment method that was not the one used on the order, so the DB check fails (reward DB=0.0) even though NL_ASSERTION passes.",
+      "failing_step": "The modify_pending_order_items write is drafted with payment_method_id of a different stored payment method (the visa card) instead of the order's original payment method recorded in the order's payment_history.",
+      "failure_mode": "wrong_refund_payment_method_on_item_modification",
+      "component": "E",
+      "action_opportunity": "present",
+      "opportunity_evidence": "Each failed trace contains the actual pre-write draft of modify_pending_order_items (trial 0 tail after the two modify_pending_order_address calls; trial 1: tool_call modify_pending_order_items({'item_ids': ['1000000001'], 'new_item_ids': ['1000000002'], 'order_id': '#W0000001', 'payment_method_id': 'gift_card_0000002'}); trial 3 same with gift_card_0000002) while the required action specifies the original payment method from the order's payment_history. post_terminal_assistant_event is absent, so the fix targets these observed earlier draft events, not any post-terminal event.",
+      "patchability": "memory",
+      "evidence": "Reward breakdown {'DB': 0.0, 'NL_ASSERTION': 1.0} with MISSING/WRONG ACTION modify_pending_order_items(... payment_method_id gift_card_0000001) in trials 0/1/3; the executed call used a different payment method and the tool result shows the refund transaction went to that wrong method. Policy-grounded rule: the price difference on a pending-order item modification must be settled on the original payment method used for the order.",
+      "fixes": [
+        {
+          "action": "add_card",
+          "em_type": "action_result",
+          "card_id": "modify_items_refund_original_payment",
+          "sketch": "Before executing modify_pending_order_items, verify that payment_method_id equals the original payment method used for the order, read from the order's payment_history (fetched via get_order_details). Teach with a simulated placeholder call using <ORDER_ID>, <OLD_ITEM_ID>, <NEW_ITEM_ID> and <ORIGINAL_PAYMENT_METHOD_ID>, and list the common mistake of substituting another payment method stored on the user profile, which sends the refund to the wrong instrument and fails the request.",
+          "trigger_event": "pre_write",
+          "trigger_tool": "modify_pending_order_items"
+        }
+      ]
+    },
+    {
+      "cluster_id": "c2",
+      "evidence_tasks": ["41"],
+      "symptom": "The c1 action_result card needs a delivery carrier to be reviewed at draft time; without one it can never fire.",
+      "failing_step": "The neutral package has an empty delivery list, so the pre_write exemplar in c1 has no carrier.",
+      "failure_mode": "missing_carrier_for_action_result",
+      "component": "RHO",
+      "action_opportunity": "present",
+      "opportunity_evidence": "Same evidence as c1: the failed traces of task 41 contain concrete modify_pending_order_items draft calls (trials 0, 1, 3) at which pre_write review could have fired; no post-terminal event is involved.",
+      "patchability": "memory",
+      "evidence": "manifest.yaml currently has delivery: []; the capability contract states action_result cards reach the worker only through exemplar_bounce at pre_write with exact_only for new cards.",
+      "fixes": [
+        {
+          "action": "set_delivery",
+          "deliverer": "exemplar_bounce",
+          "cfg": {
+            "em_type": "action_result",
+            "exact_only": true
+          }
+        }
+      ]
+    },
+    {
+      "cluster_id": "c3",
+      "evidence_tasks": ["41"],
+      "symptom": "On trial 2 of task 41 the assistant updated only the puzzle order's address and the account default; the oracle additionally requires get_order_details and modify_pending_order_address for the other pending order, whose address was reported wrong at the account level, so DB=0.0.",
+      "failing_step": "When the customer said the address was mistyped when placing the order, the assistant enumerated the two pending orders but never fetched the second order's details and never proposed applying the correction to it before writing.",
+      "failure_mode": "address_correction_scope_limited_to_one_order",
+      "component": "E",
+      "action_opportunity": "present",
+      "opportunity_evidence": "The failed trial 2 transcript shows the concrete earlier assistant turn after get_user_details where the agent lists both pending orders (order #W0000002 and #W0000001) and asks which order contains the puzzle, then proceeds to fix only one order; the address-correction scope decision happens on that observed turn, long before termination (post_terminal_assistant_event absent).",
+      "patchability": "memory",
+      "evidence": "Trial 2 outcome evidence lists REQUIRED action NOT correctly done: get_order_details(#W0000002) and modify_pending_order_address(#W0000002, 445 Maple Drive...). The user's opening request states the address was mistyped when making the order and asks to check and fix it on the order and account; trials 0, 1 and 3 show the correct behavior of applying the correction to every pending order plus the account.",
+      "fixes": [
+        {
+          "action": "add_card",
+          "em_type": "knowledge",
+          "card_id": "address_correction_covers_pending_orders",
+          "sketch": "When a customer reports that an address was entered incorrectly, treat the correction as potentially applying to every pending order on the account: fetch the details of each pending order, check the stored address, and confirm with the customer whether to update all affected pending orders and the account default address before any write. Warn that fixing only one order leaves the reported error in place elsewhere.",
+          "trigger_event": "turn_start",
+          "trigger_tool": "*"
+        }
+      ]
+    },
+    {
+      "cluster_id": "c4",
+      "evidence_tasks": ["41"],
+      "symptom": "The c3 knowledge card needs a carrier; with an empty delivery list it can never be injected at turn start.",
+      "failing_step": "No configured deliverer exists to inject the address-scope knowledge when pending service work exists.",
+      "failure_mode": "missing_carrier_for_knowledge_card",
+      "component": "RHO",
+      "action_opportunity": "present",
+      "opportunity_evidence": "Same failed trial 2 turn as c3: the turn-start/pending-work moments in the failed trace precede the assistant's order-enumeration and single-order address fix; the intervention point is earlier than termination.",
+      "patchability": "memory",
+      "evidence": "manifest.yaml has delivery: []; the capability contract routes event-matched knowledge cards through boundary_inject at turn_start with a configured event/tool pair, which is the low-regression unscoped route for knowledge cards.",
+      "fixes": [
+        {
+          "action": "set_delivery",
+          "deliverer": "boundary_inject",
+          "cfg": {
+            "at": "turn_start",
+            "when": "has_pending",
+            "em_type": "knowledge",
+            "tool": "*",
+            "max_cards": 1
+          }
+        }
+      ]
+    },
+    {
+      "cluster_id": "c5",
+      "evidence_tasks": ["41"],
+      "symptom": "The has_pending predicate of the c4 boundary_inject carrier and any pending-ledger observation need a tool-preserving working-memory entry kind; the neutral package defines no wm section.",
+      "failing_step": "Without a service-request entry kind the runtime cannot record pending address/item work, so has_pending stays false and the c3 card never fires.",
+      "failure_mode": "missing_tool_preserving_wm_entry_kind",
+      "component": "W",
+      "action_opportunity": "present",
+      "opportunity_evidence": "The same failed trial 2 turn as c3/c4: the customer's stated need (fix wrong address, swap puzzle item) is a genuine user turn at which the WM manager can derive pending service requests; this precedes all writes and termination.",
+      "patchability": "memory",
+      "evidence": "Capability contract: service_request entries store description, tool, and params and are the tool-preserving kind required for pending-work detection; the neutral manifest contains no wm section (package changelog: deterministic neutral M0).",
+      "fixes": [
+        {
+          "action": "set_wm",
+          "field": "entry_kind",
+          "value": "service_request"
+        },
+        {
+          "action": "set_wm",
+          "field": "manager",
+          "value": "self_maintain_each_turn"
+        }
+      ]
+    }
+  ]
+}

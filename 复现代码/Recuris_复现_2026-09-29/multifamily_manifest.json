@@ -1,0 +1,56 @@
+{
+  "recuris_commit": "7d3745ab787b1206ccd981cb1511100476097266",
+  "local_source_patch_sha256": "21115bc236050f388ccee473dbb95d6b038ade48313a050fc30cf2e84552d715",
+  "uv_lock_sha256": "0bd1746a640109d0447603198e68c88f058dfa5c4083d55683faa9b0ad8f5a41",
+  "python": "3.12.14",
+  "harbor": "0.20.0",
+  "skillflow_source_commit": "7b49ff5",
+  "skillflow_dataset_revision": "ecaadb0e25d5d5cfd87bd86d81e77b4abe3a00bc",
+  "dataset_manifest_sha256": "a1b683a638b595be7003a73cd2b9ffcaebe4633b8a956f6a0fe97722ec2e9708",
+  "skill_memory_tree_sha256": "8b6242992adc34c811f338de6b36b446f3388f495a2a897982e8d1a3ee8a7624",
+  "model": "glm-5.3-flash",
+  "api_base_url": "https://open.bigmodel.cn/api/paas/v4",
+  "qwen_code_version": "0.24.6",
+  "docker_server": "29.8.1",
+  "docker_compose": "5.5.1",
+  "ubuntu_image_id": "sha256:e9596c081322ed70fedd22a01eef35a426f87c194747123595235130265ffdc6",
+  "skillflow_base_image_id": "sha256:d0b6542cf112611ba8e85d3e732974b42d24c9609ae10d7b876a7653d6ec4286",
+  "base_image_archive_sha256": "79880bb4366226592247e553681af198c46afafa817487f88ebf0105599c7430",
+  "crossformat_build_base_image_id": "sha256:44ce70b21843a1002b83d314cdcbc4712d0bfbdef793d201a84a31a805a36778",
+  "crossformat_build_base_archive_sha256": "b34b9d565c3dfecc7bf31ce7d4503c03c646d52aed9b7e5016897552e13f338e",
+  "pip_mirror_dockerfile_sha256": "27c305856da1b3d24647817a37007b811c59a46bf330dfa018e2c2776cf1ced2",
+  "task_image_archive_sha256": "5fd1876d7dba6252a16582144a41980e259db694ea78bee0d0bccb6ee51e8513",
+  "task_image_archive_bytes": 681913228,
+  "configs_sha256": {
+    "bare_cross-format-data-reconciliation.yaml": "60dbb91e6076040696826abdbb613dc34a0be30edc5cec5a77fc575a1aab3586",
+    "bare_production-capacity-planning.yaml": "8be1e105627317ac5996b991fc371a63c51e85885dba34cd57b0182268c8d634",
+    "skill_cross-format-data-reconciliation.yaml": "ecb6ab0b2a148ba9e7e9ee689e20a7e7402692ec9dd2f713f58d2f606bfee885",
+    "skill_production-capacity-planning.yaml": "11f41112ca9ec1dfa2d84f590d3694d4014a320c22c066f75c788cd670c8fb35"
+  },
+  "task_image_ids": {
+    "Production-Capacity-Planning": {
+      "harbor_gdpval_36": "sha256:95e09822ff9bbb7b4d7a96accf91267e80831cb570ad0502360cb7f4b1905c77",
+      "harbor_gdpval_36_task1": "sha256:da60a9dcd4db900eac15af20aa969201895e27fc581059eba59fbae60e2fc9d6",
+      "harbor_gdpval_36_task2": "sha256:92431b14608646db9a8ee8e468e11b35180c2c072e3f46b47ae25005866274a2",
+      "harbor_gdpval_36_task3": "sha256:6ea1cd558abbb6bfcccf18c5d2a9c602d82421fe4635308b5b9a9137f02f0c0c",
+      "harbor_gdpval_36_task4": "sha256:e6c4fac97052cd7abcbf8416c502525b1c1749bef961ab5302fe5f07e525370f",
+      "harbor_gdpval_36_task5": "sha256:9f5c70850eac05ca5a0ec3bdb7410c072ff1b1d40ac25ba50f7cbec65959887a",
+      "harbor_gdpval_36_task6": "sha256:485268085c515e2996b9f7970b3bc88ed62ab85ca485228f8aab2a56f27a1446",
+      "harbor_gdpval_36_task7": "sha256:1c4e6ae0a72edcdbf77ba7851cc8a0361cde0525d6cbd0887b7681c83b730c5d",
+      "harbor_gdpval_36_task8": "sha256:4e46759b0481878b980949492f6ee5f1d1c6f54b1269fcff9fba216a140bfa4b"
+    },
+    "Cross-Format-Data-Reconciliation": {
+      "01-cloud-service-portfolio-diff": "sha256:d04c6691253ac2056758da4e03a20b1abba662bb83dbe84ced55bf786f3c93c0",
+      "02-hospital-capacity-portfolio-diff": "sha256:0f663ba92fd44f8b53c00a58489f842e1c8ca96be534e761f80f1a96e9078dfe",
+      "03-retail-supply-category-diff": "sha256:8c7a753ecdc2c30bb86f017d81e854551c80f245fb04cca64d3a17f6758092f7",
+      "04-university-program-funding-diff": "sha256:640543c7a0aeb9164f8aeab3d47f9f012e21939fc018abd94395ca7d0cb2e26e",
+      "05-datacenter-hardware-registry-diff": "sha256:df1614db295d0f59e848025506dd8da9f78cf5085351e29f037fba4720ef025e",
+      "06-hospital-medication-reconciliation": "sha256:1ca10e190989b1ebf90e02e5ae456ea71b92db41cbda541a858432fb09199e19",
+      "07-shipping-container-manifest-diff": "sha256:11742d7053bb610bbc9a766c7deab5a1b02850f6617e20eea2ffb0a1145305d0",
+      "08-university-course-catalog-diff": "sha256:1cbcf88c95d594369533bedee0897724ad30fb634e8547e1fc4d980110912ec6"
+    }
+  },
+  "replicates_per_task_per_arm": 2,
+  "harbor_attempts_per_trial": 1,
+  "harbor_concurrent_trials": 3
+}

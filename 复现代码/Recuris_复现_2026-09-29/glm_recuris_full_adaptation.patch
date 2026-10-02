@@ -1,0 +1,52 @@
+diff --git a/src/recuris/adapters/skillflow/render_configs.py b/src/recuris/adapters/skillflow/render_configs.py
+index b7fe03b..a21327a 100644
+--- a/src/recuris/adapters/skillflow/render_configs.py
++++ b/src/recuris/adapters/skillflow/render_configs.py
+@@ -79,9 +79,8 @@ def render_one(
+         f"  - import_path: {AGENT_IMPORT_PATH}",
+         f"    model_name: {model}",
+         "    kwargs:",
+-        # Read from the process environment by harbor at run time. Never a
+-        # literal: a committed config must not be able to carry a credential.
+-        "      api_key: ${OPENAI_API_KEY}",
++        # Harbor 0.20.0 does not expand ${OPENAI_API_KEY} in YAML.
++        # Omit the kwarg so QwenCode uses its OPENAI_API_KEY env fallback.
+         f'      base_url: "{base_url}"',
+     ]
+     if template is not None:
+diff --git a/src/recuris/adapters/tau2/treatment.py b/src/recuris/adapters/tau2/treatment.py
+index 2651b3d..ab0ac2a 100644
+--- a/src/recuris/adapters/tau2/treatment.py
++++ b/src/recuris/adapters/tau2/treatment.py
+@@ -39,7 +39,7 @@ DEFAULT_MODEL_ID = "doubao-seed-2-0-pro-260215"
+ MODEL_ID = os.getenv("RECURIS_TAU2_REFERENCE_MODEL", DEFAULT_MODEL_ID)
+ PROVIDER_MODEL = f"openai/{MODEL_ID}"
+ 
+-REASONING_EFFORT = "medium"
++REASONING_EFFORT = "low"
+ TEMPERATURE = 0.0
+ TIMEOUT = 360
+ NUM_RETRIES = 2
+diff --git a/src/recuris/metaagent/downstream.py b/src/recuris/metaagent/downstream.py
+index 5ea30ed..de9adfa 100644
+--- a/src/recuris/metaagent/downstream.py
++++ b/src/recuris/metaagent/downstream.py
+@@ -50,8 +50,8 @@ PY = os.environ.get("RECURIS_DOWNSTREAM_PY") or sys.executable
+ DATA_DIR = str(tau2_data_dir(required=False))
+ SAFE_LABEL_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$")
+ FORMAL_BASE_SEED = 300
+-FORMAL_DOWNSTREAM_MODEL = "doubao-seed-2-0-pro-260215"
+-FORMAL_DOWNSTREAM_REASONING = "medium"
++FORMAL_DOWNSTREAM_MODEL = "glm-5.3-flash"
++FORMAL_DOWNSTREAM_REASONING = "low"
+ FORMAL_DOWNSTREAM_TEMPERATURE = 0.0
+ FORMAL_ALLOWED_OPENAI_PARAMS = ["reasoning_effort"]
+ FORMAL_DOWNSTREAM_TIMEOUT = 360
+@@ -683,6 +683,7 @@ class RecurisDownstream:
+                 "TAU2_DATA_DIR": str(self.data_dir),
+                 "OPENAI_API_KEY": _read_env("OPENAI_API_KEY"),
+                 "OPENAI_BASE_URL": _read_env("OPENAI_BASE_URL"),
++                "RECURIS_TAU2_REFERENCE_MODEL": self.simulator_model,
+                 "RECURIS_FINGERPRINT": str(fp_path),
+                 # The builtin cache key predates package-body versioning. Scope
+                 # it by run namespace + exact package digest so one candidate,

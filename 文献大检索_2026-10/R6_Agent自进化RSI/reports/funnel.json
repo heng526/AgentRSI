@@ -1,0 +1,11 @@
+{
+  "round": "R6",
+  "candidate_hits": 5383,
+  "metadata_verified": 4400,
+  "unique_after_dedup": 4352,
+  "abstract_screened": 500,
+  "relevant_retained": 447,
+  "fulltext_reviewed": 80,
+  "deep_analyzed": 40,
+  "notes": "abstract_screened 为实读摘要判定数（500/候选总数）；L1 规则计分未做人工筛查；fulltext_reviewed=L3+L4=80；deep_analyzed=L4=40；batches 5-10 共120篇有全文未读（配额已达标）。口径补充：candidate_hits=raw/*progress.json 的 retrieved 求和（5383，11/14 条查询有原始记录；R6-AX-01/R6-S2-01/R6-S2-02 无 progress 记录，query_log.csv 未生成）；relevant_retained=papers_master.parquet 中 inclusion_status=included 的实统计（447，python 统计非估算）；unique_after_dedup 按 stats_summary.json=4352（注意 dedup_report.json 内部记录 records_total=4352、duplicate_records=76、unique_after_dedup=4276，两报告口径不一致，本 funnel 以 stats_summary 与 papers_master 行数 4352 为准）；reading_level 分布 L1=3844/L2=428/L3=40/L4=40；fulltext 可用 189 篇（manifest 200 条含 11 条 unavailable）；cards 80 张中 WorldMM 为 arXiv/DOI 双源卡（同文），独立论文 79 篇。"
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "project_id": "CVPR-RSI",
+  "project_slug": "agent_rsi",
+  "index_path": "reports/agent_rsi/INDEX.md",
+  "index_mode": "managed",
+  "researchops_sidecar_index_path": "reports/agent_rsi/RESEARCHOPS_INDEX.md",
+  "reducer_writer": "researchops-reducer",
+  "default_full_run_authorization": "L3_SCIENTIFIC_RUN",
+  "actor_outboxes": {
+    "gpt": "researchops/outbox/gpt",
+    "codex": "researchops/outbox/codex",
+    "human": "researchops/outbox/human"
+  }
+}

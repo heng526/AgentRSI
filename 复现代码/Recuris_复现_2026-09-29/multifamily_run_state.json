@@ -1,0 +1,134 @@
+[
+  {
+    "family": "Production-Capacity-Planning",
+    "replicate": 1,
+    "arm": "bare",
+    "job": "/home/hust/research_recuris/Recuris/jobs/bare_envfix/recuris-bare-envfix-production-capacity-planning",
+    "rewards": {
+      "harbor_gdpval_36": 1.0,
+      "harbor_gdpval_36_task1": 0.0,
+      "harbor_gdpval_36_task2": 1.0,
+      "harbor_gdpval_36_task3": 1.0,
+      "harbor_gdpval_36_task4": 1.0,
+      "harbor_gdpval_36_task5": 1.0,
+      "harbor_gdpval_36_task6": 1.0,
+      "harbor_gdpval_36_task7": 1.0,
+      "harbor_gdpval_36_task8": 1.0
+    }
+  },
+  {
+    "family": "Production-Capacity-Planning",
+    "replicate": 1,
+    "arm": "skill",
+    "job": "/home/hust/research_recuris/Recuris/jobs/skill_envfix/recuris-skill-envfix-production-capacity-planning",
+    "rewards": {
+      "harbor_gdpval_36": 1.0,
+      "harbor_gdpval_36_task1": 1.0,
+      "harbor_gdpval_36_task2": 1.0,
+      "harbor_gdpval_36_task3": 1.0,
+      "harbor_gdpval_36_task4": 0.0,
+      "harbor_gdpval_36_task5": 1.0,
+      "harbor_gdpval_36_task6": 1.0,
+      "harbor_gdpval_36_task7": 1.0,
+      "harbor_gdpval_36_task8": 1.0
+    }
+  },
+  {
+    "family": "Cross-Format-Data-Reconciliation",
+    "replicate": 1,
+    "arm": "bare",
+    "job": "/home/hust/research_recuris/Recuris/jobs/multifamily_k2/bare/recuris-bare-cross-format-data-reconciliation-r1",
+    "rewards": {
+      "01-cloud-service-portfolio-diff": 1.0,
+      "02-hospital-capacity-portfolio-diff": 1.0,
+      "03-retail-supply-category-diff": 1.0,
+      "04-university-program-funding-diff": 1.0,
+      "05-datacenter-hardware-registry-diff": 1.0,
+      "06-hospital-medication-reconciliation": 1.0,
+      "07-shipping-container-manifest-diff": 1.0,
+      "08-university-course-catalog-diff": 1.0
+    }
+  },
+  {
+    "family": "Cross-Format-Data-Reconciliation",
+    "replicate": 1,
+    "arm": "skill",
+    "job": "/home/hust/research_recuris/Recuris/jobs/multifamily_k2/skill/recuris-skill-cross-format-data-reconciliation-r1",
+    "rewards": {
+      "01-cloud-service-portfolio-diff": 1.0,
+      "02-hospital-capacity-portfolio-diff": 1.0,
+      "03-retail-supply-category-diff": 1.0,
+      "04-university-program-funding-diff": 1.0,
+      "05-datacenter-hardware-registry-diff": 1.0,
+      "06-hospital-medication-reconciliation": 1.0,
+      "07-shipping-container-manifest-diff": 1.0,
+      "08-university-course-catalog-diff": 1.0
+    }
+  },
+  {
+    "family": "Cross-Format-Data-Reconciliation",
+    "replicate": 2,
+    "arm": "bare",
+    "job": "/home/hust/research_recuris/Recuris/jobs/multifamily_k2/bare/recuris-bare-cross-format-data-reconciliation-r2",
+    "rewards": {
+      "01-cloud-service-portfolio-diff": 1.0,
+      "02-hospital-capacity-portfolio-diff": 1.0,
+      "03-retail-supply-category-diff": 1.0,
+      "04-university-program-funding-diff": 1.0,
+      "05-datacenter-hardware-registry-diff": 1.0,
+      "06-hospital-medication-reconciliation": 1.0,
+      "07-shipping-container-manifest-diff": 1.0,
+      "08-university-course-catalog-diff": 1.0
+    }
+  },
+  {
+    "family": "Cross-Format-Data-Reconciliation",
+    "replicate": 2,
+    "arm": "skill",
+    "job": "/home/hust/research_recuris/Recuris/jobs/multifamily_k2/skill/recuris-skill-cross-format-data-reconciliation-r2",
+    "rewards": {
+      "01-cloud-service-portfolio-diff": 1.0,
+      "02-hospital-capacity-portfolio-diff": 1.0,
+      "03-retail-supply-category-diff": 1.0,
+      "04-university-program-funding-diff": 1.0,
+      "05-datacenter-hardware-registry-diff": 1.0,
+      "06-hospital-medication-reconciliation": 1.0,
+      "07-shipping-container-manifest-diff": 1.0,
+      "08-university-course-catalog-diff": 1.0
+    }
+  },
+  {
+    "family": "Production-Capacity-Planning",
+    "replicate": 2,
+    "arm": "bare",
+    "job": "/home/hust/research_recuris/Recuris/jobs/multifamily_k2/bare/recuris-bare-production-capacity-planning-r2",
+    "rewards": {
+      "harbor_gdpval_36": 1.0,
+      "harbor_gdpval_36_task1": 1.0,
+      "harbor_gdpval_36_task2": 1.0,
+      "harbor_gdpval_36_task3": 1.0,
+      "harbor_gdpval_36_task4": 1.0,
+      "harbor_gdpval_36_task5": 1.0,
+      "harbor_gdpval_36_task6": 1.0,
+      "harbor_gdpval_36_task7": 0.0,
+      "harbor_gdpval_36_task8": 1.0
+    }
+  },
+  {
+    "family": "Production-Capacity-Planning",
+    "replicate": 2,
+    "arm": "skill",
+    "job": "/home/hust/research_recuris/Recuris/jobs/multifamily_k2/skill/recuris-skill-production-capacity-planning-r2",
+    "rewards": {
+      "harbor_gdpval_36": 1.0,
+      "harbor_gdpval_36_task1": 1.0,
+      "harbor_gdpval_36_task2": 1.0,
+      "harbor_gdpval_36_task3": 1.0,
+      "harbor_gdpval_36_task4": 1.0,
+      "harbor_gdpval_36_task5": 1.0,
+      "harbor_gdpval_36_task6": 1.0,
+      "harbor_gdpval_36_task7": 1.0,
+      "harbor_gdpval_36_task8": 1.0
+    }
+  }
+]

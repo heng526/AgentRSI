@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_REPLACE_UUID",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "input_state_version": 0,
+  "task_id": "PROJECT-STAGE-TASK",
+  "correlation_id": null,
+  "causation_id": null,
+  "summary": "Task execution result",
+  "payload": {"status":"PASS","executed_source_sha":null,"idempotency_key":"","tests":{},"runs":[],"metrics":{},"artifacts":[],"unauthorized_actions_started":false,"to_verify":[]}
+}
