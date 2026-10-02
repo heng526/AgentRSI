@@ -19,7 +19,7 @@
       "Sentinel_26dcb36300c88191a753f8d6deaea5bf"
     ],
     "question_confirmed": "Allow sending the remaining 839 saved questions, model answers, and matching reference answers to official Zhipu GLM-5.3-Flash at open.bigmodel.cn/api/paas/v4 for scoring, with max_tokens=4096, zero retries, and cumulative cost at most CNY 100?",
-    "user_response": "ok  cvpr��Ҫ24Сʱ�ƽ���������",
+    "user_response": "ok  cvpr需要24小时推进工作进度",
     "scope": {
       "run_id": "qwen33b-glmembed-robot-full-20260929a",
       "data_sent_per_request": "One of the 839 remaining saved questions, its saved model answer, and its matching reference answer in the frozen existing judge prompt",

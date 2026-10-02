@@ -35,11 +35,11 @@ provider/model/endpoint; all scoring limits and stop conditions above remain.
   and the matching protected config.
 - The current official Zhipu pricing table lists GLM-5.3-Flash at input CNY 0.8 and
   output CNY 2.8 per million tokens. The official model page lists a 1M context
-  and 128K maximum output. Sources: [���� API ����](https://docs.bigmodel.cn/cn/guide/start/pricing),
-  [GLM-5.3-Flash ģ��˵��](https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash).
-- ���׵� OpenAI �����ĵ� supports `max_tokens`; the scorer now sends
+  and 128K maximum output. Sources: [智谱 API 定价](https://docs.bigmodel.cn/cn/guide/start/pricing),
+  [GLM-5.3-Flash 模型说明](https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash).
+- 智谱的 OpenAI 兼容文档 supports `max_tokens`; the scorer now sends
   `max_tokens=512`, matching the existing judge's output ceiling.
-  [OpenAI API �����ĵ�](https://docs.bigmodel.cn/cn/guide/develop/openai/introduction).
+  [OpenAI API 兼容文档](https://docs.bigmodel.cn/cn/guide/develop/openai/introduction).
 - The archive contains 1,276 unique `(video_id, id)` rows: 1,270 nonempty
   responses and six null responses, normalized to empty and wrong without a
   request. All questions and labels pair with the
@@ -49,7 +49,7 @@ provider/model/endpoint; all scoring limits and stop conditions above remain.
 
 ## Scorer and offline verification
 
-`���ִ���/m3-agent-repro-vendored/repro/scripts/score_saved_answers.py` is an
+`复现代码/m3-agent-repro-vendored/repro/scripts/score_saved_answers.py` is an
 append-only score-only tool for the named run. It uses the existing judge prompt
 and parser, checks the official provider/model/endpoint, disables SDK retries,
 fsyncs each result, resumes by `(video_id, id)`, and stops at the first API,
@@ -103,7 +103,7 @@ file as history.
 The first SSH control stream reset after visible output for attempt 431. A
 read-only inspection then confirmed that the remote scorer was no longer
 running and the append-only follow-up file had 416 complete `SCORED` rows,
-global attempts 17�C432, with no follow-up `HOLD`. An offline resume preflight
+global attempts 17–432, with no follow-up `HOLD`. An offline resume preflight
 passed: 839 additional rows remained, the next-request reserve was CNY 1.21,
 and accumulated per-request rounded estimates were CNY 4.32 including the
 original batch. The persisted follow-up rows total 119,898 input tokens and
@@ -144,7 +144,7 @@ Read-only post-run verification found 1,255 unique follow-up rows, all
 `SCORED` at 4096 tokens, plus the 15 earlier valid 512-token rows and six
 empty rows marked wrong without requests. The only cross-file answer-key
 overlap is Q16: its old 512-token `HOLD` remains immutable, while its
-authorized 4096-token result is `SCORED` and false. Attempts 1�C1,271 are
+authorized 4096-token result is `SCORED` and false. Attempts 1–1,271 are
 contiguous; all 1,270 nonempty keys have a final verdict. The saved answer
 snapshots, annotation questions/reference answers, parser verdicts, usage,
 provider/model and completed response states passed the read-only checks.
