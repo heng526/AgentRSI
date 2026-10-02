@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_1847c2bc-6c68-445b-9427-08522300e666",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T17:50:18Z",
+  "input_state_version": 14,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002",
+  "correlation_id": "rec_84c30e76-e530-44fe-9567-611dcc350e9b",
+  "causation_id": "rec_77dc0331-7aa4-417b-a4b3-3d7fd4c29767",
+  "summary": "Original 4096-token follow-up scope is complete after the explicitly approved 839-row continuation; prior HOLD result remains immutable history",
+  "payload": {
+    "status": "PASS",
+    "status_scope": "Completed technical judge labeling only; does not mark a scientific-gate PASS",
+    "executed_source_sha": null,
+    "executed_scorer_sha256": "421fbb58f59d930b37e6389bb447a5b250474088a15132d9cc20b345493ecd45",
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002-EXISTING-RUN-ONCE",
+    "tests": {
+      "full_scope": "PASS; original 15 valid 512-token labels preserved, Q16 old HOLD plus exactly one successful 4096-token re-evaluation, 1255 follow-up SCORED rows, six empty wrong without API, zero unjudged",
+      "provenance": "PASS; source/annotations and saved answer snapshots match; parser/usage/attempt checks in resume result rec_77dc0331-7aa4-417b-a4b3-3d7fd4c29767",
+      "historical_hold": "Prior partial HOLD result rec_d0bbfff7-6c3d-4715-87b3-6de07d96f746 remains in the append-only ledger and is superseded only for current task status"
+    },
+    "runs": [
+      {
+        "run_id": "qwen33b-glmembed-robot-full-20260929a",
+        "kind": "completed_saved_answer_glm_judging_followup",
+        "nonempty_final_judgments": 1270,
+        "empty_wrong_no_call": 6,
+        "unjudged": 0,
+        "total_api_attempts": 1271,
+        "followup_api_attempts": 1255,
+        "technical_resume_result_id": "rec_77dc0331-7aa4-417b-a4b3-3d7fd4c29767"
+      }
+    ],
+    "metrics": {
+      "robot_judged_accuracy": {
+        "correct": 422,
+        "denominator": 1276,
+        "percent": "33.0721",
+        "interpretation": "complete descriptive result with mixed 512/4096-token judge output limits"
+      }
+    },
+    "artifacts": [
+      "reports/agent_rsi/ROBOT_SCORING_EXECUTION_20261002.md",
+      "reports/agent_rsi/ROBOT_FULL_JUDGE_ANALYSIS_20261002.md"
+    ],
+    "authorization_consumed": true,
+    "unauthorized_actions_started": false,
+    "scientific_state_change": "none; stage remains BOOTSTRAP and scientific_head_sha null",
+    "to_verify": [
+      "Paper-level comparison and manual error attribution remain separate scientific work."
+    ]
+  }
+}

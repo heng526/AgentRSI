@@ -229,6 +229,56 @@
       "seq": 23,
       "summary": "Follow-up persisted 416 successful 4096-token labels, then continuation was blocked by automatic approval review; 839 rows remain unjudged",
       "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002"
+    },
+    {
+      "actor": "human",
+      "created_at": "2026-10-02T16:52:19Z",
+      "path": "researchops/outbox/human/APPROVAL-CVPR-RSI-ROBOT-GLM-839-RESUME-20261002.json",
+      "record_id": "rec_a6e14037-05f7-4a70-95e8-e3728edc70e2",
+      "record_type": "approval",
+      "seq": 24,
+      "summary": "User explicitly approved sending the 839 remaining saved questions, agent answers, and reference answers to the official Zhipu GLM endpoint for the existing score run",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002"
+    },
+    {
+      "actor": "gpt",
+      "created_at": "2026-10-02T16:52:20Z",
+      "path": "researchops/outbox/gpt/TASK-CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002.json",
+      "record_id": "rec_db48f542-5c50-4a4f-bcd1-5d641cd81198",
+      "record_type": "task",
+      "seq": 25,
+      "summary": "Resume exactly the 839 unjudged saved Robot answers from the verified attempt-432 checkpoint under the user's explicit official-GLM data-transfer approval",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T16:54:00Z",
+      "path": "researchops/outbox/codex/EVENT-CVPR-RSI-ROBOT-GLM-839-RESUME-START-20261002.json",
+      "record_id": "rec_71f2f7ca-593c-4df6-a303-445745b4f174",
+      "record_type": "event",
+      "seq": 26,
+      "summary": "Explicit external-payload approval recorded; no node scorer was running and offline preflight verified exactly 839 pending rows",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T17:50:17Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002.json",
+      "record_id": "rec_77dc0331-7aa4-417b-a4b3-3d7fd4c29767",
+      "record_type": "result",
+      "seq": 27,
+      "summary": "Authorized 839-row continuation completed; all 1270 nonempty Robot answers have final GLM labels and six empty answers remain wrong without API",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T17:50:18Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-GLM-FOLLOWUP-4096-COMPLETE-20261002.json",
+      "record_id": "rec_1847c2bc-6c68-445b-9427-08522300e666",
+      "record_type": "result",
+      "seq": 28,
+      "summary": "Original 4096-token follow-up scope is complete after the explicitly approved 839-row continuation; prior HOLD result remains immutable history",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002"
     }
   ],
   "project_id": "CVPR-RSI",

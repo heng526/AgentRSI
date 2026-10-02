@@ -1,5 +1,11 @@
 # Robot saved-answer scoring execution record
 
+**Current status (2026-10-02): complete technical judging.** All 1,270
+nonempty saved Robot responses now have a GLM verdict; the six empty responses
+remain wrong without API calls. The earlier HOLD sections below are retained as
+execution history. See [full-batch analysis](ROBOT_FULL_JUDGE_ANALYSIS_20261002.md)
+for the frozen metric and the limits on its interpretation.
+
 ## Scope and authorization
 
 This record covers only the existing run `qwen33b-glmembed-robot-full-20260929a`.
@@ -118,3 +124,43 @@ its successful 4096-token result, but is retained immutably in the prior file.
 Because the run is incomplete and uses mixed 512/4096-token configurations,
 no aggregate accuracy or scientific-gate result is reported. ResearchOps
 remains `BOOTSTRAP` with `scientific_head_sha=null`.
+
+## Authorized 839-row continuation and final status
+
+The user explicitly confirmed sending the remaining 839 saved questions, model
+answers, and matching reference answers to official Zhipu GLM-5.3-Flash at
+`open.bigmodel.cn/api/paas/v4`, with `max_tokens=4096`, zero retries, and
+the existing CNY 100 cap. The approval and its question context are recorded
+in ResearchOps. A read-only checkpoint found no scorer process and confirmed
+the 416 prior follow-up rows were unique, all `SCORED`, and ended at global
+attempt 432. The score-only preflight reported exactly 839 pending attempts
+and CNY 4.32 carried-forward per-request rounded estimates, without an API
+call. The continuation used the original `m3-agent-repro` conda interpreter
+and appended to the same follow-up JSONL.
+
+The scorer then reported `Scoring complete`: **839** new requests,
+**1,271** total requests, and **zero** remaining unjudged nonempty rows.
+Read-only post-run verification found 1,255 unique follow-up rows, all
+`SCORED` at 4096 tokens, plus the 15 earlier valid 512-token rows and six
+empty rows marked wrong without requests. The only cross-file answer-key
+overlap is Q16: its old 512-token `HOLD` remains immutable, while its
+authorized 4096-token result is `SCORED` and false. Attempts 1�C1,271 are
+contiguous; all 1,270 nonempty keys have a final verdict. The saved answer
+snapshots, annotation questions/reference answers, parser verdicts, usage,
+provider/model and completed response states passed the read-only checks.
+
+The frozen Robot metric is **422 correct / 1,276 total = 33.0721%**,
+including the six empty responses as wrong. This is the complete descriptive
+judge result for this archived run, with mixed output limits: 15 effective
+labels at 512 and 1,255 at 4096. The original 16 API rows do not contain
+per-row configuration fields, so their 512-token provenance remains tied to
+the frozen original scorer and this execution history. This scoring result
+does not promote a scientific gate; ResearchOps scientific stage remains
+`BOOTSTRAP` and `scientific_head_sha` remains `null`.
+
+Reported usage is 365,919 input and 200,985 completion tokens, including
+196,841 reasoning tokens. The unrounded usage-based estimate at the archived
+list price is **CNY 0.8554932**; the sum of per-request estimates rounded up
+to cents, used for the budget guard, is **CNY 12.71**. The verified provider
+invoice was not available. No new inference, embedding, training, or
+memory-repair experiment was started.

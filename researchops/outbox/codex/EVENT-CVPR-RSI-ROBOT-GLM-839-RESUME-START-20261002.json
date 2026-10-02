@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_71f2f7ca-593c-4df6-a303-445745b4f174",
+  "record_type": "event",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T16:54:00Z",
+  "input_state_version": 13,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002",
+  "correlation_id": "rec_db48f542-5c50-4a4f-bcd1-5d641cd81198",
+  "causation_id": "rec_a6e14037-05f7-4a70-95e8-e3728edc70e2",
+  "summary": "Explicit external-payload approval recorded; no node scorer was running and offline preflight verified exactly 839 pending rows",
+  "payload": {
+    "status": "RUNNING",
+    "event_code": "SCORE_839_RESUME_PRECHECK_PASS",
+    "authorization_source": "User response Sentinel_26dcb36300c88191a753f8d6deaea5bf to explicit official Zhipu GLM destination and saved-question/answer/reference payload question",
+    "node_process_check": "PASS; no score_saved_answers.py process in flight",
+    "persisted_checkpoint": {
+      "followup_rows": 416,
+      "followup_status": "All SCORED; no HOLD",
+      "followup_unique_keys": true,
+      "global_attempt_range": [17, 432],
+      "request_max_tokens": 4096
+    },
+    "offline_scorer_preflight": {
+      "status": "PASS; no API call made",
+      "prior_api_attempts": 16,
+      "prior_valid_judgments": 15,
+      "followup_completed": 416,
+      "remaining_api_attempts": 839,
+      "cumulative_per_request_rounded_estimate_rmb": "4.32",
+      "next_request_worst_case_reserve_rmb": "1.21"
+    },
+    "scientific_state_change": "none; BOOTSTRAP and scientific_head_sha null"
+  }
+}

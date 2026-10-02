@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_77dc0331-7aa4-417b-a4b3-3d7fd4c29767",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T17:50:17Z",
+  "input_state_version": 14,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002",
+  "correlation_id": "rec_db48f542-5c50-4a4f-bcd1-5d641cd81198",
+  "causation_id": "rec_71f2f7ca-593c-4df6-a303-445745b4f174",
+  "summary": "Authorized 839-row continuation completed; all 1270 nonempty Robot answers have final GLM labels and six empty answers remain wrong without API",
+  "payload": {
+    "status": "PASS",
+    "status_scope": "Technical completion and validation of saved-answer judging only; no scientific-gate promotion",
+    "executed_source_sha": null,
+    "executed_scorer_sha256": "421fbb58f59d930b37e6389bb447a5b250474088a15132d9cc20b345493ecd45",
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002-CHECKPOINT-432-ONCE",
+    "tests": {
+      "preflight": "PASS; no concurrent scorer, 416 prior follow-up SCORED rows, 839 pending, CNY 4.32 carried forward, CNY 1.21 next-request reserve; offline preflight made no API calls",
+      "execution": "Scoring complete; 839 new serial requests, 1271 global requests, zero pending, no retry or follow-up HOLD",
+      "answer_and_annotation_integrity": "PASS; 1276 unique source keys, all questions and reference answers match annotations, score snapshots match saved responses, six empty answers are wrong without calls",
+      "attempt_integrity": "PASS; attempts 1-1271 contiguous; only cross-file key overlap is historical Q16 HOLD followed by one successful 4096-token re-evaluation",
+      "judge_integrity": "PASS; all 1270 final scored verdicts match the frozen first-whole-word yes/no parser and finish normally; all 1271 API records have usage; provider/model uniformly glm/glm-5.3-flash",
+      "configuration_provenance": "15 effective original judgments at max_tokens=512 by frozen original source/report; 1255 follow-up rows explicitly mark max_tokens=4096 and one configuration version; 16 old API rows lack per-row max/config fields",
+      "scorer_hash_match": "PASS; node01 executed scorer SHA-256 matches the local synced scorer source"
+    },
+    "runs": [
+      {
+        "run_id": "qwen33b-glmembed-robot-full-20260929a",
+        "kind": "existing_saved_answer_glm_judging_mixed_512_4096",
+        "archived_inference_source_commit": "0e3e41939bd8a0b66d756e7b7eb8d5fe9992da5c",
+        "dataset": "robot",
+        "total_questions": 1276,
+        "nonempty_final_judgments": 1270,
+        "empty_wrong_no_call": 6,
+        "unjudged": 0,
+        "original_api_attempts": 16,
+        "followup_api_attempts": 1255,
+        "resume_api_attempts": 839,
+        "total_api_attempts": 1271,
+        "original_valid_at_512": 15,
+        "original_q16_historical_hold": 1,
+        "followup_valid_at_4096": 1255,
+        "correct": 422,
+        "wrong_including_empty": 854,
+        "usage": {
+          "input_tokens": 365919,
+          "completion_tokens": 200985,
+          "reasoning_tokens": 196841
+        },
+        "unrounded_usage_based_list_price_estimate_rmb": "0.8554932",
+        "sum_of_per_request_rounded_budget_estimates_rmb": "12.71",
+        "next_request_worst_case_reserve_rmb": "1.21",
+        "authorized_budget_cap_rmb": "100.00",
+        "provider_invoice_verified": false,
+        "artifacts": [
+          "runs/qwen33b-glmembed-robot-full-20260929a/answers.jsonl",
+          "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores.jsonl",
+          "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores_followup_4096.jsonl"
+        ]
+      }
+    ],
+    "metrics": {
+      "robot_judged_accuracy": {
+        "correct": 422,
+        "denominator": 1276,
+        "percent": "33.0721",
+        "empty_answers_counted_wrong": 6,
+        "judge_configuration": "mixed: 15 effective original rows at max_tokens=512 and 1255 follow-up rows at max_tokens=4096",
+        "interpretation": "descriptive full-run frozen metric, not a scientific-gate PASS"
+      }
+    },
+    "artifacts": [
+      "reports/agent_rsi/ROBOT_SCORING_EXECUTION_20261002.md",
+      "reports/agent_rsi/ROBOT_FULL_JUDGE_ANALYSIS_20261002.md"
+    ],
+    "authorization_consumed": true,
+    "unauthorized_actions_started": false,
+    "scientific_state_change": "none; stage remains BOOTSTRAP and scientific_head_sha null",
+    "to_verify": [
+      "Provider account invoice was not checked; both cost values are estimates.",
+      "Manual trace-level error attribution and like-for-like comparison-run scoring are needed before making paper performance claims or promoting a research gate."
+    ]
+  }
+}

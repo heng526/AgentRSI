@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_db48f542-5c50-4a4f-bcd1-5d641cd81198",
+  "record_type": "task",
+  "actor": "gpt",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T16:52:20Z",
+  "input_state_version": 12,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002",
+  "correlation_id": "rec_a6e14037-05f7-4a70-95e8-e3728edc70e2",
+  "causation_id": "rec_a6e14037-05f7-4a70-95e8-e3728edc70e2",
+  "summary": "Resume exactly the 839 unjudged saved Robot answers from the verified attempt-432 checkpoint under the user's explicit official-GLM data-transfer approval",
+  "payload": {
+    "authorization_level": "L3_SCIENTIFIC_RUN",
+    "mission": "Resume the existing serial score-only GLM run from 416 persisted successful follow-up rows. Judge only the remaining 839 nonempty saved responses, then stop at completion, the CNY 100 budget boundary, or the first error.",
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002-CHECKPOINT-432-ONCE",
+    "authorization_source": "Explicit user response Sentinel_26dcb36300c88191a753f8d6deaea5bf to the destination-and-payload question; human approval rec_a6e14037-05f7-4a70-95e8-e3728edc70e2; prior 4096-token L4 approval rec_fef5c285-3c83-4ee2-a43e-8f3040cb0b85.",
+    "frozen_provenance": {
+      "repository": "heng526/AgentRSI",
+      "project_id": "CVPR-RSI",
+      "scientific_stage": "BOOTSTRAP",
+      "scientific_head_sha": null,
+      "run_id": "qwen33b-glmembed-robot-full-20260929a",
+      "prior_512_result_file": "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores.jsonl",
+      "append_only_4096_result_file": "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores_followup_4096.jsonl",
+      "prior_attempts": 432,
+      "prior_distinct_valid_judgments": 431,
+      "prior_empty_wrong_without_api": 6
+    },
+    "authorized_now": [
+      "Send only the remaining 839 saved questions, model answers, and matching reference answers to official glm-5.3-flash at https://open.bigmodel.cn/api/paas/v4.",
+      "Use the existing frozen judge prompt, first-whole-word yes/no parser, temperature 0, and max_tokens 4096.",
+      "Use serial requests with max_retries=0, at most 839 new and 1271 global API attempts; never repeat any of the 431 distinct valid answer keys.",
+      "Before each request, require cumulative per-request rounded cost plus CNY 1.21 next-request worst-case reserve to be within CNY 100.",
+      "Preserve the original 512-token Q16 HOLD and its successful 4096-token re-evaluation in their separate append-only files.",
+      "Mark a request, usage, truncation, or parse problem HOLD/UNJUDGED and stop with no retry."
+    ],
+    "hard_prohibitions": [
+      "Do not change model, endpoint, credential, judge prompt, parser, temperature, data split, labels, metric, or source answers.",
+      "Do not regenerate answers, embed, train, launch a memory-repair experiment, or choose new scientific hypotheses from this incomplete prefix.",
+      "Do not treat structural result validation as a scientific gate PASS."
+    ],
+    "required_preflight": [
+      "Confirm no scorer process is in flight and exactly 416 unique 4096-token follow-up SCORED records remain at attempts 17-432.",
+      "Run the existing scorer without --execute and confirm exactly 839 pending rows and CNY 4.32 carried forward.",
+      "Use the already verified protected official GLM configuration without displaying credential values."
+    ],
+    "required_outputs": [
+      "Append-only 4096-token follow-up results on node01, with no duplicate answer keys.",
+      "Full-batch merged count and frozen metric only if all 1270 nonempty rows are judged; retain six empty answers as wrong.",
+      "ResearchOps result and report separating scoring completion from scientific-gate status."
+    ]
+  }
+}

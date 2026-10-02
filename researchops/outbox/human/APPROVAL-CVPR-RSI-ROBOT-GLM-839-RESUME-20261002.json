@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_a6e14037-05f7-4a70-95e8-e3728edc70e2",
+  "record_type": "approval",
+  "actor": "human",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T16:52:19Z",
+  "input_state_version": 12,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-839-RESUME-20261002",
+  "summary": "User explicitly approved sending the 839 remaining saved questions, agent answers, and reference answers to the official Zhipu GLM endpoint for the existing score run",
+  "payload": {
+    "authorization_level": "L3_SCIENTIFIC_RUN",
+    "approved": true,
+    "one_shot": true,
+    "approved_at": "2026-10-02T16:49:27Z",
+    "source_message_ids": [
+      "Sentinel_c1dbc237397c819191d97415dbb2e297",
+      "Sentinel_0375e7c7fe708191af7b89bd0f3f8c58",
+      "Sentinel_26dcb36300c88191a753f8d6deaea5bf"
+    ],
+    "question_confirmed": "Allow sending the remaining 839 saved questions, model answers, and matching reference answers to official Zhipu GLM-5.3-Flash at open.bigmodel.cn/api/paas/v4 for scoring, with max_tokens=4096, zero retries, and cumulative cost at most CNY 100?",
+    "user_response": "ok  cvpr��Ҫ24Сʱ�ƽ���������",
+    "scope": {
+      "run_id": "qwen33b-glmembed-robot-full-20260929a",
+      "data_sent_per_request": "One of the 839 remaining saved questions, its saved model answer, and its matching reference answer in the frozen existing judge prompt",
+      "destination": "https://open.bigmodel.cn/api/paas/v4",
+      "provider": "official Zhipu GLM general API",
+      "model": "glm-5.3-flash",
+      "request_max_tokens": 4096,
+      "remaining_nonempty_rows_max": 839,
+      "additional_api_attempts_max": 839,
+      "global_api_attempts_max_including_saved_432": 1271,
+      "previous_distinct_valid_judgments_to_preserve": 431,
+      "previous_empty_wrong_no_call_to_preserve": 6,
+      "q16_historical_512_hold_and_4096_result": "Both immutable; do not re-evaluate Q16 again",
+      "serial_requests": true,
+      "max_retries": 0,
+      "budget_rmb_max": "100.00",
+      "budget_accounting": "Carry forward CNY 4.32 in per-request rounded estimates; before each request require cumulative estimate plus CNY 1.21 worst-case next-request reserve <= CNY 100.",
+      "failure_policy": "At the first API, usage, truncation, or parsing problem, record HOLD/UNJUDGED and stop without retry.",
+      "judge_prompt_parser_temperature_split_labels_metric": "Unchanged",
+      "credential": "Reuse node01's already verified protected bigmodel.env through M3_GLM_ENV_FILE; do not print, copy, or change its values.",
+      "new_training_embedding_inference_or_scientific_experiment": false
+    }
+  }
+}
