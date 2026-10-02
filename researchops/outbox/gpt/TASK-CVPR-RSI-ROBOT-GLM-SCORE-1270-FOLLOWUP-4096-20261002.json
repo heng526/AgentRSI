@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_84c30e76-e530-44fe-9567-611dcc350e9b",
+  "record_type": "task",
+  "actor": "gpt",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T15:03:49Z",
+  "input_state_version": 9,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002",
+  "correlation_id": "rec_fef5c285-3c83-4ee2-a43e-8f3040cb0b85",
+  "causation_id": "rec_fef5c285-3c83-4ee2-a43e-8f3040cb0b85",
+  "summary": "Re-evaluate the single truncated GLM row once at 4096 output tokens, then score the 1254 not-yet-requested nonempty rows",
+  "payload": {
+    "authorization_level": "L3_SCIENTIFIC_RUN",
+    "mission": "Using the official GLM general API, preserve all prior records, re-score only the previously truncated Q16 once at max_tokens=4096, then judge each of the 1254 remaining saved nonempty responses at max_tokens=4096 until completion, budget stop, or first error.",
+    "scientific_question": "Complete the GLM judged correctness labels for the already-generated Robot answers under the user-approved mixed output-limit run.",
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002-EXISTING-RUN-ONCE",
+    "authorization_source": "L4 approval rec_fef5c285-3c83-4ee2-a43e-8f3040cb0b85; explicit user approval Sentinel_dd28aa5983548191b22df3016a89fbce; original L3 approval rec_fa0d6c4e-8c67-4b32-aa97-88a0a6a87488.",
+    "frozen_provenance": {
+      "repository": "heng526/AgentRSI",
+      "project_id": "CVPR-RSI",
+      "scientific_stage": "BOOTSTRAP",
+      "scientific_head_sha": null,
+      "run_id": "qwen33b-glmembed-robot-full-20260929a",
+      "prior_result_file": "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores.jsonl"
+    },
+    "authorized_now": [
+      "Preserve the prior 16 API attempt records, including the first 15 valid 512-token judgments and the Q16 truncation HOLD.",
+      "Re-evaluate (living_room_06, living_room_06_Q16) exactly once at max_tokens=4096; keep the original 512-token HOLD immutable.",
+      "If Q16 succeeds, score the remaining 1254 previously unrequested nonempty responses at max_tokens=4096.",
+      "Do not re-run the prior 15 valid judgments; preserve six empty responses as wrong without API calls.",
+      "Use serial requests, max_retries=0, at most 1255 additional requests and 1271 total.",
+      "Before each request reserve CNY 1.21 using the official full context/output ceilings; cumulative conservative cost plus the next reserve must remain <= CNY 100.",
+      "Record per-row max_tokens/config version; merged results must disclose 15 rows at 512 and follow-up rows at 4096."
+    ],
+    "hard_prohibitions": [
+      "No provider, model, endpoint, credential, prompt, parser, temperature, split, labels, metric, or dataset change beyond the approved max_tokens adjustment.",
+      "No retry after any API, usage, truncation, or parse error; stop and leave remaining rows UNJUDGED.",
+      "Do not count any HOLD row as wrong or promote a scientific gate from this scoring run.",
+      "Do not re-run inference, embed, train, purchase, or recharge."
+    ],
+    "required_tests": [
+      "Offline test for prior-result de-duplication and preservation of the first 15 valid rows.",
+      "Offline test that the single Q16 HOLD is retried only once at 4096 and its original record remains unchanged.",
+      "Offline test for serial per-request budget accounting and stopping before a call that could exceed CNY 100.",
+      "Offline mock confirms no retry and immediate stop after request, usage, truncation, or parse failure."
+    ],
+    "required_preflight": [
+      "Check prior and follow-up result files and exact pending scope before live calls.",
+      "Verify official endpoint/model config through the already approved process; do not read credential values.",
+      "Use official domestic GLM list prices and full context/output ceilings for each-request reserve."
+    ],
+    "required_outputs": [
+      "Append-only follow-up result JSONL with per-row config version, request limit, usage, reserve, cost estimate, and verdict.",
+      "Merged summary that preserves old 512-token decisions and exposes the 4096-token follow-up configuration.",
+      "ResearchOps result separating judge labels from scientific-gate status."
+    ],
+    "stop_conditions": [
+      "Stop if budget check fails, usage is absent/ambiguous, the request fails, output is length-truncated, or judge output is unparseable.",
+      "Never retry Q16 more than once or any other answer key more than once in this follow-up."
+    ]
+  }
+}

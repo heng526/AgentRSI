@@ -189,6 +189,46 @@
       "seq": 19,
       "summary": "One-shot scoring stopped on the first length-truncated GLM response after 16 requests; all remaining nonempty rows are unjudged",
       "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-20261002"
+    },
+    {
+      "actor": "human",
+      "created_at": "2026-10-02T15:03:48Z",
+      "path": "researchops/outbox/human/APPROVAL-CVPR-RSI-ROBOT-GLM-FOLLOWUP-4096-20261002.json",
+      "record_id": "rec_fef5c285-3c83-4ee2-a43e-8f3040cb0b85",
+      "record_type": "approval",
+      "seq": 20,
+      "summary": "L4 approval to raise the GLM judge output limit to 4096 for the one authorized truncated-row re-evaluation and remaining unanswered rows",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002"
+    },
+    {
+      "actor": "gpt",
+      "created_at": "2026-10-02T15:03:49Z",
+      "path": "researchops/outbox/gpt/TASK-CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002.json",
+      "record_id": "rec_84c30e76-e530-44fe-9567-611dcc350e9b",
+      "record_type": "task",
+      "seq": 21,
+      "summary": "Re-evaluate the single truncated GLM row once at 4096 output tokens, then score the 1254 not-yet-requested nonempty rows",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T15:11:18Z",
+      "path": "researchops/outbox/codex/EVENT-CVPR-RSI-ROBOT-GLM-FOLLOWUP-4096-START-20261002.json",
+      "record_id": "rec_1cf2f100-6751-40fa-bd9d-e74a8acb616a",
+      "record_type": "event",
+      "seq": 22,
+      "summary": "L4/L3 follow-up approved and offline preflight passed; 4096-token execution is starting with Q16 re-evaluation first",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002"
+    },
+    {
+      "actor": "codex",
+      "created_at": "2026-10-02T15:47:14Z",
+      "path": "researchops/outbox/codex/RESULT-CVPR-RSI-ROBOT-GLM-FOLLOWUP-4096-20261002.json",
+      "record_id": "rec_d0bbfff7-6c3d-4715-87b3-6de07d96f746",
+      "record_type": "result",
+      "seq": 23,
+      "summary": "Follow-up persisted 416 successful 4096-token labels, then continuation was blocked by automatic approval review; 839 rows remain unjudged",
+      "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002"
     }
   ],
   "project_id": "CVPR-RSI",

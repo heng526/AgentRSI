@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_1cf2f100-6751-40fa-bd9d-e74a8acb616a",
+  "record_type": "event",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T15:11:18Z",
+  "input_state_version": 10,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002",
+  "correlation_id": "rec_84c30e76-e530-44fe-9567-611dcc350e9b",
+  "causation_id": "rec_fef5c285-3c83-4ee2-a43e-8f3040cb0b85",
+  "summary": "L4/L3 follow-up approved and offline preflight passed; 4096-token execution is starting with Q16 re-evaluation first",
+  "payload": {
+    "status": "RUNNING",
+    "event_code": "FOLLOWUP_4096_PRECHECK_PASS",
+    "offline_mock_tests": "PASS 16/16; dedupe, one permitted Q16 re-evaluation, unchanged first 15, resume, 1.21 CNY request reserve, budget stop, no retry on error/truncation/usage/parse failure",
+    "actual_node_preflight": {
+      "status": "PASS; no API call made",
+      "prior_api_attempts": 16,
+      "prior_valid_judgments": 15,
+      "prior_q16_hold": true,
+      "prior_empty_wrong": 6,
+      "followup_completed": 0,
+      "pending_additional_attempts": 1255,
+      "prior_conservative_cost_rmb": "0.16",
+      "next_request_worst_case_reserve_rmb": "1.21",
+      "result_path": "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores_followup_4096.jsonl"
+    },
+    "authorized_attempts": {"additional_max": 1255, "total_max_including_prior": 1271, "max_retries": 0},
+    "scientific_state_change": "none; BOOTSTRAP and scientific_head_sha null"
+  }
+}

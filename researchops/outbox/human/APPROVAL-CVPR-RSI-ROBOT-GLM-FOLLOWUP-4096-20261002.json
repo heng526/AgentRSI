@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_fef5c285-3c83-4ee2-a43e-8f3040cb0b85",
+  "record_type": "approval",
+  "actor": "human",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T15:03:48Z",
+  "input_state_version": 9,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002",
+  "summary": "L4 approval to raise the GLM judge output limit to 4096 for the one authorized truncated-row re-evaluation and remaining unanswered rows",
+  "payload": {
+    "authorization_level": "L4_SCIENTIFIC_METHOD_CHANGE",
+    "approved": true,
+    "one_shot": true,
+    "approved_at": "2026-10-02T15:01:25Z",
+    "source_message_ids": ["Sentinel_dd28aa5983548191b22df3016a89fbce"],
+    "supersedes_scope_field_only": "Judge max_tokens 512 in the prior scoring configuration",
+    "scope": {
+      "run_id": "qwen33b-glmembed-robot-full-20260929a",
+      "provider": "official Zhipu GLM general API",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "model": "glm-5.3-flash",
+      "request_max_tokens": 4096,
+      "re_evaluate_once": {"video_id": "living_room_06", "id": "living_room_06_Q16", "preserve_prior_512_token_hold": true},
+      "remaining_nonempty_rows": 1254,
+      "previous_valid_judgments_to_preserve_without_rerun": 15,
+      "six_empty_rows": "wrong without API calls",
+      "additional_api_attempts_max": 1255,
+      "total_api_attempts_max_including_previous_16": 1271,
+      "max_retries": 0,
+      "budget_rmb_max": "100.00",
+      "budget_accounting": "Conservatively carry forward CNY 0.16 for the prior 16 calls; before each next call, cumulative conservative cost plus CNY 1.21 worst-case reserve must remain <= CNY 100.",
+      "failure_policy": "Any request error, missing or ambiguous usage, truncation, or unparseable response is UNJUDGED/HOLD; stop immediately without retry.",
+      "judge_prompt_parser_split_labels_metric": "Unchanged",
+      "credential": "Use only the already verified key in node01 ~/.config/m3-agent/bigmodel.env; do not print, copy, or reconfigure it.",
+      "authorization_consumed": false
+    }
+  }
+}

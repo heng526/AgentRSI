@@ -33,12 +33,14 @@ EXPECTED_HOST = "open.bigmodel.cn"
 INPUT_PRICE_PER_M = Decimal("0.8")
 OUTPUT_PRICE_PER_M = Decimal("2.8")
 DEFAULT_BUDGET_RMB = Decimal("100.00")
-DEFAULT_MAX_API_ATTEMPTS = 1270
+DEFAULT_MAX_API_ATTEMPTS = 1271
+DEFAULT_MAX_ADDITIONAL_API_ATTEMPTS = 1255
 MODEL_INPUT_CONTEXT_TOKENS = 1_048_576
 MODEL_MAX_OUTPUT_TOKENS = 131_072
-# The official GLM OpenAI-compatible API documents max_tokens. Keep this at
-# the existing judge's 512-token ceiling, including any reasoning tokens.
-REQUEST_MAX_TOKENS = 512
+# Follow-up config: the prior 512-token attempt and HOLD remain in the prior
+# result file; this config rejudges that single key once and scores new keys.
+REQUEST_MAX_TOKENS = 4096
+SCORING_CONFIG_VERSION = "official-glm-5.3-flash-max-tokens-4096-followup"
 MAX_BILLED_OUTPUT_TOKENS = MODEL_MAX_OUTPUT_TOKENS
 
 
@@ -152,11 +154,14 @@ def build_items(rows: list[dict[str, Any]], annotations: dict[str, Any]) -> list
     return items
 
 
+def load_records(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
 def load_existing(output_path: Path) -> dict[tuple[str, str], dict[str, Any]]:
-    if not output_path.exists():
-        return {}
-    records = [json.loads(line) for line in output_path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    return index_existing_records(records)
+    return index_existing_records(load_records(output_path))
 
 
 def index_existing_records(records: list[dict[str, Any]]) -> dict[tuple[str, str], dict[str, Any]]:
@@ -265,6 +270,7 @@ def make_result_record(
     item: ScoreItem,
     *,
     attempt_number: int,
+    key_attempt_number: int,
     status: str,
     raw_judge_output: str | None,
     raw_judge_reasoning: str | None,
@@ -288,6 +294,9 @@ def make_result_record(
         "correct": correct,
         "api_call_attempted": True,
         "attempt_number": attempt_number,
+        "key_attempt_number": key_attempt_number,
+        "scoring_config_version": SCORING_CONFIG_VERSION,
+        "request_max_tokens": REQUEST_MAX_TOKENS,
         "raw_answer": item.raw_answer,
         "raw_judge_output": raw_judge_output,
         "raw_judge_reasoning": raw_judge_reasoning,
@@ -308,35 +317,71 @@ def run(args: argparse.Namespace) -> int:
     answers_path = Path(args.answers).resolve()
     annotations_path = Path(args.annotations).resolve()
     output_path = Path(args.output).resolve()
+    prior_results_path = Path(args.prior_results).resolve()
+    if output_path == prior_results_path:
+        raise SafetyHold("follow-up output must be separate so the original 512-token records remain immutable")
     if answers_path.parent.name != RUN_ID:
         raise SafetyHold(f"answers path must point to the approved existing run directory {RUN_ID}")
     if args.budget_rmb <= 0 or args.budget_rmb > DEFAULT_BUDGET_RMB:
         raise SafetyHold("budget must be positive and cannot exceed the approved 100 RMB cap")
     items = load_items(answers_path, annotations_path)
-    answered_count, empty_count = validate_scope(items, DEFAULT_MAX_API_ATTEMPTS)
-    existing = load_existing(output_path)
-    unexpected = set(existing) - {item.key for item in items}
-    if unexpected:
-        raise SafetyHold(f"output contains keys outside the approved run ({len(unexpected)} rows)")
-    if any(record.get("status") == "HOLD" for record in existing.values()):
-        raise SafetyHold("output already contains a HOLD row; no retry or continuation is allowed")
+    answered_count, empty_count = validate_scope(items, 1270)
+    prior_records = load_records(prior_results_path)
+    prior = index_existing_records(prior_records)
+    followup_records = load_records(output_path)
+    followup = index_existing_records(followup_records)
+    valid_keys = {item.key for item in items}
+    if (set(prior) | set(followup)) - valid_keys:
+        raise SafetyHold("prior/follow-up output contains keys outside the approved run")
 
-    pending = [item for item in items if item.key not in existing]
-    blank_pending = [item for item in pending if item.is_empty]
-    answered_pending = [item for item in pending if not item.is_empty]
-    prior_attempts = sum(bool(record.get("api_call_attempted")) for record in existing.values())
-    if prior_attempts + len(answered_pending) > DEFAULT_MAX_API_ATTEMPTS:
-        raise SafetyHold("resumed run would exceed the authorized API-attempt limit")
+    regrade_key = ("living_room_06", "living_room_06_Q16")
+    prior_attempts_records = [r for r in prior_records if r.get("api_call_attempted")]
+    prior_scored = {key for key, record in prior.items() if record.get("status") == "SCORED"}
+    prior_empty = {key for key, record in prior.items() if record.get("status") == "EMPTY_WRONG"}
+    prior_holds = {key for key, record in prior.items() if record.get("status") == "HOLD"}
+    if len(prior_attempts_records) != 16 or len(prior_scored) != 15 or prior_holds != {regrade_key}:
+        raise SafetyHold("prior result file does not match the approved 15-score/one-Q16-HOLD history")
+    if len(prior_empty) != 6:
+        raise SafetyHold("prior result file does not contain the six verified empty-answer records")
+    if any(record.get("status") == "HOLD" for record in followup.values()):
+        raise SafetyHold("follow-up already has a HOLD row; stop with no retry or continuation")
+    if set(followup) & (prior_scored | prior_empty):
+        raise SafetyHold("follow-up attempts to duplicate a prior valid judgment or empty-answer record")
+    if any(key != regrade_key for key in set(followup) & prior_holds):
+        raise SafetyHold("only the specifically authorized Q16 HOLD may be re-evaluated")
+
     if args.max_new_api_attempts is not None and args.max_new_api_attempts <= 0:
         raise SafetyHold("--max-new-api-attempts must be positive")
+    completed_followup = {key for key, record in followup.items() if record.get("status") == "SCORED"}
+    for key, record in followup.items():
+        if record.get("status") != "SCORED" or record.get("request_max_tokens") != REQUEST_MAX_TOKENS:
+            raise SafetyHold("follow-up result does not match the approved 4096-token configuration")
+
+    by_key = {item.key: item for item in items}
+    candidates: list[ScoreItem] = []
+    if regrade_key not in completed_followup:
+        candidates.append(by_key[regrade_key])
+    for item in items:
+        if item.is_empty or item.key in prior_scored or item.key in prior_empty:
+            continue
+        if item.key == regrade_key or item.key in completed_followup:
+            continue
+        candidates.append(item)
+    if len(candidates) > DEFAULT_MAX_ADDITIONAL_API_ATTEMPTS:
+        raise SafetyHold("follow-up would exceed the approved 1,255 additional-attempt limit")
+
+    all_records = prior_records + followup_records
+    prior_attempts = sum(bool(record.get("api_call_attempted")) for record in all_records)
+    if prior_attempts + len(candidates) > DEFAULT_MAX_API_ATTEMPTS:
+        raise SafetyHold("follow-up would exceed the approved 1,271 total API-attempt limit")
     prior_cost = Decimal("0.00")
-    for record in existing.values():
+    for record in all_records:
         cost = record.get("api_cost_rmb")
         if cost is None:
             cost = record.get("reserved_cost_rmb", "0.00")
         prior_cost += Decimal(str(cost))
     row_reserve = max_single_request_reserve()
-    if answered_pending and prior_cost + row_reserve > args.budget_rmb:
+    if candidates and prior_cost + row_reserve > args.budget_rmb:
         raise SafetyHold(
             f"current spend plus next-request worst-case reserve {prior_cost + row_reserve:.2f} RMB "
             f"exceeds budget {args.budget_rmb:.2f} RMB"
@@ -344,19 +389,15 @@ def run(args: argparse.Namespace) -> int:
 
     if not args.execute:
         print(
-            f"OFFLINE PREFLIGHT PASS; answered={answered_count}, empty={empty_count}, "
-            f"pending_API_attempts={len(answered_pending)}, "
-            f"next_request_worst_case_reserve={row_reserve:.2f} RMB; no API call made"
+            f"OFFLINE PREFLIGHT PASS; prior_attempts={len(prior_attempts_records)}, "
+            f"prior_valid={len(prior_scored)}, followup_done={len(completed_followup)}, "
+            f"pending_API_attempts={len(candidates)}, next_request_reserve={row_reserve:.2f} RMB, "
+            f"conservative_spend={prior_cost:.2f} RMB; no API call made"
         )
         return 0
 
-    # Empty answers are wrong under the existing evaluation rule and require no request.
-    for item in blank_pending:
-        append_jsonl(output_path, build_empty_record(item))
-        existing[item.key] = {"status": "EMPTY_WRONG", "api_call_attempted": False, "api_cost_rmb": "0.00"}
-
-    if not answered_pending:
-        print(f"No pending GLM rows; answered={answered_count}, empty={empty_count}, attempts={prior_attempts}")
+    if not candidates:
+        print(f"No follow-up rows pending; total_attempts={prior_attempts}, conservative_spend={prior_cost:.2f} RMB")
         return 0
 
     configured = resolve_settings()
@@ -364,9 +405,9 @@ def run(args: argparse.Namespace) -> int:
     client = configured["client"]
     actual_spend = prior_cost
     api_attempts = prior_attempts
-    items_to_process = answered_pending
+    items_to_process = candidates
     if args.max_new_api_attempts is not None:
-        items_to_process = answered_pending[:args.max_new_api_attempts]
+        items_to_process = candidates[:args.max_new_api_attempts]
     for index, item in enumerate(items_to_process):
         if actual_spend + row_reserve > args.budget_rmb:
             raise SafetyHold(
@@ -374,6 +415,14 @@ def run(args: argparse.Namespace) -> int:
                 f"would exceed budget {args.budget_rmb:.2f} RMB; remaining answers are UNJUDGED"
             )
         api_attempts += 1
+        key_attempt_number = 1 + sum(
+            1 for record in all_records
+            if record.get("api_call_attempted")
+            and (str(record.get("video_id")), str(record.get("id"))) == item.key
+        )
+        max_key_attempts = 2 if item.key == regrade_key else 1
+        if key_attempt_number > max_key_attempts:
+            raise SafetyHold(f"per-answer attempt limit exceeded for key={item.key!r}")
         try:
             response = client.chat.completions.create(
                 model=settings["chat_model"],
@@ -387,6 +436,7 @@ def run(args: argparse.Namespace) -> int:
             record = make_result_record(
                 item,
                 attempt_number=api_attempts,
+                key_attempt_number=key_attempt_number,
                 status="HOLD",
                 raw_judge_output=None,
                 raw_judge_reasoning=None,
@@ -416,6 +466,7 @@ def run(args: argparse.Namespace) -> int:
             record = make_result_record(
                 item,
                 attempt_number=api_attempts,
+                key_attempt_number=key_attempt_number,
                 status="HOLD",
                 raw_judge_output=raw_output,
                 raw_judge_reasoning=raw_reasoning,
@@ -448,6 +499,7 @@ def run(args: argparse.Namespace) -> int:
         record = make_result_record(
             item,
             attempt_number=api_attempts,
+            key_attempt_number=key_attempt_number,
             status=status,
             raw_judge_output=raw_output,
             raw_judge_reasoning=raw_reasoning,
@@ -462,6 +514,13 @@ def run(args: argparse.Namespace) -> int:
             error_type=hold_reason,
         )
         append_jsonl(output_path, record)
+        print(
+            f"attempt={api_attempts}/{DEFAULT_MAX_API_ATTEMPTS} key_attempt={key_attempt_number} "
+            f"key={item.video_id}/{item.question_id} status={status} "
+            f"usage={input_tokens}/{output_tokens} cost_est={api_cost:.2f} "
+            f"conservative_total={actual_spend:.2f} reserve={row_reserve:.2f}",
+            flush=True,
+        )
         if status == "HOLD":
             raise SafetyHold(f"row held after API response: {hold_reason}; execution stopped")
         if index + 1 < len(items_to_process) and actual_spend + row_reserve > args.budget_rmb:
@@ -470,12 +529,12 @@ def run(args: argparse.Namespace) -> int:
                 f"{actual_spend + row_reserve:.2f} RMB exceeds the approved cap; remaining answers are UNJUDGED"
             )
 
-    remaining = len(answered_pending) - len(items_to_process)
+    remaining = len(candidates) - len(items_to_process)
     state = "Scoring complete" if remaining == 0 else "Scoring checkpoint"
     print(
-        f"{state}; answered={answered_count}, empty={empty_count}, "
+        f"{state}; eligible_nonempty={answered_count}, empty={empty_count}, "
         f"new_attempts={len(items_to_process)}, total_attempts={api_attempts}, "
-        f"spend={actual_spend:.2f} RMB, remaining_unjudged={remaining}"
+        f"conservative_spend={actual_spend:.2f} RMB, remaining_unjudged={remaining}"
     )
     return 0
 
@@ -484,6 +543,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--answers", required=True, help="existing run answers.jsonl")
     parser.add_argument("--annotations", required=True, help="robot.json annotation source")
+    parser.add_argument("--prior-results", required=True, help="immutable prior 512-token score file")
     parser.add_argument("--output", required=True, help="append-only judge result JSONL")
     parser.add_argument("--budget-rmb", type=Decimal, default=DEFAULT_BUDGET_RMB)
     parser.add_argument(
@@ -494,7 +554,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--execute",
         action="store_true",
-        help="make real API calls after full preflight; omitted by default",
+        help="make real API calls after prior-history and per-request budget checks; omitted by default",
     )
     return parser
 

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "record_id": "rec_d0bbfff7-6c3d-4715-87b3-6de07d96f746",
+  "record_type": "result",
+  "actor": "codex",
+  "project_id": "CVPR-RSI",
+  "created_at": "2026-10-02T15:47:14Z",
+  "input_state_version": 11,
+  "task_id": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002",
+  "correlation_id": "rec_84c30e76-e530-44fe-9567-611dcc350e9b",
+  "causation_id": "rec_1cf2f100-6751-40fa-bd9d-e74a8acb616a",
+  "summary": "Follow-up persisted 416 successful 4096-token labels, then continuation was blocked by automatic approval review; 839 rows remain unjudged",
+  "payload": {
+    "status": "HOLD",
+    "status_scope": "Partial judge labels only; incomplete, not an aggregate accuracy estimate or scientific-gate result",
+    "executed_source_sha": null,
+    "idempotency_key": "CVPR-RSI-ROBOT-GLM-SCORE-1270-FOLLOWUP-4096-20261002-EXISTING-RUN-ONCE",
+    "tests": {
+      "offline_mock_tests": "PASS 16/16; resume de-duplication, immutable original 512-token records, one authorized Q16 re-evaluation, request reserve, budget stop, and stop-on-error conditions",
+      "node_resume_preflight": "PASS; no API call; prior attempts=16, prior valid=15, historical Q16 HOLD=1, empty-wrong=6, saved follow-up SCORED=416, pending=839, cumulative per-call estimate=CNY 4.32 including prior batch, next-request reserve=CNY 1.21",
+      "persisted_followup_audit": "PASS read-only; 416 unique follow-up rows, all SCORED, global attempts 17-432, no follow-up HOLD; 119898 input and 64556 completion tokens",
+      "q16_re_evaluation": "SCORED at attempt 17 and key attempt 2; output No; correct=false; 319 input and 398 completion tokens; original 512-token HOLD retained unchanged",
+      "followup_verdict_counts": "144 correct and 272 incorrect among the 416 persisted follow-up labels; not reported as aggregate accuracy",
+      "followup_cost_estimates": "CNY 4.16 sum of per-request rounded estimates; CNY 0.2766752 unrounded usage-based list-price estimate; provider invoice not checked",
+      "transport_and_process": "Interactive SSH stream reset after visible attempt 431; read-only node check confirmed no active scorer and persisted output through successful attempt 432",
+      "continuation_review": "BLOCKED; automatic approval review rejected resumed external GLM calls because trusted user evidence was not accepted as explicit authorization for sending the saved answer/annotation payload to that destination; no workaround and no API requests after rejection",
+      "api_errors_in_persisted_followup": 0,
+      "truncated_or_unparseable_followup_rows": 0,
+      "followup_hold_rows": 0,
+      "distinct_answer_key_attempts": "Q16 has the original 512-token HOLD plus one authorized 4096-token SCORED re-evaluation; all other previously scored keys were skipped; each new follow-up key was requested once"
+    },
+    "runs": [
+      {
+        "run_id": "qwen33b-glmembed-robot-full-20260929a",
+        "kind": "existing_saved_answer_glm_judging_mixed_512_4096_followup",
+        "total_rows": 1276,
+        "eligible_nonempty": 1270,
+        "prior_api_attempts": 16,
+        "followup_api_attempts": 416,
+        "total_api_attempts": 432,
+        "prior_valid_judgments_at_512": 15,
+        "followup_valid_judgments_at_4096": 416,
+        "distinct_judged_answer_keys": 431,
+        "remaining_nonempty_unjudged": 839,
+        "empty_wrong_no_call": 6,
+        "followup_attempt_range": [17, 432],
+        "followup_configuration_version": "official-glm-5.3-flash-max-tokens-4096-followup",
+        "followup_aggregate_usage": {
+          "prompt_tokens": 119898,
+          "completion_tokens": 64556
+        },
+        "followup_sum_of_per_request_rounded_estimates_rmb": "4.16",
+        "followup_unrounded_usage_based_list_price_estimate_rmb": "0.2766752",
+        "cumulative_per_request_rounded_estimate_including_prior_rmb": "4.32",
+        "next_request_reserve_rmb": "1.21",
+        "approved_budget_cap_rmb": "100.00",
+        "artifacts": [
+          "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores.jsonl",
+          "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores_followup_4096.jsonl"
+        ]
+      }
+    ],
+    "metrics": {},
+    "artifacts": [
+      "reports/agent_rsi/ROBOT_SCORING_EXECUTION_20261002.md",
+      "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores.jsonl",
+      "runs/qwen33b-glmembed-robot-full-20260929a/glm_judge_scores_followup_4096.jsonl"
+    ],
+    "authorization_consumed": true,
+    "authorization_consumed_scope": "Partially; 416 authorized follow-up requests were issued, with 839 remaining pending rows not sent",
+    "unauthorized_actions_started": false,
+    "scientific_state_change": "none; stage remains BOOTSTRAP and scientific_head_sha remains null",
+    "to_verify": [
+      "Explicitly confirm that the remaining 839 saved responses and matching annotations may be sent to the official GLM-5.3-Flash API at open.bigmodel.cn under the existing max_tokens=4096, serial, no-retry, CNY 100 cap and per-request CNY 1.21 reserve controls"
+    ]
+  }
+}
